@@ -1,0 +1,13 @@
+.copyright {
+  width: 100%;
+  height: auto;
+  background-color: #444444;
+  color: #ffffff;
+  line-height: 220%;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  position: fixed;
+  margin-bottom: 0%;
+  bottom: 0;
+}
