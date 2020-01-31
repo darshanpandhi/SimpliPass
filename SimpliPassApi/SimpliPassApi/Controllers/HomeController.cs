@@ -5,14 +5,9 @@ using Microsoft.Extensions.Logging;
 namespace SimpliPassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("")]
     public class HomeController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -23,8 +18,13 @@ namespace SimpliPassApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var rng = new Random();
-            return "SimpliPassApi";
+            return "Welcome to SimpliPass Api";
+        }
+
+        [HttpGet("ping", Name = "Ping")]
+        public string Ping()
+        {
+            return "Pong!";
         }
     }
 }
