@@ -39,7 +39,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        {this.renderSelectors()}
+        {/* {this.renderSelectors()} */}
         <Footer />
       </div>
     );
