@@ -29,3 +29,9 @@ export const getAllCoursesForDept = (currDept, coursesList) => {
 
   return courses;
 };
+
+export const getCourseInfo = (currCourse, coursesList) => {
+  let courseInfo = [];
+
+  return courseInfo;
+};

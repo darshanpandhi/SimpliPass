@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import DepartmentSelector from "./components/DepartmentSelector";
 import CourseSelector from "./components/CourseSelector";
+import CourseView from "./components/CourseView";
 import { proxyURL, apiRootURL } from "./Utils/constants";
 
 class App extends React.Component {
@@ -37,6 +38,17 @@ class App extends React.Component {
     this.setState({ currCourse: crs });
   };
 
+  renderCourseView() {
+    return (
+      <>
+        <CourseView
+          currCourse={this.state.currCourse}
+          coursesList={this.state.coursesList}
+        />
+      </>
+    );
+  }
+
   renderSelectors() {
     return (
       <>
@@ -58,6 +70,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         {this.renderSelectors()}
+        {this.renderCourseView()}
         <Footer />
       </div>
     ) : (
