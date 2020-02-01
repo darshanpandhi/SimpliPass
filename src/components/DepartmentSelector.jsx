@@ -1,14 +1,10 @@
 import React from "react";
 import Select from "react-select";
 import "../styles/departmentSelector.css";
+import { getAllDepartments } from "../Utils/utils";
 
 const DepartmentSelector = props => {
-  // Would come from Database
-  const deparmentList = [
-    { value: 1, label: "Computer Science" },
-    { value: 2, label: "Engineering" },
-    { value: 3, label: "Business" }
-  ];
+  const deparmentList = getAllDepartments(props.coursesList);
 
   const selectDept = selectedOption => {
     props.handleSelectDept(selectedOption.label);

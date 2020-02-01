@@ -1,0 +1,28 @@
+.loader-container {
+  margin-top: 25%;
+  margin-left: 48%;
+}
+
+.loader-container > span {
+  margin-left: -4%;
+  font-size: 2.8rem;
+  font-weight: 200;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #398dc5e3;
+  border-radius: 75%;
+  width: 75px;
+  height: 75px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
