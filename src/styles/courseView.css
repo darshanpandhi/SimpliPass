@@ -1,3 +1,10 @@
+.courseViewContainer {
+  border: 2px solid black;
+  margin-top: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
 .courseViewContainer > h1 {
-  font-weight: 200;
+  font-weight: 600;
 }
