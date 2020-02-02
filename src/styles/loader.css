@@ -26,3 +26,10 @@
     transform: rotate(360deg);
   }
 }
+
+@media all and (max-width: 500px) {
+  .loader-container {
+    margin-top: 60%;
+    margin-left: 35%;
+  }
+}
