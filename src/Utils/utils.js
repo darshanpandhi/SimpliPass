@@ -29,3 +29,15 @@ export const getAllCoursesForDept = (currDept, coursesList) => {
 
   return courses;
 };
+
+export const getCourseInfo = (currCourse, coursesList) => {
+  let courseInfo = [];
+
+  Object.values(coursesList).forEach(crs => {
+    if (currCourse === crs.id) {
+      courseInfo = crs;
+    }
+  });
+
+  return courseInfo;
+};

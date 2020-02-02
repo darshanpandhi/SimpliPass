@@ -1,0 +1,87 @@
+.courseViewContainer {
+  margin-top: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
+  padding-bottom: 2%;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  color: rgb(90, 90, 90);
+}
+
+.courseViewContainer:hover {
+  box-shadow: 0 6px 10px 6px rgba(80, 187, 219, 0.514);
+}
+
+.header {
+  padding: 1.5%;
+  background: rgba(80, 187, 219, 0.849);
+  color: white;
+}
+
+.header > h3 {
+  letter-spacing: 0.4rem;
+  font-weight: 400;
+}
+
+.difficultyContainer {
+  font-size: 2rem;
+  margin-top: 1.3%;
+  margin-left: 1.5%;
+}
+
+.difficultyNumber {
+  font-size: 2rem;
+  margin-left: 1%;
+}
+
+.sectionRatingsContainer {
+  margin-top: 2%;
+  margin-left: 1.5%;
+  width: 20%;
+}
+
+.sectionRatingsHeader {
+  letter-spacing: 0.2rem;
+  margin-bottom: 5%;
+  font-weight: 600;
+}
+
+@media all and (max-width: 810px) {
+  .header > h1 {
+    font-size: 1.2rem;
+  }
+  .header > h3 {
+    font-size: 1.2rem;
+  }
+  .sectionRatingsHeader > h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .courseViewContainer {
+    width: 70%;
+    margin-left: 15%;
+    font-size: 0.5rem;
+  }
+
+  .sectionRatingsContainer {
+    width: 70%;
+  }
+
+  .sectionRatingsHeader {
+    font-size: 1rem;
+  }
+
+  .sectionRatingsContainer > h5 {
+    font-size: 1rem;
+  }
+
+  .difficultyContainer {
+    font-size: 1.2rem;
+  }
+
+  .difficultyNumber {
+    font-size: 1.2rem;
+  }
+}
