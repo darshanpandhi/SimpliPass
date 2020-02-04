@@ -36,12 +36,8 @@ namespace SimpliPassApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             var loggerConfig = this.Configuration.GetAWSLoggingConfigSection();
+            loggerConfig.Config.Profile = Configuration.GetAWSOptions().Profile;
             loggerFactory.AddAWSProvider(loggerConfig);
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseHttpsRedirection();
 

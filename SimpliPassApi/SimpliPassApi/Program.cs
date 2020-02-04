@@ -14,12 +14,6 @@ namespace SimpliPassApi
     {
         public static void Main(string[] args)
         {
-            var builder = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-               .AddEnvironmentVariables();
-
-            builder.Build();
             CreateHostBuilder(args).Build().Run();
         }
 

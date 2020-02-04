@@ -835,3 +835,96 @@ Log Entry :
    at AWS.Logger.Core.AWSLoggerCore.LogEventTransmissionSetup(CancellationToken token)
    at AWS.Logger.Core.AWSLoggerCore.Monitor(CancellationToken token)
 -------------------------------
+Log Entry : 
+04.02.2020 3:03:08
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+-------------------------------
+Log Entry : 
+04.02.2020 3:03:08
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at AWS.Logger.Core.AWSLoggerCore.LogEventTransmissionSetup(CancellationToken token)
+   at AWS.Logger.Core.AWSLoggerCore.Monitor(CancellationToken token)
+-------------------------------
+Log Entry : 
+04.02.2020 3:03:24
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+-------------------------------
+Log Entry : 
+04.02.2020 3:03:24
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at AWS.Logger.Core.AWSLoggerCore.LogEventTransmissionSetup(CancellationToken token)
+   at AWS.Logger.Core.AWSLoggerCore.Monitor(CancellationToken token)
+-------------------------------
+Log Entry : 
+04.02.2020 3:14:11
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+-------------------------------
+Log Entry : 
+04.02.2020 3:14:11
+  :
+  :Amazon.Runtime.AmazonServiceException: Unable to get IAM security credentials from EC2 Instance Metadata Service.
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.FetchCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentials()
+   at Amazon.Runtime.DefaultInstanceProfileAWSCredentials.GetCredentialsAsync()
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at AWS.Logger.Core.AWSLoggerCore.LogEventTransmissionSetup(CancellationToken token)
+   at AWS.Logger.Core.AWSLoggerCore.Monitor(CancellationToken token)
+-------------------------------

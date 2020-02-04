@@ -31,6 +31,7 @@ namespace SimpliPassApi.Controllers
         [HttpGet]
         public async Task<List<Course>> Get()
         {
+            throw new Exception("dfdfd");
             _logger.LogInformation("Begin CoursesController Get");
             var items = await _dbClient.GetCourses();
             _logger.LogInformation("Finish CoursesController Get");
