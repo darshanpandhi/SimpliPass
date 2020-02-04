@@ -27,7 +27,7 @@ namespace SimpliPassApi.Controllers
             _dbService = dbService;
             _dbClient = new DynamoDBClient(_dbService);
         }
-        // GET: api/Courses
+
         [HttpGet]
         public async Task<List<Course>> Get()
         {

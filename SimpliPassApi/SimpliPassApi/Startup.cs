@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SimpliPassApi.Middleware;
 
 namespace SimpliPassApi
 {
@@ -32,8 +33,11 @@ namespace SimpliPassApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            var loggerConfig = this.Configuration.GetAWSLoggingConfigSection();
+            loggerFactory.AddAWSProvider(loggerConfig);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,6 +48,8 @@ namespace SimpliPassApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware(typeof(ErrorHandlerMiddleware));
 
             app.UseEndpoints(endpoints =>
             {
