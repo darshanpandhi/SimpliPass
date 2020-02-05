@@ -6,6 +6,7 @@ import DepartmentSelector from "./components/DepartmentSelector";
 import CourseSelector from "./components/CourseSelector";
 import CourseView from "./components/CourseView";
 import { proxyURL, apiRootURL } from "./Utils/constants";
+import Alert from "react-bootstrap/Alert";
 
 class App extends React.Component {
   constructor() {
@@ -15,7 +16,8 @@ class App extends React.Component {
       currDept: "",
       currCourse: "",
       coursesList: [],
-      loaded: false
+      loaded: false,
+      serverError: false
     };
   }
 
@@ -26,6 +28,7 @@ class App extends React.Component {
         this.setState({ coursesList: result, loaded: true });
       })
       .catch(error => {
+        this.setState({ serverError: true });
         console.error("Error:", error);
       });
   }
@@ -38,18 +41,7 @@ class App extends React.Component {
     this.setState({ currCourse: crs });
   };
 
-  renderCourseView() {
-    return (
-      <>
-        <CourseView
-          currCourse={this.state.currCourse}
-          coursesList={this.state.coursesList}
-        />
-      </>
-    );
-  }
-
-  renderSelectors() {
+  renderBody() {
     return (
       <>
         <DepartmentSelector
@@ -61,20 +53,44 @@ class App extends React.Component {
           handleSelectCourse={this.handleSelectCourse}
           currDept={this.state.currDept}
         />
+        <CourseView
+          currCourse={this.state.currCourse}
+          coursesList={this.state.coursesList}
+        />
       </>
     );
   }
 
+  renderServerError() {
+    return (
+      <Alert
+        variant="danger"
+        onClose={() => {
+          this.setState({ serverError: false });
+        }}
+        dismissible
+      >
+        <Alert.Heading> Server Error!</Alert.Heading>
+        <p>Please try refreshing.</p>
+      </Alert>
+    );
+  }
+
   render() {
-    return this.state.loaded ? (
+    return (
       <div className="App">
         <Header />
-        {this.renderSelectors()}
-        {this.renderCourseView()}
+
+        {this.state.serverError && this.renderServerError()}
+
+        {this.state.loaded && !this.state.serverError ? (
+          this.renderBody()
+        ) : (
+          <Loader />
+        )}
+
         <Footer />
       </div>
-    ) : (
-      <Loader />
     );
   }
 }
