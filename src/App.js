@@ -5,6 +5,7 @@ import Loader from "./components/Loader";
 import DepartmentSelector from "./components/DepartmentSelector";
 import CourseSelector from "./components/CourseSelector";
 import CourseView from "./components/CourseView";
+import Dialog from "./components/Dialog";
 import { proxyURL, apiRootURL } from "./Utils/constants";
 
 class App extends React.Component {
@@ -15,7 +16,8 @@ class App extends React.Component {
       currDept: "",
       currCourse: "",
       coursesList: [],
-      loaded: false
+      loaded: false,
+      serverError: false
     };
   }
 
@@ -26,6 +28,7 @@ class App extends React.Component {
         this.setState({ coursesList: result, loaded: true });
       })
       .catch(error => {
+        this.setState({ serverError: true });
         console.error("Error:", error);
       });
   }
@@ -38,18 +41,7 @@ class App extends React.Component {
     this.setState({ currCourse: crs });
   };
 
-  renderCourseView() {
-    return (
-      <>
-        <CourseView
-          currCourse={this.state.currCourse}
-          coursesList={this.state.coursesList}
-        />
-      </>
-    );
-  }
-
-  renderSelectors() {
+  renderBody() {
     return (
       <>
         <DepartmentSelector
@@ -61,20 +53,39 @@ class App extends React.Component {
           handleSelectCourse={this.handleSelectCourse}
           currDept={this.state.currDept}
         />
+        <CourseView
+          currCourse={this.state.currCourse}
+          coursesList={this.state.coursesList}
+        />
       </>
     );
   }
 
+  renderServerError() {
+    return (
+      <Dialog
+        type="danger"
+        heading="Server Error!"
+        message="Please try refreshing."
+      />
+    );
+  }
+
   render() {
-    return this.state.loaded ? (
+    return (
       <div className="App">
         <Header />
-        {this.renderSelectors()}
-        {this.renderCourseView()}
+
+        {this.state.serverError && this.renderServerError()}
+
+        {this.state.loaded && !this.state.serverError ? (
+          this.renderBody()
+        ) : (
+          <Loader />
+        )}
+
         <Footer />
       </div>
-    ) : (
-      <Loader />
     );
   }
 }
