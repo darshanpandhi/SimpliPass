@@ -5,8 +5,8 @@ import Loader from "./components/Loader";
 import DepartmentSelector from "./components/DepartmentSelector";
 import CourseSelector from "./components/CourseSelector";
 import CourseView from "./components/CourseView";
+import Dialog from "./components/Dialog";
 import { proxyURL, apiRootURL } from "./Utils/constants";
-import Alert from "react-bootstrap/Alert";
 
 class App extends React.Component {
   constructor() {
@@ -63,16 +63,11 @@ class App extends React.Component {
 
   renderServerError() {
     return (
-      <Alert
-        variant="danger"
-        onClose={() => {
-          this.setState({ serverError: false });
-        }}
-        dismissible
-      >
-        <Alert.Heading> Server Error!</Alert.Heading>
-        <p>Please try refreshing.</p>
-      </Alert>
+      <Dialog
+        type="danger"
+        heading="Server Error!"
+        message="Please try refreshing."
+      />
     );
   }
 

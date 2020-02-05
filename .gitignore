@@ -160,7 +160,7 @@ docs/*.xml
 /packages
 !.xamarin-component/**
 *.xam
-Components/
+SimpliPassMobile/Components/
 !GooglePlayServices/**
 .irb-history
 screenshot_*
