@@ -1,4 +1,4 @@
-export const coursesList = [
+export const sampleCoursesList = [
   {
     id: "COMP 2140",
     department: "Computer Science",
