@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Header", () => {
   it("should render the logo inside 1 img tag", () => {
     const component = shallow(<Header />);
-    const img = component.find("img");
-    expect(img).toHaveLength(1);
+
+    expect(component.find("img")).toHaveLength(1);
   });
 });

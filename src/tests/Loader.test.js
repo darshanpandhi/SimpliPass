@@ -9,11 +9,8 @@ describe("Loader", () => {
   it("should render 2 divs and 1 p tag with Loading text", () => {
     const component = shallow(<Loader />);
 
-    const paragraph = component.find("p");
-    expect(paragraph).toHaveLength(1);
-    expect(paragraph.text()).toEqual("Loading...");
-
-    const div = component.find("div");
-    expect(div).toHaveLength(2);
+    expect(component.find("div")).toHaveLength(2);
+    expect(component.find("p")).toHaveLength(1);
+    expect(component.find("p").text()).toEqual("Loading...");
   });
 });

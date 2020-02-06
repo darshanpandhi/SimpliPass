@@ -15,12 +15,15 @@ describe("Dialog", () => {
       />
     );
 
+    // Main div
     expect(component.find("div")).toHaveLength(1);
     expect(component.find("div").hasClass("error"));
 
+    // Heading
     expect(component.find("h1")).toHaveLength(1);
     expect(component.find("h1").text()).toEqual("Some Error Heading");
 
+    // Message
     expect(component.find("p")).toHaveLength(1);
     expect(component.find("p").text()).toEqual("Some Message");
   });

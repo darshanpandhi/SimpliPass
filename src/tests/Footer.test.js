@@ -8,8 +8,8 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Footer", () => {
   it("should render SimpliPass inside a p tag", () => {
     const component = shallow(<Footer />);
-    const paragraph = component.find("p");
-    expect(paragraph).toHaveLength(1);
-    expect(paragraph.text()).toEqual("© SimpliPass");
+
+    expect(component.find("p")).toHaveLength(1);
+    expect(component.find("p").text()).toEqual("© SimpliPass");
   });
 });
