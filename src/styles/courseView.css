@@ -37,51 +37,52 @@
 .sectionRatingsContainer {
   margin-top: 2%;
   margin-left: 1.5%;
-  width: 20%;
+  width: 70%;
 }
 
-.sectionRatingsHeader {
+.sectionRatingsContainer > h2 {
   letter-spacing: 0.2rem;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   font-weight: 600;
 }
 
 @media all and (max-width: 810px) {
   .header > h1 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
   .header > h3 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
-  .sectionRatingsHeader > h3 {
-    font-size: 1.2rem;
+  .sectionRatingsContainer > h2 {
+    font-size: 1.8rem;
   }
 }
 
 @media all and (max-width: 500px) {
   .courseViewContainer {
-    width: 70%;
-    margin-left: 15%;
+    width: auto;
+    margin-top: 5%;
     font-size: 0.5rem;
   }
 
-  .sectionRatingsContainer {
-    width: 70%;
+  .sectionRatingsContainer > h2 {
+    width: auto;
+    margin-bottom: 5%;
   }
 
-  .sectionRatingsHeader {
-    font-size: 1rem;
+  .sectionRatingsContainer > h2 {
+    font-size: 1.4rem;
   }
 
   .sectionRatingsContainer > h5 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .difficultyContainer {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .difficultyNumber {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
