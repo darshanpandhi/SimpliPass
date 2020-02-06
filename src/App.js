@@ -7,6 +7,7 @@ import CourseSelector from "./components/CourseSelector";
 import CourseView from "./components/CourseView";
 import Dialog from "./components/Dialog";
 import { proxyURL, apiRootURL } from "./Utils/constants";
+import { Container, Row, Col } from "react-bootstrap";
 
 class App extends React.Component {
   constructor() {
@@ -44,19 +45,31 @@ class App extends React.Component {
   renderBody() {
     return (
       <>
-        <DepartmentSelector
-          handleSelectDept={this.handleSelectDept}
-          coursesList={this.state.coursesList}
-        />
-        <CourseSelector
-          coursesList={this.state.coursesList}
-          handleSelectCourse={this.handleSelectCourse}
-          currDept={this.state.currDept}
-        />
-        <CourseView
-          currCourse={this.state.currCourse}
-          coursesList={this.state.coursesList}
-        />
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <DepartmentSelector
+              handleSelectDept={this.handleSelectDept}
+              coursesList={this.state.coursesList}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <CourseSelector
+              coursesList={this.state.coursesList}
+              handleSelectCourse={this.handleSelectCourse}
+              currDept={this.state.currDept}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <CourseView
+              currCourse={this.state.currCourse}
+              coursesList={this.state.coursesList}
+            />
+          </Col>
+        </Row>
       </>
     );
   }
@@ -73,7 +86,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <Container className="App">
         <Header />
 
         {this.state.serverError && this.renderServerError()}
@@ -81,11 +94,11 @@ class App extends React.Component {
         {this.state.loaded && !this.state.serverError ? (
           this.renderBody()
         ) : (
-          <Loader />
-        )}
+            <Loader />
+          )}
 
         <Footer />
-      </div>
+      </Container >
     );
   }
 }
