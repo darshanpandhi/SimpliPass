@@ -5,9 +5,9 @@ export const sampleCoursesList = [
     difficulty: 6,
     name: "Data Structures and Algorithms",
     section_ratings: {
-      A: 6,
-      B: 8,
-      C: 9
+      "Tom Hanks": 6,
+      "Brad Pitt": 8,
+      "Robert Downey, Jr.": 9
     }
   },
   {
@@ -16,11 +16,11 @@ export const sampleCoursesList = [
     difficulty: 2,
     name: "Introductory Computer Science 1",
     section_ratings: {
-      A: 9,
-      B: 3,
-      C: 2,
-      D: 4,
-      E: 5
+      "Chris Martin": 9,
+      "Selena Gomez": 3,
+      "Shawn Mendes": 2,
+      "Harry Styles": 4,
+      "Bruno Mars": 5
     }
   },
   {
@@ -28,6 +28,6 @@ export const sampleCoursesList = [
     department: "Mathematics",
     difficulty: 8,
     name: "Calculus 2",
-    section_ratings: { A: 7, B: 5 }
+    section_ratings: { "Justin Timberlake": 7, Adele: 5 }
   }
 ];

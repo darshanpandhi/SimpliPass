@@ -49,7 +49,7 @@ const CourseView = props => {
 
     return (
       <div className="sectionRatingsContainer">
-        <h3 className="sectionRatingsHeader">Section Ratings</h3>
+        <h2>Section Ratings</h2>
         {sectionRatingsList}
       </div>
     );
