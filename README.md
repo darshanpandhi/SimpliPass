@@ -4,13 +4,22 @@ _Maximize your academic success through optimal course selections and reviews!_
 
 [![HitCount](http://hits.dwyl.io/nahiyannaim/https://githubcom/darshanpandhi/SimpliPass.svg)](http://hits.dwyl.io/nahiyannaim/https://githubcom/darshanpandhi/SimpliPass)
 
-
 ## Deployment
 
 ### Web
 
 - **Production:** https://master.dh9t5gt5arcji.amplifyapp.com/
 - **Develop:** https://develop.dh9t5gt5arcji.amplifyapp.com/
+
+## Testing
+
+From the root directory, run command:
+
+- `npm test`
+
+For detailed output:
+
+- `npm test -- --verbose`
 
 ## Project Proposal
 
