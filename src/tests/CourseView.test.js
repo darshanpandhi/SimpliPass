@@ -19,8 +19,8 @@ describe("CourseView", () => {
     );
 
     // Department Name
-    expect(component.find("h3")).toHaveLength(1);
-    expect(component.find("h3").text()).toEqual(
+    expect(component.find("h2")).toHaveLength(1);
+    expect(component.find("h2").text()).toEqual(
       "Department of Computer Science"
     );
 
@@ -29,25 +29,26 @@ describe("CourseView", () => {
     expect(component.find("span").text()).toEqual("6");
 
     // Section Ratings
-    expect(component.find("h5")).toHaveLength(3);
+    expect(component.find("h5").text()).toEqual("Section Ratings");
+    expect(component.find("p")).toHaveLength(3);
     expect(
       component
-        .find("h5")
+        .find("p")
         .at(0)
         .text()
-    ).toEqual(" Tom Hanks:  6 ");
+    ).toEqual("Tom Hanks:  6");
     expect(
       component
-        .find("h5")
+        .find("p")
         .at(1)
         .text()
-    ).toEqual(" Brad Pitt:  8 ");
+    ).toEqual("Brad Pitt:  8");
 
     expect(
       component
-        .find("h5")
+        .find("p")
         .at(2)
         .text()
-    ).toEqual(" Robert Downey, Jr.:  9 ");
+    ).toEqual("Robert Downey, Jr.:  9");
   });
 });

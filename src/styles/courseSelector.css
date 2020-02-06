@@ -1,6 +1,23 @@
 .courseSelector {
-  margin-top: 10px; 
-  width: 50%;
+  padding-top: 0.5%;
+  padding-bottom: 1%;
+  width: 40%;
   height: auto;
+  font-size: 2.4rem;
+  font-weight: 200;
   cursor: pointer;
+  margin-top: 2%;
+}
+
+@media all and (max-width: 810px) {
+  .courseSelector {
+    font-size: 1rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .courseSelector {
+    width: 50%;
+    font-size: 1rem;
+  }
 }
