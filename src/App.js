@@ -77,7 +77,7 @@ class App extends React.Component {
   renderServerError() {
     return (
       <Dialog
-        type="danger"
+        type="error"
         heading="Server Error!"
         message="Please try refreshing."
       />
