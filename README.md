@@ -55,10 +55,12 @@ From the root directory, run commands:
 From the root directory, run command:
 
 - `npm test`
+- Press `a` to run all tests
 
 For detailed output:
 
 - `npm test -- --verbose`
+- Press `a` to run all tests
 
 ## Project Proposal
 
