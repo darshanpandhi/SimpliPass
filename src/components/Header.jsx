@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
+import { Row, Col } from "react-bootstrap";
 import "../styles/header.css";
 import logo from "../images/logo.png";
 
 const Header = () => {
   return (
-    <Navbar bg="light">
-      <Navbar.Brand className="logo">
-        <img alt="" src={logo} />
-      </Navbar.Brand>
-    </Navbar>
+    <Row>
+      <Col className="d-flex justify-content-center logo">
+        <img alt="SimpliPass Logo" src={logo} />
+      </Col>
+    </Row>
   );
 };
 
