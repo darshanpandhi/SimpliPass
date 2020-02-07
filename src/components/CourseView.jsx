@@ -2,18 +2,19 @@ import React from "react";
 import "../styles/courseView.css";
 import { getCourseInfo } from "../Utils/utils";
 import Badge from "react-bootstrap/Badge";
+import { Container, Row, Col } from "react-bootstrap";
 
 const CourseView = props => {
   const courseInfo = getCourseInfo(props.currCourse, props.coursesList);
 
   const renderCourseHeader = () => {
     return (
-      <div className="header">
-        <h1>
+      <Col className="header">
+        <h1 id="courseName">
           {courseInfo.id} - {courseInfo.name}
         </h1>
-        <h3>Department of {courseInfo.department}</h3>
-      </div>
+        <h2 id="departmentName">Department of {courseInfo.department}</h2>
+      </Col>
     );
   };
 
@@ -29,14 +30,16 @@ const CourseView = props => {
     }
 
     return (
-      <div className="difficultyContainer">
-        Difficulty Level
-        <span className="difficultyNumber">
-          <Badge pill variant={modifier}>
-            {courseInfo.difficulty}
-          </Badge>
-        </span>
-      </div>
+      <Col className="difficultyContainer">
+        <h6>
+          Difficulty Level
+          <span className="difficultyNumber">
+            <Badge pill variant={modifier}>
+              {courseInfo.difficulty}
+            </Badge>
+          </span>
+        </h6>
+      </Col>
     );
   };
 
@@ -44,24 +47,28 @@ const CourseView = props => {
     let sectionRatingsList = [];
 
     for (let [key, value] of Object.entries(courseInfo.section_ratings)) {
-      sectionRatingsList.push(<h5 key={key}> {`${key}:  ${value}`} </h5>);
+      sectionRatingsList.push(
+        <p className="sectionName" key={key}>
+          {`${key}:  ${value}`}
+        </p>
+      );
     }
 
     return (
-      <div className="sectionRatingsContainer">
-        <h2>Section Ratings</h2>
-        {sectionRatingsList}
-      </div>
+      <Col className="sectionRatingsContainer">
+        <h5 className="sectionRatingsHeader">Section Ratings</h5>
+        <div className="sectionList">{sectionRatingsList}</div>
+      </Col>
     );
   };
 
   return (
     courseInfo.length !== 0 && (
-      <div className="courseViewContainer">
-        {renderCourseHeader()}
-        {renderDifficulty()}
-        {renderSectionRatings()}
-      </div>
+      <Container className="courseViewContainer">
+        <Row>{renderCourseHeader()}</Row>
+        <Row>{renderDifficulty()}</Row>
+        <Row>{renderSectionRatings()}</Row>
+      </Container>
     )
   );
 };

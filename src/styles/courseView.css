@@ -1,88 +1,58 @@
 .courseViewContainer {
-  margin-top: 2%;
-  margin-left: 4%;
-  margin-right: 4%;
-  padding-bottom: 2%;
+  width: 90%;
+  margin-top: 3%;
   box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   color: rgb(90, 90, 90);
 }
 
-.courseViewContainer:hover {
-  box-shadow: 0 6px 10px 6px rgba(80, 187, 219, 0.514);
-}
-
 .header {
-  padding: 1.5%;
+  padding: 3%;
   background: rgba(80, 187, 219, 0.849);
   color: white;
-}
-
-.header > h3 {
-  letter-spacing: 0.4rem;
-  font-weight: 400;
+  text-align: center;
 }
 
 .difficultyContainer {
-  font-size: 2rem;
-  margin-top: 1.3%;
-  margin-left: 1.5%;
+  margin-top: 4%;
+  text-align: center;
+}
+
+.difficultyContainer > h6 {
+  font-size: 1.3rem;
 }
 
 .difficultyNumber {
-  font-size: 2rem;
   margin-left: 1%;
+  font-size: 1.4rem;
 }
 
 .sectionRatingsContainer {
-  margin-top: 2%;
-  margin-left: 1.5%;
-  width: 70%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-align: center;
 }
 
-.sectionRatingsContainer > h2 {
+.sectionRatingsHeader {
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+
+p {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#courseName {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+#departmentName {
+  font-size: 1.4rem;
   letter-spacing: 0.2rem;
-  margin-bottom: 2%;
-  font-weight: 600;
 }
 
-@media all and (max-width: 810px) {
-  .header > h1 {
-    font-size: 1.6rem;
-  }
-  .header > h3 {
-    font-size: 1.6rem;
-  }
-  .sectionRatingsContainer > h2 {
-    font-size: 1.8rem;
-  }
-}
-
-@media all and (max-width: 500px) {
-  .courseViewContainer {
-    width: auto;
-    margin-top: 5%;
-    font-size: 0.5rem;
-  }
-
-  .sectionRatingsContainer > h2 {
-    width: auto;
-    margin-bottom: 5%;
-  }
-
-  .sectionRatingsContainer > h2 {
-    font-size: 1.4rem;
-  }
-
-  .sectionRatingsContainer > h5 {
-    font-size: 1.2rem;
-  }
-
-  .difficultyContainer {
-    font-size: 1.4rem;
-  }
-
-  .difficultyNumber {
-    font-size: 1.5rem;
-  }
+.sectionName {
+  font-size: 1rem;
 }
