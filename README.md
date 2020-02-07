@@ -30,6 +30,7 @@ From the root directory, run commands:
 - `npm install`
 - `npm start`
 - Open `http://localhost:3000/` in your browser to view changes.
+
   > Note: **Node.js** must be installed on your machine to run this React app.
 
 ### Mobile
@@ -39,6 +40,7 @@ From the root directory, run commands:
 - Navigate to `SimpliPassMobile` folder inside the project directory
 - Open `SimpliPassMobile.sln` file
 - Build and Run using the Android or iOS emulator in your machine
+
   > Note: **Android SDK** and **Xcode** must be installed on your machine to build Android and iOS apps.
 
 ### REST API
