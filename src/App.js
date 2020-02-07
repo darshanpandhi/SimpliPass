@@ -94,11 +94,11 @@ class App extends React.Component {
         {this.state.loaded && !this.state.serverError ? (
           this.renderBody()
         ) : (
-            <Loader />
-          )}
+          <Loader />
+        )}
 
         <Footer />
-      </Container >
+      </Container>
     );
   }
 }

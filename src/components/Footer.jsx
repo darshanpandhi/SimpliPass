@@ -4,7 +4,7 @@ import "../styles/footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p className="copyright">&copy; SimpliPass</p>
+      <p>&copy; SimpliPass</p>
     </footer>
   );
 };

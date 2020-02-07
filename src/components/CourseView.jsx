@@ -10,12 +10,10 @@ const CourseView = props => {
   const renderCourseHeader = () => {
     return (
       <Col className="header">
-        <p id="courseName">
+        <h1 id="courseName">
           {courseInfo.id} - {courseInfo.name}
-        </p>
-        <p id="departmentName">
-          Department of {courseInfo.department}
-        </p>
+        </h1>
+        <h2 id="departmentName">Department of {courseInfo.department}</h2>
       </Col>
     );
   };
@@ -33,14 +31,14 @@ const CourseView = props => {
 
     return (
       <Col className="difficultyContainer">
-        <h6>Difficulty Level
-        <span className="difficultyNumber">
+        <h6>
+          Difficulty Level
+          <span className="difficultyNumber">
             <Badge pill variant={modifier}>
               {courseInfo.difficulty}
             </Badge>
           </span>
         </h6>
-
       </Col>
     );
   };
@@ -49,17 +47,17 @@ const CourseView = props => {
     let sectionRatingsList = [];
 
     for (let [key, value] of Object.entries(courseInfo.section_ratings)) {
-      sectionRatingsList.push(<p className="sectionName" key={key}> {`${key}:  ${value}`} </p>);
+      sectionRatingsList.push(
+        <p className="sectionName" key={key}>
+          {`${key}:  ${value}`}
+        </p>
+      );
     }
 
     return (
       <Col className="sectionRatingsContainer">
-        <h6 className="sectionRatingsHeader">
-          Section Ratings
-        </h6>
-        <div className="sectionList">
-          {sectionRatingsList}
-        </div>
+        <h5 className="sectionRatingsHeader">Section Ratings</h5>
+        <div className="sectionList">{sectionRatingsList}</div>
       </Col>
     );
   };
@@ -67,16 +65,10 @@ const CourseView = props => {
   return (
     courseInfo.length !== 0 && (
       <Container className="courseViewContainer">
-        <Row>
-          {renderCourseHeader()}
-        </Row>
-        <Row>
-          {renderDifficulty()}
-        </Row>
-        <Row>
-          {renderSectionRatings()}
-        </Row>
-      </Container >
+        <Row>{renderCourseHeader()}</Row>
+        <Row>{renderDifficulty()}</Row>
+        <Row>{renderSectionRatings()}</Row>
+      </Container>
     )
   );
 };
