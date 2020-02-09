@@ -147,7 +147,7 @@ describe("Utils - getCourseInfo", () => {
       department: "Mathematics",
       difficulty: 8,
       name: "Calculus 2",
-      section_ratings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
     };
     const result = getCourseInfo("MATH 1700", sampleCoursesList);
 
@@ -188,7 +188,7 @@ describe("Utils - getCourseInfo", () => {
       department: "Mathematics",
       difficulty: 8,
       name: "Calculus 2",
-      section_ratings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
     };
     const result = getCourseInfo("mAtH 1700", sampleCoursesList);
 
@@ -201,7 +201,7 @@ describe("Utils - getCourseInfo", () => {
       department: "Mathematics",
       difficulty: 8,
       name: "Calculus 2",
-      section_ratings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
     };
     const result = getCourseInfo("     MATH 1700    ", sampleCoursesList);
 
