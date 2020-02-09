@@ -1,6 +1,6 @@
 ﻿using System;
-using Amazon.DynamoDBv2.DataModel;
 using System.Collections.Generic;
+using Amazon.DynamoDBv2.DataModel;
 
 namespace SimpliPassApi.Models
 {
@@ -24,7 +24,6 @@ namespace SimpliPassApi.Models
 
         [DynamoDBProperty("section_ratings")]
         public Dictionary<string, int> SectionRatings { get; set; }
-
 
         public double ComputeUpdatedDifficulty(double newDifficulty)
         {

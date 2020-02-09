@@ -1,8 +1,8 @@
-﻿using Amazon.DynamoDBv2;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using SimpliPassApi.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SimpliPassApi.Clients
 {
