@@ -24,7 +24,14 @@
 
 .difficultyNumber {
   margin-left: 1%;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+}
+
+.difficultyCount {
+  color: rgb(150, 150, 150);
+  margin-top: -1%;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .sectionRatingsContainer {
