@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpliPassApi.Clients;
@@ -31,19 +28,29 @@ namespace SimpliPassApi.Controllers
         [HttpGet]
         public async Task<List<Course>> Get()
         {
-            _logger.LogInformation("Begin CoursesController Get");
+            _logger.LogInformation("Begin CoursesController GET");
             var items = await _dbClient.GetCourses();
-            _logger.LogInformation("Finish CoursesController Get");
+            _logger.LogInformation("Finish CoursesController GET");
+
             return items;
         }
 
         [HttpGet("{id}", Name = "GetCourse")]
         public async Task<Course> GetCourse(string id)
         {
-            _logger.LogInformation("Begin CoursesController Get id");
-            var item = await _dbClient.GetCourse(id);
-            _logger.LogInformation("Finish CoursesController Get id");
+            _logger.LogInformation("Begin CoursesController GET id");
+            var item = await _dbClient.GetCourse(id.ToUpper());
+            _logger.LogInformation("Finish CoursesController GET id");
+
             return item;
+        }
+
+        [HttpPut("{id}/updateDifficulty/{newDifficulty}", Name = "UpdateCourseDifficulty")]
+        public async void UpdateCourseDifficulty(string id, int newDifficulty)
+        {
+            _logger.LogInformation("Begin CoursesController PUT Update Course Difficulty");
+            _dbClient.UpdateCourseDifficulty(id.ToUpper(), newDifficulty);
+            _logger.LogInformation("Finish CoursesController PUT Update Course Difficulty");
         }
     }
 }

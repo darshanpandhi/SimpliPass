@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace SimpliPassApi.Controllers
@@ -18,7 +17,7 @@ namespace SimpliPassApi.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Welcome to SimpliPass Api";
+            return "Welcome to SimpliPass API";
         }
 
         [HttpGet("ping", Name = "Ping")]
