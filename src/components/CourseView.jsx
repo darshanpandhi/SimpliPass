@@ -46,7 +46,7 @@ const CourseView = props => {
   const renderSectionRatings = () => {
     let sectionRatingsList = [];
 
-    for (let [key, value] of Object.entries(courseInfo.section_ratings)) {
+    for (let [key, value] of Object.entries(courseInfo.sectionRatings)) {
       sectionRatingsList.push(
         <p className="sectionName" key={key}>
           {`${key}:  ${value}`}
