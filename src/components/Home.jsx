@@ -4,7 +4,7 @@ import DepartmentSelector from "./DepartmentSelector";
 import CourseSelector from "./CourseSelector";
 import CourseView from "./CourseView";
 import Dialog from "./Dialog";
-import { proxyURL, apiRootURL } from "../Utils/constants";
+import { proxyURL, apiRootURL, allCourses } from "../Utils/constants";
 import { Row, Col } from "react-bootstrap";
 
 class Home extends React.Component {
@@ -21,7 +21,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch(proxyURL + apiRootURL + "course/")
+    fetch(proxyURL + apiRootURL + allCourses)
       .then(response => response.json())
       .then(result => {
         this.setState({ coursesList: result, loaded: true });

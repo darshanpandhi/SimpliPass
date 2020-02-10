@@ -3,7 +3,12 @@ import Loader from "./Loader";
 import DepartmentSelector from "./DepartmentSelector";
 import CourseSelector from "./CourseSelector";
 import Dialog from "./Dialog";
-import { proxyURL, apiRootURL } from "../Utils/constants";
+import {
+  proxyURL,
+  apiRootURL,
+  allCourses,
+  updateDifficulty
+} from "../Utils/constants";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
 import "../styles/courseReview.css";
@@ -23,7 +28,7 @@ class CourseReview extends React.Component {
   }
 
   componentDidMount() {
-    fetch(proxyURL + apiRootURL + "course/")
+    fetch(proxyURL + apiRootURL + allCourses)
       .then(response => response.json())
       .then(result => {
         this.setState({ coursesList: result, loaded: true });
@@ -49,17 +54,34 @@ class CourseReview extends React.Component {
   };
 
   handleSubmitReview = () => {
-    console.log(this.state.currDept);
-    console.log(this.state.currCourse);
-    console.log(this.state.currDiff);
-
     if (
       this.state.currDept !== "" &&
       this.state.currCourse !== "" &&
       this.state.currDiff !== ""
     ) {
-      //PUT request here
-      this.setState({ currMessage: "Review has been submitted." });
+      fetch(
+        proxyURL +
+          apiRootURL +
+          allCourses +
+          this.state.currCourse +
+          updateDifficulty +
+          this.state.currDiff,
+        {
+          method: "PUT"
+        }
+      )
+        .then(response => {
+          if (response.status === 200) {
+            this.setState({ currMessage: "Review has been submitted." });
+          } else {
+            this.setState({
+              currMessage: "Submitting failed. Please try again."
+            });
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
     } else if (
       this.state.currDept !== "" &&
       this.state.currCourse === "" &&
