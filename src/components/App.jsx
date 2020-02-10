@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
+import CourseReview from "./CourseReview";
 import About from "./About";
 import Footer from "./Footer";
 import logo from "../images/logo.png";
@@ -19,6 +20,11 @@ class App extends React.Component {
               <li>
                 <Link to="/">Home</Link>
               </li>
+
+              <li>
+                <Link to="/CourseReview">Review a Course</Link>
+              </li>
+
               <li>
                 <Link to="/about">About</Link>
               </li>
@@ -26,6 +32,10 @@ class App extends React.Component {
           </nav>
 
           <Switch>
+            <Route path="/CourseReview">
+              <CourseReview />
+            </Route>
+
             <Route path="/about">
               <About />
             </Route>
