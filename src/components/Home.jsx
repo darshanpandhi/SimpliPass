@@ -1,15 +1,13 @@
 import React from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
-import DepartmentSelector from "./components/DepartmentSelector";
-import CourseSelector from "./components/CourseSelector";
-import CourseView from "./components/CourseView";
-import Dialog from "./components/Dialog";
-import { proxyURL, apiRootURL } from "./Utils/constants";
-import { Container, Row, Col } from "react-bootstrap";
+import Loader from "./Loader";
+import DepartmentSelector from "./DepartmentSelector";
+import CourseSelector from "./CourseSelector";
+import CourseView from "./CourseView";
+import Dialog from "./Dialog";
+import { proxyURL, apiRootURL } from "../Utils/constants";
+import { Row, Col } from "react-bootstrap";
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor() {
     super();
 
@@ -86,9 +84,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container className="App">
-        <Header />
-
+      <>
         {this.state.serverError && this.renderServerError()}
 
         {this.state.loaded && !this.state.serverError ? (
@@ -96,11 +92,9 @@ class App extends React.Component {
         ) : (
           <Loader />
         )}
-
-        <Footer />
-      </Container>
+      </>
     );
   }
 }
 
-export default App;
+export default Home;
