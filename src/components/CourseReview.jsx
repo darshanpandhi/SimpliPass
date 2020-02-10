@@ -7,7 +7,8 @@ import {
   proxyURL,
   apiRootURL,
   allCourses,
-  updateDifficulty
+  updateDifficulty,
+  successCode
 } from "../Utils/constants";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
@@ -71,7 +72,7 @@ class CourseReview extends React.Component {
         }
       )
         .then(response => {
-          if (response.status === 200) {
+          if (response.status === successCode) {
             this.setState({ currMessage: "Review has been submitted." });
           } else {
             this.setState({
