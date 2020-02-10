@@ -60,10 +60,19 @@ class CourseReview extends React.Component {
     ) {
       //PUT request here
       this.setState({ currMessage: "Review has been submitted." });
-    } else {
+    } else if (
+      this.state.currDept !== "" &&
+      this.state.currCourse === "" &&
+      this.state.currDiff !== ""
+    ) {
       this.setState({
         currMessage:
           "Course does not match department. Please select the correct course for the correct department."
+      });
+    } else {
+      this.setState({
+        currMessage:
+          "Some fields empty. Please select department, course and difficulty level."
       });
     }
   };
@@ -119,7 +128,15 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
         <p> 1 - Very Easy, 10 - Extremely Difficult</p>
-        <button className="submitReviewBtn" onClick={this.handleSubmitReview}>
+        <button
+          className="submitReviewBtn"
+          onClick={this.handleSubmitReview}
+          disabled={
+            this.state.currDept === "" &&
+            this.state.currCourse === "" &&
+            this.state.currDiff === ""
+          }
+        >
           Submit Review
         </button>
       </div>
