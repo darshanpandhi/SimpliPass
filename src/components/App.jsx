@@ -35,7 +35,6 @@ class App extends React.Component {
             <Route path="/CourseReview">
               <CourseReview />
             </Route>
-
             <Route path="/about">
               <About />
             </Route>
