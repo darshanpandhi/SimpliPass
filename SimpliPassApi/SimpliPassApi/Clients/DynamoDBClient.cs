@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using SimpliPassApi.Exceptions;
 using SimpliPassApi.Models;
 
 namespace SimpliPassApi.Clients
@@ -44,6 +45,10 @@ namespace SimpliPassApi.Clients
                 item.DifficultyCount = item.DifficultyCount + 1;
 
                 await _context.SaveAsync(item);
+            }
+            else
+            {
+                throw new SimpliPassException("Failed to update course difficulty: failed to find the course.");
             }
         }
     }
