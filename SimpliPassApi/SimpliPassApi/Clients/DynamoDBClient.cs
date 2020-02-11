@@ -2,19 +2,25 @@
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using SimpliPassApi.Exceptions;
 using SimpliPassApi.Models;
 
 namespace SimpliPassApi.Clients
 {
-    public class DynamoDBClient
+    public interface IDynamoDBClient
     {
-        private readonly DynamoDBContext _context;
-        private readonly IAmazonDynamoDB _dbService;
+        public Task<List<Course>> GetCourses();
+        public Task<Course> GetCourse(string key);
+        public void UpdateCourseDifficulty(string key, int newDifficulty);
+    }
 
-        public DynamoDBClient(IAmazonDynamoDB dynamoDbService)
+    public class DynamoDBClient : IDynamoDBClient
+    {
+        private readonly IDynamoDBContext _context;
+
+        public DynamoDBClient(IDynamoDBContext context)
         {
-            _dbService = dynamoDbService;
-            _context = new DynamoDBContext(_dbService);
+            _context = context;
         }
 
         public async Task<List<Course>> GetCourses()
@@ -39,6 +45,10 @@ namespace SimpliPassApi.Clients
                 item.DifficultyCount = item.DifficultyCount + 1;
 
                 await _context.SaveAsync(item);
+            }
+            else
+            {
+                throw new SimpliPassException("Failed to update course difficulty: failed to find the course.");
             }
         }
     }
