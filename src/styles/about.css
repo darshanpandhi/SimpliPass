@@ -1,0 +1,21 @@
+.aboutContainer {
+  padding: 3%;
+  color: rgba(66, 66, 66, 0.9);
+}
+
+.aboutContainer > h1 {
+  text-align: center;
+}
+
+.aboutContainer > h3 {
+  text-align: center;
+  padding: 5%;
+}
+
+.aboutContainer > p {
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
