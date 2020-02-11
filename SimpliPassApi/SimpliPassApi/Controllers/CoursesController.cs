@@ -13,16 +13,14 @@ namespace SimpliPassApi.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ILogger<CourseController> _logger;
-        private readonly IAmazonDynamoDB _dbService;
-        private readonly DynamoDBClient _dbClient;
+        private readonly IDynamoDBClient _dbClient;
 
         public CourseController(
             ILogger<CourseController> logger,
-            IAmazonDynamoDB dbService)
+            IDynamoDBClient dbClient)
         {
             _logger = logger;
-            _dbService = dbService;
-            _dbClient = new DynamoDBClient(_dbService);
+            _dbClient = dbClient;
         }
 
         [HttpGet]
