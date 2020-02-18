@@ -45,6 +45,26 @@ namespace SimpliPassApi.Models
             return result;
         }
 
+        public static List<Course> GetCoursesForDept(List<Course> courseList, string key)
+        {
+            List<Course> result = null;
+
+            if (courseList != null && key != null && key.Length != 0)
+            {
+                result = new List<Course>();
+
+                foreach (var course in courseList)
+                {
+                    if (course.Department.ToUpper() == key.ToUpper())
+                    {
+                        result.Add(course);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public double ComputeUpdatedDifficulty(double newDifficulty)
         {
             double result = ((Difficulty * DifficultyCount) + newDifficulty) / (DifficultyCount + 1);
