@@ -11,6 +11,7 @@ namespace SimpliPassApi.Clients
     {
         public Task<List<Course>> GetCourses();
         public Task<Course> GetCourse(string key);
+        public Task<List<string>> GetAllDepartments();
         public void UpdateCourseDifficulty(string key, int newDifficulty);
     }
 
@@ -34,6 +35,25 @@ namespace SimpliPassApi.Clients
             var item = await _context.LoadAsync<Course>(key);
             return item;
         }
+
+        public async Task<List<string>> GetAllDepartments()
+        {
+            List<string> departmentList = new List<string>();
+
+            var courses = await _context.ScanAsync<Course>(new List<ScanCondition>()).GetRemainingAsync();
+
+            if (courses != null)
+            {
+                departmentList = Course.GetAllDepartments(courses);
+            }
+            else
+            {
+                throw new SimpliPassException("Failed to get Courses Table.");
+            }
+
+            return departmentList;
+        }
+
 
         public async void UpdateCourseDifficulty(string key, int newDifficulty)
         {

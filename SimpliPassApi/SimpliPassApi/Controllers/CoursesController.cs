@@ -26,9 +26,9 @@ namespace SimpliPassApi.Controllers
         [HttpGet]
         public async Task<List<Course>> Get()
         {
-            _logger.LogInformation("Begin CoursesController GET");
+            _logger.LogInformation("Begin CoursesController GET All Courses");
             var items = await _dbClient.GetCourses();
-            _logger.LogInformation("Finish CoursesController GET");
+            _logger.LogInformation("Finish CoursesController GET All Courses");
 
             return items;
         }
@@ -36,11 +36,21 @@ namespace SimpliPassApi.Controllers
         [HttpGet("{id}", Name = "GetCourse")]
         public async Task<Course> GetCourse(string id)
         {
-            _logger.LogInformation("Begin CoursesController GET id");
+            _logger.LogInformation("Begin CoursesController GET Course by id");
             var item = await _dbClient.GetCourse(id.ToUpper());
-            _logger.LogInformation("Finish CoursesController GET id");
+            _logger.LogInformation("Finish CoursesController GET Course by id");
 
             return item;
+        }
+
+        [HttpGet("departments", Name = "GetAllDepartments")]
+        public async Task<List<string>> GetAllDepartments()
+        {
+            _logger.LogInformation("Begin CoursesController GET All Departments");
+            var items = await _dbClient.GetAllDepartments();
+            _logger.LogInformation("Finish CoursesController GET All Departments");
+
+            return items;
         }
 
         [HttpPut("{id}/updateDifficulty/{newDifficulty}", Name = "UpdateCourseDifficulty")]

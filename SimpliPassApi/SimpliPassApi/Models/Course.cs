@@ -25,6 +25,26 @@ namespace SimpliPassApi.Models
         [DynamoDBProperty("section_ratings")]
         public Dictionary<string, int> SectionRatings { get; set; }
 
+        public static List<string> GetAllDepartments(List<Course> courseList)
+        {
+            List<string> result = null;
+
+            if (courseList != null)
+            {
+                result = new List<string>();
+
+                foreach (var course in courseList)
+                {
+                    if (!result.Contains(course.Department))
+                    {
+                        result.Add(course.Department);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public double ComputeUpdatedDifficulty(double newDifficulty)
         {
             double result = ((Difficulty * DifficultyCount) + newDifficulty) / (DifficultyCount + 1);
