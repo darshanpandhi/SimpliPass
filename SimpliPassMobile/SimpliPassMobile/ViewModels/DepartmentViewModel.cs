@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SimpliPassMobile.Models;
 
@@ -8,12 +9,14 @@ namespace SimpliPassMobile.ViewModels
     {
         public ObservableCollection<DepartmentModel> DeptList { get; set; }
 
-        public DepartmentViewModel()
+        public DepartmentViewModel(List<string> deptList)
         {
             DeptList = new ObservableCollection<DepartmentModel>();
 
-            DeptList.Add(new DepartmentModel { Name = "Computer Science" });
-            DeptList.Add(new DepartmentModel { Name = "Mathematics" });
+            foreach (string dept in deptList)
+            {
+                DeptList.Add(new DepartmentModel { Name = dept });
+            }
         }
     }
 }

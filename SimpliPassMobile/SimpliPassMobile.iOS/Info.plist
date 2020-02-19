@@ -34,5 +34,20 @@
     <string>SimpliPassMobile</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    <key>NSExceptionDomains</key>
+    <dict>
+    <key>http://simplipass-development.tmyzhjtuxt.us-east-2.elasticbeanstalk.com/</key>
+    <dict>
+    <key>NSIncludesSubdomains</key>
+    <true/>
+    <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+    <false/>
+    </dict>
+    </dict>
+  </dict>
 </dict>
 </plist>
