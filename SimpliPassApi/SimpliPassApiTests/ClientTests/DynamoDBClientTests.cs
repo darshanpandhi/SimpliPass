@@ -23,7 +23,7 @@ namespace SimpliPassApiTests.ClientTests
         {
             _context = new Mock<IDynamoDBContext>();
 
-            var ratings = new Dictionary<string, int>();
+            var ratings = new Dictionary<string, double>();
             ratings.Add("Test Rating Name", 5);
             testCourse = new Course
             {

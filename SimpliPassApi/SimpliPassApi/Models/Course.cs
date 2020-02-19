@@ -23,7 +23,7 @@ namespace SimpliPassApi.Models
         public string Name { get; set; }
 
         [DynamoDBProperty("section_ratings")]
-        public Dictionary<string, int> SectionRatings { get; set; }
+        public Dictionary<string, double> SectionRatings { get; set; }
 
         public static List<string> GetAllDepartments(List<Course> courseList)
         {
