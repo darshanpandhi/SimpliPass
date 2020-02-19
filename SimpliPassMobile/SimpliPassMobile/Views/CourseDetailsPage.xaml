@@ -4,9 +4,47 @@
              x:Class="SimpliPassMobile.Views.CourseDetailsPage">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" >
-            <Label x:Name="CurrCourse" FontSize="Large"/>
-            <Label Text="Difficulty Level"/>
-            <Label Text="Section Ratings"/>
+            <Label x:Name="CurrID" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label x:Name="CurrDept" HorizontalTextAlignment="Center" FontSize="Medium"/>
+            <Label x:Name="CurrDiff" HorizontalTextAlignment="Center" FontSize="Medium"/>
+            <Label x:Name="CurrDiffCount" HorizontalTextAlignment="Center" FontSize="Small"/>
+            <Label Text="Section Ratings" HorizontalTextAlignment="Center" FontSize="Medium"/>
+
+            <ListView ItemsSource="{Binding SectionRatings}" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       VerticalOptions="End"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Small"
+                                       />
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Rating}"
+                                       VerticalOptions="End"
+                                       HorizontalTextAlignment="End"
+                                       FontSize="Small"
+                                       />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

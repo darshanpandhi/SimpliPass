@@ -8,16 +8,15 @@
 
             <Label x:Name="CurrDept" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
 
-            <Label Text="Select a Course:" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Medium" />
+            <Label Text="Select a Course:" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Medium" />
 
             <ListView ItemsSource="{Binding CourseList}"
                    HasUnevenRows="true"
-                   SeparatorVisibility="None"
                    ItemTapped="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                            <Grid Padding="2" RowSpacing="25" ColumnSpacing="0">
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -30,10 +29,17 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Column="1"
+                                       Text="{Binding Id}"
+                                       VerticalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Medium"
+                                       />
+
+                                <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        VerticalOptions="End"
-                                       HorizontalTextAlignment="Center"
-                                       FontSize="Medium"
+                                       HorizontalTextAlignment="End"
+                                       FontSize="Small"
                                        />
                             </Grid>
                         </ViewCell>
