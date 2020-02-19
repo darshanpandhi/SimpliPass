@@ -1,4 +1,5 @@
 ﻿using System;
+using SimpliPassMobile.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace SimpliPassMobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new DepartmentPage());
         }
 
         protected override void OnStart()

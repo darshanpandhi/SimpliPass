@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -89,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpliPassMobile\SimpliPassMobile.csproj">
-      <Project>{CD2CA754-55A3-4994-A3A9-1DAE15E6F223}</Project>
+      <Project>{5C32D8DD-C0C3-47E2-9A9E-23718F37074E}</Project>
       <Name>SimpliPassMobile</Name>
     </ProjectReference>
   </ItemGroup>
