@@ -6,11 +6,12 @@
              mc:Ignorable="d"
              x:Class="SimpliPassMobile.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to SimpliPass" 
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to SimpliPass" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>
