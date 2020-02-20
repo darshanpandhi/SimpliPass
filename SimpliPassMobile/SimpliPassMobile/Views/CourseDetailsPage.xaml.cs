@@ -1,4 +1,6 @@
-﻿using SimpliPassMobile.ViewModels;
+﻿using System.Collections.Generic;
+using SimpliPassMobile.ViewModels;
+using Xamarin.Forms;
 
 namespace SimpliPassMobile.Views
 {

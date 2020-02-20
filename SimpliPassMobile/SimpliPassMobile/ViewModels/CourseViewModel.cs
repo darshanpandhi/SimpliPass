@@ -1,4 +1,7 @@
-﻿using SimpliPassMobile.Models;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json.Linq;
+using SimpliPassMobile.Models;
 
 namespace SimpliPassMobile.ViewModels
 {

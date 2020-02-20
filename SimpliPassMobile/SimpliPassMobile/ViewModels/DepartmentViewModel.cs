@@ -1,4 +1,6 @@
-﻿using SimpliPassMobile.Models;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using SimpliPassMobile.Models;
 
 namespace SimpliPassMobile.ViewModels
 {

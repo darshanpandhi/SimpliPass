@@ -1,4 +1,6 @@
-﻿namespace SimpliPassMobile.Models
+﻿using System.Collections.Generic;
+
+namespace SimpliPassMobile.Models
 {
     public class CourseModel
     {
