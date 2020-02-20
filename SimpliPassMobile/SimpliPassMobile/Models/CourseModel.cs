@@ -14,6 +14,6 @@ namespace SimpliPassMobile.Models
 
         public string Name { get; set; }
 
-        public Dictionary<string, double> SectionRatings { get; set; }
+        public Dictionary<string, Dictionary<string, double>> SectionRatings { get; set; }
     }
 }

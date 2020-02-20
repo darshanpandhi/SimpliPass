@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using Newtonsoft.Json;
@@ -31,7 +32,7 @@ namespace SimpliPassMobile.ViewModels
                 var dept = JObject.Parse(crs.ToString())["department"].ToObject<string>();
                 var diff = JObject.Parse(crs.ToString())["difficulty"].ToObject<double>();
                 var diffCount = JObject.Parse(crs.ToString())["difficultyCount"].ToObject<int>();
-                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"].ToObject<Dictionary<string, double>>();
+                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"].ToObject<Dictionary<string, Dictionary<string, double>>>();
 
                 CourseList.Add(new CourseModel { Id = id, Name = name, Department = dept, Difficulty = diff, DifficultyCount = diffCount, SectionRatings = secRatings });
             }

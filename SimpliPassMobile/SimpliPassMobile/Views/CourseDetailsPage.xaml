@@ -23,7 +23,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -43,6 +43,18 @@
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Rating}"
+                                       VerticalOptions="End"
+                                       HorizontalTextAlignment="End"
+                                       FontSize="Small" />
+
+                                <Label Grid.Column="2"
+                                       Text="{Binding Count}"
+                                       VerticalOptions="End"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="Small" />
+
+                                <Label Grid.Column="2"
+                                       Text="reviews"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="End"
                                        FontSize="Small" />

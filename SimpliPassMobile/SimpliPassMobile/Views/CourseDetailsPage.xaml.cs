@@ -6,7 +6,7 @@ namespace SimpliPassMobile.Views
 {
     public partial class CourseDetailsPage : ContentPage
     {
-        public CourseDetailsPage(string Id, string Name, string Department, double Difficulty, int DifficultyCount, Dictionary<string, double> SectionRatings)
+        public CourseDetailsPage(string Id, string Name, string Department, double Difficulty, int DifficultyCount, Dictionary<string, Dictionary<string, double>> SectionRatings)
         {
             InitializeComponent();
             CurrID.Text = Id + " - " + Name;

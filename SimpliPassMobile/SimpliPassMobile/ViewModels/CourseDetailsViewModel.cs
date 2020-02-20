@@ -8,17 +8,17 @@ namespace SimpliPassMobile.ViewModels
     {
         public ObservableCollection<CourseDetailsModel> SectionRatings { get; set; }
 
-        public CourseDetailsViewModel(Dictionary<string, double> secRatings)
+        public CourseDetailsViewModel(Dictionary<string, Dictionary<string, double>> secRatings)
         {
             SectionRatings = new ObservableCollection<CourseDetailsModel>();
             Setup(secRatings);
         }
 
-        private void Setup(Dictionary<string, double> secRatings)
+        private void Setup(Dictionary<string, Dictionary<string, double>> secRatings)
         {
             foreach (var rating in secRatings)
             {
-                SectionRatings.Add(new CourseDetailsModel { Name = rating.Key, Rating = rating.Value });
+                SectionRatings.Add(new CourseDetailsModel { Name = rating.Key, Rating = rating.Value["rating"], Count = rating.Value["count"] });
             }
         }
     }
