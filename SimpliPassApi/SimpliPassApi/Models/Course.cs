@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
 
@@ -23,7 +24,7 @@ namespace SimpliPassApi.Models
         public string Name { get; set; }
 
         [DynamoDBProperty("section_ratings")]
-        public Dictionary<string, double> SectionRatings { get; set; }
+        public Dictionary<string, Dictionary<string, double>> SectionRatings { get; set; }
 
         public static List<string> GetAllDepartments(List<Course> courseList)
         {
