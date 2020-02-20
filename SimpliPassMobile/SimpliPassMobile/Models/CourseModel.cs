@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SimpliPassMobile.Models
+﻿namespace SimpliPassMobile.Models
 {
     public class CourseModel
     {
@@ -16,6 +13,5 @@ namespace SimpliPassMobile.Models
         public string Name { get; set; }
 
         public Dictionary<string, double> SectionRatings { get; set; }
-
     }
 }

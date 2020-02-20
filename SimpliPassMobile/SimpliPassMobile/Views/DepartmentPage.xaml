@@ -8,16 +8,16 @@
                HorizontalTextAlignment="Start"
                FontSize="Title"
                FontFamily="sans-serif-light"
-               TextColor="White"/>
+               TextColor="White" />
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" >
+        <StackLayout HorizontalOptions="Center">
 
-            <Label Text="Select a Department:" HorizontalTextAlignment="Center" FontSize="Large" Padding="20,20,20,20"/>
+            <Label Text="Select a Department:" HorizontalTextAlignment="Center" FontSize="Large" Padding="20,20,20,20" />
 
             <ListView ItemsSource="{Binding DeptList}"
-                   HasUnevenRows="true"                   
+                   HasUnevenRows="true"
                    ItemTapped="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -25,22 +25,20 @@
                             <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="Center"
-                                       FontSize="Medium"
-                                       />
+                                       FontSize="Medium" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -48,5 +46,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

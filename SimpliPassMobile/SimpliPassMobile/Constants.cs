@@ -1,5 +1,4 @@
-﻿using System;
-namespace SimpliPassMobile
+﻿namespace SimpliPassMobile
 {
     public static class Constants
     {

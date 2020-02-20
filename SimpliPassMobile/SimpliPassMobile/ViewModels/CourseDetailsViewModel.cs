@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using SimpliPassMobile.Models;
+﻿using SimpliPassMobile.Models;
 
 namespace SimpliPassMobile.ViewModels
 {
     public class CourseDetailsViewModel
     {
-
         public ObservableCollection<CourseDetailsModel> SectionRatings { get; set; }
 
         public CourseDetailsViewModel(Dictionary<string, double> secRatings)

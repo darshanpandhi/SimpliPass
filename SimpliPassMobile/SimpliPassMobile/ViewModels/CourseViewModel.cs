@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Newtonsoft.Json.Linq;
-using SimpliPassMobile.Models;
+﻿using SimpliPassMobile.Models;
 
 namespace SimpliPassMobile.ViewModels
 {
     public class CourseViewModel
     {
-
         public ObservableCollection<CourseModel> CourseList { get; set; }
 
         public CourseViewModel(List<object> crsList)

@@ -1,7 +1,5 @@
-﻿using System;
-using SimpliPassMobile.Views;
+﻿using SimpliPassMobile.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SimpliPassMobile
 {

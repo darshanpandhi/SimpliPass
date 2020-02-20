@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using SimpliPassApi.Exceptions;
 using SimpliPassApi.Models;
@@ -10,9 +9,13 @@ namespace SimpliPassApi.Clients
     public interface IDynamoDBClient
     {
         public Task<List<Course>> GetCourses();
+
         public Task<Course> GetCourse(string key);
+
         public Task<List<string>> GetAllDepartments();
+
         public Task<List<Course>> GetCoursesForDept(string key);
+
         public void UpdateCourseDifficulty(string key, int newDifficulty);
     }
 
@@ -72,7 +75,6 @@ namespace SimpliPassApi.Clients
 
             return list;
         }
-
 
         public async void UpdateCourseDifficulty(string key, int newDifficulty)
         {

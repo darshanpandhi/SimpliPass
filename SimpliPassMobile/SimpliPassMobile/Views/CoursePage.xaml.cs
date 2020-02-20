@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using Newtonsoft.Json;
 using SimpliPassMobile.Models;
 using SimpliPassMobile.ViewModels;
 using Xamarin.Forms;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Reflection;
-using System.Linq;
 
 namespace SimpliPassMobile.Views
 {
     public partial class CoursePage : ContentPage
     {
-        List<object> courseList;
+        private List<object> courseList;
 
         public CoursePage(string Name)
         {

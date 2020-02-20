@@ -8,10 +8,9 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to SimpliPass" 
+            <Label Text="Welcome to SimpliPass"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

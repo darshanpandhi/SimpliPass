@@ -8,13 +8,13 @@
                HorizontalTextAlignment="Start"
                FontSize="Title"
                FontFamily="sans-serif-light"
-               TextColor="White"/>
+               TextColor="White" />
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
 
-            <Label x:Name="CurrDept" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label x:Name="CurrDept" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Large" />
 
             <Label Text="Select a Course:" Margin="20,20" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Medium" />
 
@@ -27,28 +27,26 @@
                             <Grid Padding="2" RowSpacing="25" ColumnSpacing="0">
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Id}"
                                        VerticalOptions="Start"
                                        HorizontalTextAlignment="Start"
-                                       FontSize="Medium"
-                                       />
+                                       FontSize="Medium" />
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="End"
-                                       FontSize="Small"
-                                       />
+                                       FontSize="Small" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

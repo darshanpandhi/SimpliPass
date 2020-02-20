@@ -1,13 +1,11 @@
-using Amazon.DynamoDBv2;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Moq;
 using NUnit.Framework;
 using SimpliPassApi.Clients;
 using SimpliPassApi.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SimpliPassApiTests.ClientTests
 {

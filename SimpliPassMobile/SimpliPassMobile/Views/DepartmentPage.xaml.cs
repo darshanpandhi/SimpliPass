@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using SimpliPassMobile.Models;
@@ -10,7 +9,7 @@ namespace SimpliPassMobile.Views
 {
     public partial class DepartmentPage : ContentPage
     {
-        List<string> deptList;
+        private List<string> deptList;
 
         public DepartmentPage()
         {
