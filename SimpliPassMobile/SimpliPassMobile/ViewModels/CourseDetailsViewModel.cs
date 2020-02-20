@@ -11,7 +11,11 @@ namespace SimpliPassMobile.ViewModels
         public CourseDetailsViewModel(Dictionary<string, double> secRatings)
         {
             SectionRatings = new ObservableCollection<CourseDetailsModel>();
+            Setup(secRatings);
+        }
 
+        private void Setup(Dictionary<string, double> secRatings)
+        {
             foreach (var rating in secRatings)
             {
                 SectionRatings.Add(new CourseDetailsModel { Name = rating.Key, Rating = rating.Value });

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SimpliPassMobile.Models;
 
@@ -8,12 +10,21 @@ namespace SimpliPassMobile.ViewModels
     public class CourseViewModel
     {
         public ObservableCollection<CourseModel> CourseList { get; set; }
+        private List<object> courseList;
 
-        public CourseViewModel(List<object> crsList)
+        public CourseViewModel(string currDept)
         {
             CourseList = new ObservableCollection<CourseModel>();
+            Setup(currDept);
+        }
 
-            foreach (var crs in crsList)
+        private void Setup(string currDept)
+        {
+            HttpClient client = new HttpClient();
+            var response = client.GetStringAsync(Constants.API_BASE_URL + Constants.COURSE + Constants.DEPARTMENT_COURSES + currDept).Result;
+            courseList = JsonConvert.DeserializeObject<List<object>>(response);
+
+            foreach (var crs in courseList)
             {
                 var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
                 var name = JObject.Parse(crs.ToString())["name"].ToObject<string>();
