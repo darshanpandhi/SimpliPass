@@ -24,7 +24,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="2" RowSpacing="25" ColumnSpacing="0">
+                            <Grid Padding="10" RowSpacing="25">
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -36,16 +36,14 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="1"
+                                <Label Grid.RowSpan="1"
                                        Text="{Binding Id}"
-                                       VerticalOptions="Start"
-                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Start"
                                        FontSize="Medium" />
 
-                                <Label Grid.Column="1"
+                                <Label Grid.RowSpan="2"
                                        Text="{Binding Name}"
-                                       VerticalOptions="End"
-                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="End"                                    
                                        FontSize="Small" />
                             </Grid>
                         </ViewCell>
