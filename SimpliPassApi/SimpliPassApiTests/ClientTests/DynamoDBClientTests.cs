@@ -21,17 +21,23 @@ namespace SimpliPassApiTests.ClientTests
         {
             _context = new Mock<IDynamoDBContext>();
 
-            var ratings = new Dictionary<string, double>();
-            ratings.Add("Test Rating Name", 5);
+            var ratings = new Dictionary<string, Dictionary<string, double>>();
+            var pairs = new Dictionary<string, double>();
+
+            pairs.Add("count", 7);
+            pairs.Add("rating", 4.2);
+            ratings.Add("Some Instructor Name", pairs);
+
             testCourse = new Course
             {
                 Id = "Test Id",
                 Department = "Test Department",
-                Difficulty = 5.5,
-                DifficultyCount = 5,
-                Name = "Test name",
+                Difficulty = 6.1,
+                DifficultyCount = 3,
+                Name = "Test Name",
                 SectionRatings = ratings
             };
+
             testCourseList = new List<Course>();
             testCourseList.Add(testCourse);
 
@@ -58,8 +64,13 @@ namespace SimpliPassApiTests.ClientTests
             Assert.AreEqual(testCourse.Difficulty, course.Difficulty);
             Assert.AreEqual(testCourse.DifficultyCount, course.DifficultyCount);
             Assert.AreEqual(testCourse.Name, course.Name);
-            Assert.IsTrue(course.SectionRatings.ContainsKey("Test Rating Name"));
-            Assert.AreEqual(5, course.SectionRatings["Test Rating Name"]);
+            Assert.IsTrue(course.SectionRatings.ContainsKey("Some Instructor Name"));
+
+            foreach (var item in course.SectionRatings.Values)
+            {
+                Assert.AreEqual(7, item["count"]);
+                Assert.AreEqual(4.2, item["rating"]);
+            }
         }
     }
 }
