@@ -1,0 +1,71 @@
+.reviewContainer {
+  padding: 4%;
+  padding-top: 3%;
+}
+
+.reviewContainer > h2 {
+  font-weight: 400;
+  font-size: 2.2rem;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
+.reviewContainer > h3 {
+  font-weight: 200;
+  margin-top: 2%;
+  margin-bottom: -2%;
+}
+
+.reviewContainer > p {
+  color: rgb(150, 150, 150);
+  margin-top: -1%;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.difficultySelector {
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+  width: 30%;
+  height: auto;
+  font-size: 2.4rem;
+  font-weight: 200;
+  cursor: pointer;
+  margin-top: 1%;
+}
+
+.submitReviewBtn {
+  background-color: rgba(80, 187, 219, 0.849);
+  color: white;
+  border: 2px solid rgba(80, 187, 219, 0.849);
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 1.4rem;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  margin-top: 3%;
+  outline: none;
+}
+
+.submitReviewBtn:hover {
+  background-color: white;
+  border: 2px solid rgba(80, 187, 219, 0.849);
+  color: rgba(80, 187, 219, 0.849);
+}
+
+button:focus {
+  outline: 0;
+}
+
+@media all and (max-width: 810px) {
+  .difficultySelector {
+    font-size: 1rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .difficultySelector {
+    width: 50%;
+    font-size: 1rem;
+  }
+}

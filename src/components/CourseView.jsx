@@ -39,6 +39,12 @@ const CourseView = props => {
             </Badge>
           </span>
         </h6>
+        <div className="difficultyCount">
+          Based on
+          {courseInfo.difficultyCount > 1
+            ? ` ${courseInfo.difficultyCount} reviews`
+            : ` ${courseInfo.difficultyCount} review`}
+        </div>
       </Col>
     );
   };
@@ -49,7 +55,7 @@ const CourseView = props => {
     for (let [key, value] of Object.entries(courseInfo.sectionRatings)) {
       sectionRatingsList.push(
         <p className="sectionName" key={key}>
-          {`${key}:  ${value}`}
+          {`${key}:  ${value.rating} (${value.count} reviews)`}
         </p>
       );
     }

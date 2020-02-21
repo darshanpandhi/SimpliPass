@@ -1,25 +1,30 @@
 .general {
   background-color: rgba(234, 236, 67, 0.842);
   padding: 1%;
+  text-align: center;
 }
 
 .error {
   background-color: #970101;
   color: white;
   padding: 1%;
+  text-align: center;
 }
 
 .success {
   background-color: #00a33cea;
   color: white;
   padding: 1%;
+  text-align: center;
 }
 
 .dialog-heading {
   font-size: 2rem;
   letter-spacing: 0.1rem;
+  font-weight: 400;
 }
 
 .dialog-message {
   font-size: 1.5rem;
+  font-weight: 400;
 }
