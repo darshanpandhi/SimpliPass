@@ -1,33 +1,69 @@
 export const sampleCoursesList = [
   {
-    id: "COMP 2140",
     department: "Computer Science",
-    difficulty: 6,
+    difficulty: 5,
+    difficultyCount: 5,
+    id: "COMP 2140",
     name: "Data Structures and Algorithms",
     sectionRatings: {
-      "Tom Hanks": 6,
-      "Brad Pitt": 8,
-      "Robert Downey, Jr.": 9
+      "Brad Pitt": {
+        count: 2,
+        rating: 8
+      },
+      "Tom Hanks": {
+        count: 3,
+        rating: 6
+      },
+      "Robert Downey, Jr.": {
+        count: 5,
+        rating: 9
+      }
     }
   },
   {
-    id: "COMP 1010",
     department: "Computer Science",
-    difficulty: 2,
+    difficulty: 3.2,
+    difficultyCount: 11,
+    id: "COMP 1010",
     name: "Introductory Computer Science 1",
     sectionRatings: {
-      "Chris Martin": 9,
-      "Selena Gomez": 3,
-      "Shawn Mendes": 2,
-      "Harry Styles": 4,
-      "Bruno Mars": 5
+      "Bruno Mars": {
+        count: 1,
+        rating: 5.2
+      },
+      "Chris Martin": {
+        count: 1,
+        rating: 9.1
+      },
+      "Harry Styles": {
+        count: 1,
+        rating: 4.5
+      },
+      "Selena Gomez": {
+        count: 1,
+        rating: 3.6
+      },
+      "Shawn Mendes": {
+        count: 1,
+        rating: 2
+      }
     }
   },
   {
-    id: "MATH 1700",
     department: "Mathematics",
-    difficulty: 8,
+    difficulty: 6.7,
+    difficultyCount: 8,
+    id: "MATH 1700",
     name: "Calculus 2",
-    sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
+    sectionRatings: {
+      Adele: {
+        count: 2,
+        rating: 5
+      },
+      "Justin Timberlake": {
+        count: 2,
+        rating: 7
+      }
+    }
   }
 ];

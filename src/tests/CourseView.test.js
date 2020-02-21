@@ -26,29 +26,30 @@ describe("CourseView", () => {
 
     // Difficulty Level
     expect(component.find("span")).toHaveLength(1);
-    expect(component.find("span").text()).toEqual("6");
+    expect(component.find("span").text()).toEqual("5");
 
     // Section Ratings
     expect(component.find("h5").text()).toEqual("Section Ratings");
     expect(component.find("p")).toHaveLength(3);
+
     expect(
       component
         .find("p")
         .at(0)
         .text()
-    ).toEqual("Tom Hanks:  6");
+    ).toEqual("Brad Pitt:  8 (2 reviews)");
     expect(
       component
         .find("p")
         .at(1)
         .text()
-    ).toEqual("Brad Pitt:  8");
+    ).toEqual("Tom Hanks:  6 (3 reviews)");
 
     expect(
       component
         .find("p")
         .at(2)
         .text()
-    ).toEqual("Robert Downey, Jr.:  9");
+    ).toEqual("Robert Downey, Jr.:  9 (5 reviews)");
   });
 });
