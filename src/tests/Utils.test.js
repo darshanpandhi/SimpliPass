@@ -143,11 +143,21 @@ describe("Utils - getAllCoursesForDept", () => {
 describe("Utils - getCourseInfo", () => {
   it("returns a Course object containning all its info for a specific Course", () => {
     const expected = {
-      id: "MATH 1700",
       department: "Mathematics",
-      difficulty: 8,
+      difficulty: 6.7,
+      difficultyCount: 8,
+      id: "MATH 1700",
       name: "Calculus 2",
-      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: {
+        Adele: {
+          count: 2,
+          rating: 5
+        },
+        "Justin Timberlake": {
+          count: 2,
+          rating: 7
+        }
+      }
     };
     const result = getCourseInfo("MATH 1700", sampleCoursesList);
 
@@ -184,11 +194,21 @@ describe("Utils - getCourseInfo", () => {
 
   it("returns Course object given a current Course with mixed cases", () => {
     const expected = {
-      id: "MATH 1700",
       department: "Mathematics",
-      difficulty: 8,
+      difficulty: 6.7,
+      difficultyCount: 8,
+      id: "MATH 1700",
       name: "Calculus 2",
-      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: {
+        Adele: {
+          count: 2,
+          rating: 5
+        },
+        "Justin Timberlake": {
+          count: 2,
+          rating: 7
+        }
+      }
     };
     const result = getCourseInfo("mAtH 1700", sampleCoursesList);
 
@@ -197,11 +217,21 @@ describe("Utils - getCourseInfo", () => {
 
   it("returns Course object given a current Course with whitespace", () => {
     const expected = {
-      id: "MATH 1700",
       department: "Mathematics",
-      difficulty: 8,
+      difficulty: 6.7,
+      difficultyCount: 8,
+      id: "MATH 1700",
       name: "Calculus 2",
-      sectionRatings: { "Justin Timberlake": 7, Adele: 5 }
+      sectionRatings: {
+        Adele: {
+          count: 2,
+          rating: 5
+        },
+        "Justin Timberlake": {
+          count: 2,
+          rating: 7
+        }
+      }
     };
     const result = getCourseInfo("     MATH 1700    ", sampleCoursesList);
 
