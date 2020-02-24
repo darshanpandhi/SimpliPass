@@ -2,6 +2,7 @@ import React from "react";
 import Loader from "./Loader";
 import DepartmentSelector from "./DepartmentSelector";
 import CourseSelector from "./CourseSelector";
+import SectionSelector from "./SectionSelector";
 import Dialog from "./Dialog";
 import {
   proxyURL,
@@ -20,8 +21,10 @@ class CourseReview extends React.Component {
 
     this.state = {
       currDiff: "",
+      currSecRating: "",
       currDept: "",
       currCourse: "",
+      currSec: "",
       coursesList: [],
       loaded: false,
       currMessage: ""
@@ -43,22 +46,37 @@ class CourseReview extends React.Component {
   }
 
   handleSelectDept = dept => {
-    this.setState({ currDept: dept, currCourse: "", currMessage: "" });
+    this.setState({
+      currDept: dept,
+      currCourse: "",
+      currSec: "",
+      currMessage: ""
+    });
   };
 
   handleSelectCourse = crs => {
-    this.setState({ currCourse: crs, currMessage: "" });
+    this.setState({ currCourse: crs, currSec: "", currMessage: "" });
+  };
+
+  handleSelectSection = sec => {
+    this.setState({ currSec: sec, currMessage: "" });
   };
 
   handleSelectDifficulty = diff => {
     this.setState({ currDiff: diff.value, currMessage: "" });
   };
 
+  handleSelectSectionRating = secRating => {
+    this.setState({ currSecRating: secRating.value, currMessage: "" });
+  };
+
   handleSubmitReview = () => {
     if (
       this.state.currDept !== "" &&
       this.state.currCourse !== "" &&
-      this.state.currDiff !== ""
+      this.state.currDiff !== "" &&
+      this.state.currSec !== "" &&
+      this.state.currSecRating !== ""
     ) {
       fetch(
         proxyURL +
@@ -86,16 +104,27 @@ class CourseReview extends React.Component {
     } else if (
       this.state.currDept !== "" &&
       this.state.currCourse === "" &&
-      this.state.currDiff !== ""
+      this.state.currDiff !== "" &&
+      this.state.currSec === ""
     ) {
       this.setState({
         currMessage:
           "Course does not match department. Please select the correct course for the correct department."
       });
+    } else if (
+      this.state.currDept !== "" &&
+      this.state.currCourse !== "" &&
+      this.state.currDiff !== "" &&
+      this.state.currSec === ""
+    ) {
+      this.setState({
+        currMessage:
+          "Section cannot be empty. Please select the correct section for the correct course."
+      });
     } else {
       this.setState({
         currMessage:
-          "Some fields empty. Please select department, course and difficulty level."
+          "Some fields empty. Please select department, course, difficulty level and a section with its rating."
       });
     }
   };
@@ -103,7 +132,8 @@ class CourseReview extends React.Component {
   renderBody() {
     return (
       <div className="reviewContainer">
-        <h2>Difficulty Review</h2>
+        <h2> Review an existing Course</h2>
+
         <h3>Department: </h3>
         <Row>
           <Col className="d-flex justify-content-left">
@@ -113,6 +143,7 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
+
         <h3>Course: </h3>
         <Row>
           <Col className="d-flex justify-content-left">
@@ -123,6 +154,7 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
+
         <h3>Difficulty Level: </h3>
         <Row>
           <Col className="d-flex justify-content-left">
@@ -151,13 +183,56 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
         <p> 1 - Very Easy, 10 - Extremely Difficult</p>
+
+        <h3>Section: </h3>
+        <Row>
+          <Col className="d-flex justify-content-left">
+            <SectionSelector
+              currCourse={this.state.currCourse}
+              coursesList={this.state.coursesList}
+              handleSelectSection={this.handleSelectSection}
+            />
+          </Col>
+        </Row>
+
+        <h3>Section Rating: </h3>
+        <Row>
+          <Col className="d-flex justify-content-left">
+            <Select
+              className="sectionRatingSelector"
+              onChange={this.handleSelectSectionRating}
+              isSearchable={false}
+              options={
+                this.state.currSec === ""
+                  ? []
+                  : [
+                      { value: "1", label: "1" },
+                      { value: "2", label: "2" },
+                      { value: "3", label: "3" },
+                      { value: "4", label: "4" },
+                      { value: "5", label: "5" },
+                      { value: "6", label: "6" },
+                      { value: "7", label: "7" },
+                      { value: "8", label: "8" },
+                      { value: "9", label: "9" },
+                      { value: "10", label: "10" }
+                    ]
+              }
+              placeholder=""
+            />
+          </Col>
+        </Row>
+        <p> 1 - Poor, 10 - Excellent</p>
+
         <button
           className="submitReviewBtn"
           onClick={this.handleSubmitReview}
           disabled={
             this.state.currDept === "" &&
             this.state.currCourse === "" &&
-            this.state.currDiff === ""
+            this.state.currDiff === "" &&
+            this.state.currSec === "" &&
+            this.state.currSecRating === ""
           }
         >
           Submit Review
