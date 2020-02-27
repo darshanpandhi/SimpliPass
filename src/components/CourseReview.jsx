@@ -8,7 +8,7 @@ import {
   proxyURL,
   apiRootURL,
   allCourses,
-  updateDifficulty,
+  updateExistingCourse,
   successCode
 } from "../Utils/constants";
 import { Row, Col } from "react-bootstrap";
@@ -83,8 +83,12 @@ class CourseReview extends React.Component {
           apiRootURL +
           allCourses +
           this.state.currCourse +
-          updateDifficulty +
-          this.state.currDiff,
+          updateExistingCourse +
+          this.state.currDiff +
+          "/" +
+          this.state.currSec +
+          "/" +
+          this.state.currSecRating,
         {
           method: "PUT"
         }

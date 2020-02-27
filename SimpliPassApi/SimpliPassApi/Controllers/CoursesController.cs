@@ -62,12 +62,12 @@ namespace SimpliPassApi.Controllers
             return items;
         }
 
-        [HttpPut("{id}/updateDifficulty/{newDifficulty}", Name = "UpdateCourseDifficulty")]
-        public async void UpdateCourseDifficulty(string id, int newDifficulty)
+        [HttpPut("{id}/updateExistingCourse/{newDifficulty}/{instructorName}/{newRating}", Name = "UpdateExistingCourse")]
+        public async void UpdateExistingCourse(string id, int newDifficulty, string instructorName, int newRating)
         {
-            _logger.LogInformation("Begin CoursesController PUT Update Course Difficulty");
-            _dbClient.UpdateCourseDifficulty(id.ToUpper(), newDifficulty);
-            _logger.LogInformation("Finish CoursesController PUT Update Course Difficulty");
+            _logger.LogInformation("Begin CoursesController PUT Update Existing Course");
+            _dbClient.UpdateExistingCourse(id.ToUpper(), newDifficulty, instructorName, newRating);
+            _logger.LogInformation("Finish CoursesController PUT Update Existing Course");
         }
     }
 }
