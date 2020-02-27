@@ -222,29 +222,28 @@ class CourseReview extends React.Component {
               newSectionEntered={this.state.newSectionEntered}
               handleSelectSection={this.handleSelectSection}
             />
+            <span className="newSectionContainer">
+              <input
+                type="text"
+                value={this.state.inputValue}
+                onChange={this.onChangeValue}
+                onKeyDown={this.handleKeyboardPress}
+                disabled={this.state.currCourse === "" ? true : false}
+              />
+              <button
+                type="button"
+                onClick={this.handleAddSection}
+                disabled={
+                  this.state.inputValue === "" || this.state.currCourse === ""
+                    ? true
+                    : false
+                }
+              >
+                <i className="fa fa-plus"> </i>
+                New Section
+              </button>
+            </span>
           </Col>
-
-          <div className="newSectionContainer">
-            <input
-              type="text"
-              value={this.state.inputValue}
-              onChange={this.onChangeValue}
-              onKeyDown={this.handleKeyboardPress}
-              disabled={this.state.currCourse === "" ? true : false}
-            />
-            <button
-              type="button"
-              onClick={this.handleAddSection}
-              disabled={
-                this.state.inputValue === "" || this.state.currCourse === ""
-                  ? true
-                  : false
-              }
-            >
-              <i className="fa fa-plus"> </i>
-              New Section
-            </button>
-          </div>
         </Row>
 
         <h3>Section Rating: </h3>

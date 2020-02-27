@@ -45,6 +45,38 @@
   margin-top: 1%;
 }
 
+.newSectionContainer {
+  margin-top: 2.6%;
+  margin-left: 3%;
+}
+
+.newSectionContainer > input {
+  font-size: 2.6rem;
+  font-weight: 200;
+}
+
+.newSectionContainer > button {
+  font-size: 2.6rem;
+  font-weight: 300;
+  background-color: white;
+  color: rgba(80, 187, 219, 0.849);
+  border: 2px solid rgba(80, 187, 219, 0.849);
+  text-align: center;
+  transition-duration: 0.1s;
+  cursor: pointer;
+  outline: none;
+  margin-left: 15px;
+}
+
+.newSectionContainer > button:hover {
+  background-color: rgba(230, 230, 230, 0.261);
+}
+
+.newSectionContainer > button > i {
+  color: rgba(80, 187, 219, 0.849);
+  margin-right: 15px;
+}
+
 .submitReviewBtn {
   background-color: rgba(80, 187, 219, 0.849);
   color: white;
@@ -75,6 +107,12 @@ button:focus {
   .sectionRatingsSelector {
     font-size: 1rem;
   }
+  .newSectionContainer > input {
+    font-size: 1rem;
+  }
+  .newSectionContainer > button {
+    font-size: 1rem;
+  }
 }
 
 @media all and (max-width: 500px) {
@@ -84,6 +122,12 @@ button:focus {
   }
   .sectionRatingsSelector {
     width: 50%;
+    font-size: 1rem;
+  }
+  .newSectionContainer > input {
+    font-size: 1rem;
+  }
+  .newSectionContainer > button {
     font-size: 1rem;
   }
 }
