@@ -6,6 +6,13 @@ import { getAllSectionsForCourse } from "../Utils/utils";
 const SectionSelector = props => {
   const secList = getAllSectionsForCourse(props.currCourse, props.coursesList);
 
+  if (props.newSectionEntered) {
+    secList.unshift({
+      value: props.newSectionName,
+      label: props.newSectionName
+    });
+  }
+
   const selectSection = selectedOption => {
     props.handleSelectSection(selectedOption.label);
   };

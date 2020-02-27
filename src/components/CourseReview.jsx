@@ -27,7 +27,9 @@ class CourseReview extends React.Component {
       currSec: "",
       coursesList: [],
       loaded: false,
-      currMessage: ""
+      currMessage: "",
+      inputValue: "",
+      newSectionEntered: false
     };
   }
 
@@ -50,12 +52,20 @@ class CourseReview extends React.Component {
       currDept: dept,
       currCourse: "",
       currSec: "",
-      currMessage: ""
+      currMessage: "",
+      inputValue: "",
+      newSectionEntered: false
     });
   };
 
   handleSelectCourse = crs => {
-    this.setState({ currCourse: crs, currSec: "", currMessage: "" });
+    this.setState({
+      currCourse: crs,
+      currSec: "",
+      currMessage: "",
+      inputValue: "",
+      newSectionEntered: false
+    });
   };
 
   handleSelectSection = sec => {
@@ -133,6 +143,20 @@ class CourseReview extends React.Component {
     }
   };
 
+  handleAddSection = () => {
+    this.setState({ newSectionEntered: true });
+  };
+
+  handleKeyboardPress = event => {
+    if (event.key === "Enter") {
+      this.handleAddSection();
+    }
+  };
+
+  onChangeValue = event => {
+    this.setState({ inputValue: event.target.value });
+  };
+
   renderBody() {
     return (
       <div className="reviewContainer">
@@ -194,9 +218,33 @@ class CourseReview extends React.Component {
             <SectionSelector
               currCourse={this.state.currCourse}
               coursesList={this.state.coursesList}
+              newSectionName={this.state.inputValue}
+              newSectionEntered={this.state.newSectionEntered}
               handleSelectSection={this.handleSelectSection}
             />
           </Col>
+
+          <div className="newSectionContainer">
+            <input
+              type="text"
+              value={this.state.inputValue}
+              onChange={this.onChangeValue}
+              onKeyDown={this.handleKeyboardPress}
+              disabled={this.state.currCourse === "" ? true : false}
+            />
+            <button
+              type="button"
+              onClick={this.handleAddSection}
+              disabled={
+                this.state.inputValue === "" || this.state.currCourse === ""
+                  ? true
+                  : false
+              }
+            >
+              <i className="fa fa-plus"> </i>
+              New Section
+            </button>
+          </div>
         </Row>
 
         <h3>Section Rating: </h3>
