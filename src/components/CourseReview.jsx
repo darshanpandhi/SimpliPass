@@ -138,7 +138,10 @@ class CourseReview extends React.Component {
   };
 
   onChangeValueCourseCode = event => {
-    this.setState({ currCourseCode: event.target.value, currMessage: "" });
+    this.setState({
+      currCourseCode: event.target.value.toString().toUpperCase(),
+      currMessage: ""
+    });
   };
 
   onChangeValueCourseNum = event => {
