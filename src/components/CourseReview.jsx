@@ -172,7 +172,7 @@ class CourseReview extends React.Component {
     return (
       <div className="reviewContainer">
         <Row>
-          <h1> Review a Course </h1>
+          <h1 className="pageTitle"> Review a Course </h1>
         </Row>
 
         <Row>
@@ -198,6 +198,8 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
 
+        <div className="rowMarginBottom"></div>
+
         <Row>
           <label>Name </label>
           <Col className="d-flex justify-content-left">
@@ -210,6 +212,8 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
 
+        <div className="rowMarginBottom"></div>
+
         <Row>
           <label>Department </label>
           <Col className="d-flex justify-content-left">
@@ -221,6 +225,8 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
+
+        <div className="rowMarginBottom"></div>
 
         <Row>
           <label>Difficulty Level </label>
@@ -248,7 +254,7 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h2> Section</h2>
+          <h2 className="secTitle"> Section</h2>
         </Row>
 
         <Row>
@@ -262,6 +268,8 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
+
+        <div className="rowMarginBottom"></div>
 
         <Row>
           <label> Rating </label>
