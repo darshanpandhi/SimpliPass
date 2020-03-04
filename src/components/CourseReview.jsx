@@ -158,11 +158,12 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3>Course ID: </h3>
+          <label>Course ID</label>
+
           <Col className="d-flex justify-content-left">
             <input
               type="text"
-              placeholder="e.g. COMP 1010"
+              placeholder="COMP 1010"
               value={this.state.currCourse}
               onChange={this.onChangeValueCourse}
               // disabled={this.state.currCourse === "" ? true : false}
@@ -171,11 +172,11 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3>Name: </h3>
+          <label>Name </label>
           <Col className="d-flex justify-content-left">
             <input
               type="text"
-              placeholder="e.g. Intro to Comp Sci"
+              placeholder="Intro to Computer Science 1"
               value={this.state.currName}
               onChange={this.onChangeValueCourseName}
               // disabled={this.state.currCourse === "" ? true : false}
@@ -184,11 +185,11 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3>Department: </h3>
-          <Col xs={7} className="d-flex justify-content-left">
+          <label>Department </label>
+          <Col className="d-flex justify-content-left">
             <input
               type="text"
-              placeholder="e.g. Computer Science"
+              placeholder="Computer Science"
               value={this.state.currDept}
               onChange={this.onChangeValueDept}
               // disabled={this.state.currCourse === "" ? true : false}
@@ -197,8 +198,8 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3>Difficulty Level: </h3>
-          <Col xs={4} className="d-flex justify-content-left">
+          <label>Difficulty Level </label>
+          <Col className="d-flex justify-content-left">
             <Select
               className="difficultySelector"
               onChange={this.handleSelectDifficulty}
@@ -212,7 +213,10 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
+          <label> </label>
+          <Col className="d-flex justify-content-left">
+            <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
+          </Col>
         </Row>
 
         <Row>
@@ -220,11 +224,11 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3>Instructor: </h3>
+          <label>Instructor </label>
           <Col className="d-flex justify-content-left">
             <input
               type="text"
-              placeholder="e.g. John Smith"
+              placeholder="John Smith"
               value={this.state.currSec}
               onChange={this.onChangeValueSection}
               // disabled={this.state.currCourse === "" ? true : false}
@@ -233,8 +237,8 @@ class CourseReview extends React.Component {
         </Row>
 
         <Row>
-          <h3> Rating: </h3>
-          <Col xs={4} className="d-flex justify-content-left">
+          <label> Rating </label>
+          <Col className="d-flex justify-content-left">
             <Select
               className="sectionRatingSelector"
               onChange={this.handleSelectSectionRating}
@@ -244,23 +248,31 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
+
         <Row>
-          <p className="hint"> 1 - Poor, 10 - Excellent</p>
+          <label> </label>
+          <Col className="d-flex justify-content-left">
+            <p className="hint"> 1 - Poor, 10 - Excellent</p>
+          </Col>
         </Row>
 
-        <button
-          className="submitReviewBtn"
-          onClick={this.handleSubmitReview}
-          disabled={
-            this.state.currDept === "" &&
-            this.state.currCourse === "" &&
-            this.state.currDiff === "" &&
-            this.state.currSec === "" &&
-            this.state.currSecRating === ""
-          }
-        >
-          Submit Review
-        </button>
+        <Row>
+          <Col>
+            <button
+              className="submitReviewBtn"
+              onClick={this.handleSubmitReview}
+              disabled={
+                this.state.currDept === "" &&
+                this.state.currCourse === "" &&
+                this.state.currDiff === "" &&
+                this.state.currSec === "" &&
+                this.state.currSecRating === ""
+              }
+            >
+              Submit Review
+            </button>
+          </Col>
+        </Row>
       </div>
     );
   }
