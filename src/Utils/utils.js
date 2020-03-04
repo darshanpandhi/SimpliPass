@@ -53,35 +53,6 @@ export const getAllCoursesForDept = (currDept, coursesList) => {
   return courses;
 };
 
-export const getAllSectionsForCourse = (currCourse, coursesList) => {
-  let sections = [];
-  const courseInfo = getCourseInfo(currCourse, coursesList);
-
-  if (
-    coursesList !== undefined &&
-    coursesList !== null &&
-    coursesList.length !== 0
-  ) {
-    if (
-      currCourse !== undefined &&
-      currCourse !== null &&
-      currCourse.length !== 0
-    ) {
-      if (
-        courseInfo !== undefined &&
-        courseInfo !== null &&
-        courseInfo.length !== 0
-      ) {
-        Object.keys(courseInfo.sectionRatings).forEach(instructor => {
-          sections.push({ value: instructor, label: instructor });
-        });
-      }
-    }
-  }
-
-  return sections;
-};
-
 export const getCourseInfo = (currCourse, coursesList) => {
   let courseInfo = [];
 
