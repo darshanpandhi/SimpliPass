@@ -22,7 +22,8 @@ class CourseReview extends React.Component {
     this.state = {
       coursesList: [],
       currMessage: "",
-      currCourse: "",
+      currCourseCode: "",
+      currCourseNum: "",
       currName: "",
       currDept: "",
       currDiff: "",
@@ -48,19 +49,27 @@ class CourseReview extends React.Component {
 
   handleSubmitReview = () => {
     if (
-      this.state.currCourse !== "" &&
+      this.state.currCourseCode !== "" &&
+      this.state.currCourseNum !== "" &&
       this.state.currName !== "" &&
       this.state.currDept !== "" &&
       this.state.currDiff !== "" &&
       this.state.currSec !== "" &&
       this.state.currSecRating !== ""
     ) {
-      if (courseExists(this.state.currCourse, this.state.coursesList)) {
+      if (
+        courseExists(
+          this.state.currCourseCode + " " + this.state.currCourseNum,
+          this.state.coursesList
+        )
+      ) {
         fetch(
           proxyURL +
             apiRootURL +
             allCourses +
-            this.state.currCourse +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
             updateExistingCourse +
             this.state.currDiff +
             "/" +
@@ -89,7 +98,9 @@ class CourseReview extends React.Component {
             apiRootURL +
             allCourses +
             newCourse +
-            this.state.currCourse +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
             "/" +
             this.state.currName +
             "/" +
@@ -126,8 +137,12 @@ class CourseReview extends React.Component {
     }
   };
 
-  onChangeValueCourse = event => {
-    this.setState({ currCourse: event.target.value, currMessage: "" });
+  onChangeValueCourseCode = event => {
+    this.setState({ currCourseCode: event.target.value, currMessage: "" });
+  };
+
+  onChangeValueCourseNum = event => {
+    this.setState({ currCourseNum: event.target.value, currMessage: "" });
   };
 
   onChangeValueCourseName = event => {
@@ -162,11 +177,20 @@ class CourseReview extends React.Component {
 
           <Col className="d-flex justify-content-left">
             <input
+              className="crsCode"
               type="text"
-              placeholder="COMP 1010"
-              value={this.state.currCourse}
-              onChange={this.onChangeValueCourse}
-              // disabled={this.state.currCourse === "" ? true : false}
+              maxLength="4"
+              placeholder="COMP"
+              value={this.state.currCourseCode}
+              onChange={this.onChangeValueCourseCode}
+            />
+            <input
+              className="crsNum"
+              type="text"
+              maxLength="4"
+              placeholder="1010"
+              value={this.state.currCourseNum}
+              onChange={this.onChangeValueCourseNum}
             />
           </Col>
         </Row>
@@ -179,7 +203,6 @@ class CourseReview extends React.Component {
               placeholder="Intro to Computer Science 1"
               value={this.state.currName}
               onChange={this.onChangeValueCourseName}
-              // disabled={this.state.currCourse === "" ? true : false}
             />
           </Col>
         </Row>
@@ -192,7 +215,6 @@ class CourseReview extends React.Component {
               placeholder="Computer Science"
               value={this.state.currDept}
               onChange={this.onChangeValueDept}
-              // disabled={this.state.currCourse === "" ? true : false}
             />
           </Col>
         </Row>
@@ -205,7 +227,10 @@ class CourseReview extends React.Component {
               onChange={this.handleSelectDifficulty}
               isSearchable={false}
               options={
-                this.state.currCourse === "" ? [] : commonSelectorOptions
+                this.state.currCourseCode === "" ||
+                this.state.currCourseNum === ""
+                  ? []
+                  : commonSelectorOptions
               }
               placeholder=""
             />
@@ -231,7 +256,6 @@ class CourseReview extends React.Component {
               placeholder="John Smith"
               value={this.state.currSec}
               onChange={this.onChangeValueSection}
-              // disabled={this.state.currCourse === "" ? true : false}
             />
           </Col>
         </Row>
@@ -263,7 +287,8 @@ class CourseReview extends React.Component {
               onClick={this.handleSubmitReview}
               disabled={
                 this.state.currDept === "" &&
-                this.state.currCourse === "" &&
+                this.state.currCourseCode === "" &&
+                this.state.currCourseNum === "" &&
                 this.state.currDiff === "" &&
                 this.state.currSec === "" &&
                 this.state.currSecRating === ""
