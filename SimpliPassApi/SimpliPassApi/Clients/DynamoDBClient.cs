@@ -18,6 +18,8 @@ namespace SimpliPassApi.Clients
         public Task<List<Course>> GetCoursesForDept(string key);
 
         public void UpdateExistingCourse(string key, int newDifficulty, string instructorName, int newRating);
+
+        public void AddNewCourse(string id, string name, string department, int difficulty, string instructorName, int rating);
     }
 
     public class DynamoDBClient : IDynamoDBClient
@@ -92,6 +94,29 @@ namespace SimpliPassApi.Clients
             {
                 throw new SimpliPassException("Failed to update existing course: course not found in database.");
             }
+        }
+
+        public async void AddNewCourse(string id, string name, string department, int difficulty, string instructorName, int rating)
+        {
+            Course crs;
+            var ratings = new Dictionary<string, Dictionary<string, double>>();
+            var pairs = new Dictionary<string, double>();
+
+            pairs.Add("count", 1);
+            pairs.Add("rating", rating);
+            ratings.Add(instructorName, pairs);
+
+            crs = new Course
+            {
+                Id = id,
+                Department = department,
+                Difficulty = difficulty,
+                DifficultyCount = 1,
+                Name = name,
+                SectionRatings = ratings
+            };
+
+            await _context.SaveAsync(crs);
         }
     }
 }

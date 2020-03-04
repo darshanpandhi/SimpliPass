@@ -3,78 +3,42 @@
   padding-top: 3%;
 }
 
-.reviewContainer > h2 {
-  font-weight: 400;
-  font-size: 2.2rem;
-  padding-top: 1%;
-  padding-bottom: 2%;
-}
-
-.reviewContainer > h3 {
-  font-weight: 200;
-  margin-top: 2%;
-  margin-bottom: -2%;
-}
-
-.reviewContainer > p {
+.hint {
+  padding: 0.7%;
   color: rgb(150, 150, 150);
   margin-top: -1%;
   font-style: italic;
   font-weight: 400;
 }
 
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 300;
+}
+
 .difficultySelector {
-  padding-top: 1.5%;
-  padding-bottom: 1%;
-  width: 30%;
+  text-align: center;
+  width: 15%;
   height: auto;
-  font-size: 2.4rem;
+
   font-weight: 200;
   cursor: pointer;
-  margin-top: 1%;
 }
 
 .sectionRatingSelector {
-  padding-top: 1.5%;
-  padding-bottom: 1%;
-  width: 30%;
-  height: auto;
-  font-size: 2.4rem;
-  font-weight: 200;
-  cursor: pointer;
-  margin-top: 1%;
-}
-
-.newSectionContainer {
-  margin-top: 2.6%;
-  margin-left: 3%;
-}
-
-.newSectionContainer > input {
-  font-size: 2.6rem;
-  font-weight: 200;
-}
-
-.newSectionContainer > button {
-  font-size: 2.6rem;
-  font-weight: 300;
-  background-color: white;
-  color: rgba(80, 187, 219, 0.849);
-  border: 2px solid rgba(80, 187, 219, 0.849);
   text-align: center;
-  transition-duration: 0.1s;
+  width: 15%;
+  height: auto;
+
+  font-weight: 200;
   cursor: pointer;
-  outline: none;
-  margin-left: 15px;
-}
-
-.newSectionContainer > button:hover {
-  background-color: rgba(230, 230, 230, 0.261);
-}
-
-.newSectionContainer > button > i {
-  color: rgba(80, 187, 219, 0.849);
-  margin-right: 15px;
 }
 
 .submitReviewBtn {
@@ -107,12 +71,6 @@ button:focus {
   .sectionRatingsSelector {
     font-size: 1rem;
   }
-  .newSectionContainer > input {
-    font-size: 1rem;
-  }
-  .newSectionContainer > button {
-    font-size: 1rem;
-  }
 }
 
 @media all and (max-width: 500px) {
@@ -122,12 +80,6 @@ button:focus {
   }
   .sectionRatingsSelector {
     width: 50%;
-    font-size: 1rem;
-  }
-  .newSectionContainer > input {
-    font-size: 1rem;
-  }
-  .newSectionContainer > button {
     font-size: 1rem;
   }
 }
