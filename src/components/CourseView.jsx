@@ -54,9 +54,10 @@ const CourseView = props => {
 
     for (let [key, value] of Object.entries(courseInfo.sectionRatings)) {
       sectionRatingsList.push(
-        <p className="sectionName" key={key}>
-          {`${key}:  ${value.rating} (${value.count} reviews)`}
-        </p>
+        <div className="sectionName" key={key}>
+          {`${key}:  ${value.rating} `}
+          <p>{` ${value.count} reviews`}</p>
+        </div>
       );
     }
 

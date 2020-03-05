@@ -30,26 +30,26 @@ describe("CourseView", () => {
 
     // Section Ratings
     expect(component.find("h5").text()).toEqual("Section Ratings");
-    expect(component.find("p")).toHaveLength(3);
+    expect(component.find("div")).toHaveLength(5);
 
     expect(
       component
-        .find("p")
-        .at(0)
-        .text()
-    ).toEqual("Brad Pitt:  8 (2 reviews)");
-    expect(
-      component
-        .find("p")
-        .at(1)
-        .text()
-    ).toEqual("Tom Hanks:  6 (3 reviews)");
-
-    expect(
-      component
-        .find("p")
+        .find("div")
         .at(2)
         .text()
-    ).toEqual("Robert Downey, Jr.:  9 (5 reviews)");
+    ).toEqual("Brad Pitt:  8  2 reviews");
+    expect(
+      component
+        .find("div")
+        .at(3)
+        .text()
+    ).toEqual("Tom Hanks:  6  3 reviews");
+
+    expect(
+      component
+        .find("div")
+        .at(4)
+        .text()
+    ).toEqual("Robert Downey, Jr.:  9  5 reviews");
   });
 });
