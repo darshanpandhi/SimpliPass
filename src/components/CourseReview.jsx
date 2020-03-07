@@ -1,14 +1,15 @@
 import React from "react";
 import Loader from "./Loader";
-import DepartmentSelector from "./DepartmentSelector";
-import CourseSelector from "./CourseSelector";
 import Dialog from "./Dialog";
+import { courseExists } from "../Utils/utils";
 import {
   proxyURL,
   apiRootURL,
   allCourses,
-  updateDifficulty,
-  successCode
+  updateExistingCourse,
+  newCourse,
+  successCode,
+  commonSelectorOptions
 } from "../Utils/constants";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
@@ -19,12 +20,16 @@ class CourseReview extends React.Component {
     super();
 
     this.state = {
-      currDiff: "",
-      currDept: "",
-      currCourse: "",
       coursesList: [],
-      loaded: false,
-      currMessage: ""
+      currMessage: "",
+      currCourseCode: "",
+      currCourseNum: "",
+      currName: "",
+      currDept: "",
+      currDiff: "",
+      currSec: "",
+      currSecRating: "",
+      loaded: false
     };
   }
 
@@ -42,126 +47,268 @@ class CourseReview extends React.Component {
       });
   }
 
-  handleSelectDept = dept => {
-    this.setState({ currDept: dept, currCourse: "", currMessage: "" });
+  handleSubmitReview = () => {
+    if (
+      this.state.currCourseCode !== "" &&
+      this.state.currCourseNum !== "" &&
+      this.state.currName !== "" &&
+      this.state.currDept !== "" &&
+      this.state.currDiff !== "" &&
+      this.state.currSec !== "" &&
+      this.state.currSecRating !== ""
+    ) {
+      if (
+        courseExists(
+          this.state.currCourseCode + " " + this.state.currCourseNum,
+          this.state.coursesList
+        )
+      ) {
+        fetch(
+          proxyURL +
+            apiRootURL +
+            allCourses +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
+            updateExistingCourse +
+            this.state.currDiff +
+            "/" +
+            this.state.currSec +
+            "/" +
+            this.state.currSecRating,
+          {
+            method: "PUT"
+          }
+        )
+          .then(response => {
+            if (response.status === successCode) {
+              this.setState({ currMessage: "Review has been submitted." });
+            } else {
+              this.setState({
+                currMessage: "Submitting failed. Please try again."
+              });
+            }
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      } else {
+        fetch(
+          proxyURL +
+            apiRootURL +
+            allCourses +
+            newCourse +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
+            "/" +
+            this.state.currName +
+            "/" +
+            this.state.currDept +
+            "/" +
+            this.state.currDiff +
+            "/" +
+            this.state.currSec +
+            "/" +
+            this.state.currSecRating,
+
+          {
+            method: "POST"
+          }
+        )
+          .then(response => {
+            if (response.status === successCode) {
+              this.setState({ currMessage: "Review has been submitted." });
+            } else {
+              this.setState({
+                currMessage: "Submitting failed. Please try again."
+              });
+            }
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      }
+    } else {
+      this.setState({
+        currMessage:
+          "Some fields empty. Please enter course id, name, department, difficulty level and a section with its rating."
+      });
+    }
   };
 
-  handleSelectCourse = crs => {
-    this.setState({ currCourse: crs, currMessage: "" });
+  onChangeValueCourseCode = event => {
+    this.setState({
+      currCourseCode: event.target.value.toString().toUpperCase(),
+      currMessage: ""
+    });
+  };
+
+  onChangeValueCourseNum = event => {
+    this.setState({ currCourseNum: event.target.value, currMessage: "" });
+  };
+
+  onChangeValueCourseName = event => {
+    this.setState({ currName: event.target.value, currMessage: "" });
+  };
+
+  onChangeValueDept = event => {
+    this.setState({ currDept: event.target.value, currMessage: "" });
+  };
+
+  onChangeValueSection = event => {
+    this.setState({ currSec: event.target.value, currMessage: "" });
   };
 
   handleSelectDifficulty = diff => {
     this.setState({ currDiff: diff.value, currMessage: "" });
   };
 
-  handleSubmitReview = () => {
-    if (
-      this.state.currDept !== "" &&
-      this.state.currCourse !== "" &&
-      this.state.currDiff !== ""
-    ) {
-      fetch(
-        proxyURL +
-          apiRootURL +
-          allCourses +
-          this.state.currCourse +
-          updateDifficulty +
-          this.state.currDiff,
-        {
-          method: "PUT"
-        }
-      )
-        .then(response => {
-          if (response.status === successCode) {
-            this.setState({ currMessage: "Review has been submitted." });
-          } else {
-            this.setState({
-              currMessage: "Submitting failed. Please try again."
-            });
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        });
-    } else if (
-      this.state.currDept !== "" &&
-      this.state.currCourse === "" &&
-      this.state.currDiff !== ""
-    ) {
-      this.setState({
-        currMessage:
-          "Course does not match department. Please select the correct course for the correct department."
-      });
-    } else {
-      this.setState({
-        currMessage:
-          "Some fields empty. Please select department, course and difficulty level."
-      });
-    }
+  handleSelectSectionRating = secRating => {
+    this.setState({ currSecRating: secRating.value, currMessage: "" });
   };
 
   renderBody() {
     return (
       <div className="reviewContainer">
-        <h2>Difficulty Review</h2>
-        <h3>Department: </h3>
         <Row>
+          <h1 className="pageTitle"> Review a Course </h1>
+        </Row>
+
+        <Row>
+          <label>Course ID</label>
+
           <Col className="d-flex justify-content-left">
-            <DepartmentSelector
-              handleSelectDept={this.handleSelectDept}
-              coursesList={this.state.coursesList}
+            <input
+              className="crsCode"
+              type="text"
+              maxLength="4"
+              placeholder="COMP"
+              value={this.state.currCourseCode}
+              onChange={this.onChangeValueCourseCode}
+            />
+            <input
+              className="crsNum"
+              type="text"
+              maxLength="4"
+              placeholder="1010"
+              value={this.state.currCourseNum}
+              onChange={this.onChangeValueCourseNum}
             />
           </Col>
         </Row>
-        <h3>Course: </h3>
+
+        <div className="rowMarginBottom"></div>
+
         <Row>
+          <label>Name </label>
           <Col className="d-flex justify-content-left">
-            <CourseSelector
-              coursesList={this.state.coursesList}
-              handleSelectCourse={this.handleSelectCourse}
-              currDept={this.state.currDept}
+            <input
+              type="text"
+              placeholder="Intro to Computer Science 1"
+              value={this.state.currName}
+              onChange={this.onChangeValueCourseName}
             />
           </Col>
         </Row>
-        <h3>Difficulty Level: </h3>
+
+        <div className="rowMarginBottom"></div>
+
         <Row>
+          <label>Department </label>
+          <Col className="d-flex justify-content-left">
+            <input
+              type="text"
+              placeholder="Computer Science"
+              value={this.state.currDept}
+              onChange={this.onChangeValueDept}
+            />
+          </Col>
+        </Row>
+
+        <div className="rowMarginBottom"></div>
+
+        <Row>
+          <label>Difficulty Level </label>
           <Col className="d-flex justify-content-left">
             <Select
               className="difficultySelector"
               onChange={this.handleSelectDifficulty}
               isSearchable={false}
               options={
-                this.state.currCourse === ""
+                this.state.currCourseCode === "" ||
+                this.state.currCourseNum === ""
                   ? []
-                  : [
-                      { value: "1", label: "1" },
-                      { value: "2", label: "2" },
-                      { value: "3", label: "3" },
-                      { value: "4", label: "4" },
-                      { value: "5", label: "5" },
-                      { value: "6", label: "6" },
-                      { value: "7", label: "7" },
-                      { value: "8", label: "8" },
-                      { value: "9", label: "9" },
-                      { value: "10", label: "10" }
-                    ]
+                  : commonSelectorOptions
               }
               placeholder=""
             />
           </Col>
         </Row>
-        <p> 1 - Very Easy, 10 - Extremely Difficult</p>
-        <button
-          className="submitReviewBtn"
-          onClick={this.handleSubmitReview}
-          disabled={
-            this.state.currDept === "" &&
-            this.state.currCourse === "" &&
-            this.state.currDiff === ""
-          }
-        >
-          Submit Review
-        </button>
+
+        <Row>
+          <label> </label>
+          <Col className="d-flex justify-content-left">
+            <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
+          </Col>
+        </Row>
+
+        <Row>
+          <h2 className="secTitle"> Section</h2>
+        </Row>
+
+        <Row>
+          <label>Instructor </label>
+          <Col className="d-flex justify-content-left">
+            <input
+              type="text"
+              placeholder="John Smith"
+              value={this.state.currSec}
+              onChange={this.onChangeValueSection}
+            />
+          </Col>
+        </Row>
+
+        <div className="rowMarginBottom"></div>
+
+        <Row>
+          <label> Rating </label>
+          <Col className="d-flex justify-content-left">
+            <Select
+              className="sectionRatingSelector"
+              onChange={this.handleSelectSectionRating}
+              isSearchable={false}
+              options={this.state.currSec === "" ? [] : commonSelectorOptions}
+              placeholder=""
+            />
+          </Col>
+        </Row>
+
+        <Row>
+          <label> </label>
+          <Col className="d-flex justify-content-left">
+            <p className="hint"> 1 - Poor, 10 - Excellent</p>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <button
+              className="submitReviewBtn"
+              onClick={this.handleSubmitReview}
+              disabled={
+                this.state.currDept === "" &&
+                this.state.currCourseCode === "" &&
+                this.state.currCourseNum === "" &&
+                this.state.currDiff === "" &&
+                this.state.currSec === "" &&
+                this.state.currSecRating === ""
+              }
+            >
+              Submit Review
+            </button>
+          </Col>
+        </Row>
       </div>
     );
   }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using SimpliPassApi.Exceptions;
@@ -16,7 +17,9 @@ namespace SimpliPassApi.Clients
 
         public Task<List<Course>> GetCoursesForDept(string key);
 
-        public void UpdateCourseDifficulty(string key, int newDifficulty);
+        public void UpdateExistingCourse(string key, int newDifficulty, string instructorName, int newRating);
+
+        public void AddNewCourse(string id, string name, string department, int difficulty, string instructorName, int rating);
     }
 
     public class DynamoDBClient : IDynamoDBClient
@@ -76,21 +79,44 @@ namespace SimpliPassApi.Clients
             return list;
         }
 
-        public async void UpdateCourseDifficulty(string key, int newDifficulty)
+        public async void UpdateExistingCourse(string key, int newDifficulty, string instructorName, int newRating)
         {
             var item = await _context.LoadAsync<Course>(key);
 
             if (item != null)
             {
-                item.Difficulty = item.ComputeUpdatedDifficulty(newDifficulty);
-                item.DifficultyCount = item.DifficultyCount + 1;
+                item.UpdateDifficulty(newDifficulty);
+                item.UpdateSectionRating(instructorName, newRating);
 
                 await _context.SaveAsync(item);
             }
             else
             {
-                throw new SimpliPassException("Failed to update course difficulty: failed to find the course.");
+                throw new SimpliPassException("Failed to update existing course: course not found in database.");
             }
+        }
+
+        public async void AddNewCourse(string id, string name, string department, int difficulty, string instructorName, int rating)
+        {
+            Course crs;
+            var ratings = new Dictionary<string, Dictionary<string, double>>();
+            var pairs = new Dictionary<string, double>();
+
+            pairs.Add("count", 1);
+            pairs.Add("rating", rating);
+            ratings.Add(instructorName, pairs);
+
+            crs = new Course
+            {
+                Id = id,
+                Department = department,
+                Difficulty = difficulty,
+                DifficultyCount = 1,
+                Name = name,
+                SectionRatings = ratings
+            };
+
+            await _context.SaveAsync(crs);
         }
     }
 }

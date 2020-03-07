@@ -85,3 +85,36 @@ export const getCourseInfo = (currCourse, coursesList) => {
 
   return courseInfo;
 };
+
+export const courseExists = (currCourse, coursesList) => {
+  let found = false;
+
+  if (
+    coursesList !== undefined &&
+    coursesList !== null &&
+    coursesList.length !== 0
+  ) {
+    if (
+      currCourse !== undefined &&
+      currCourse !== null &&
+      currCourse.length !== 0
+    ) {
+      Object.values(coursesList).forEach(crs => {
+        if (
+          currCourse
+            .toString()
+            .trim()
+            .toUpperCase() ===
+          crs.id
+            .toString()
+            .trim()
+            .toUpperCase()
+        ) {
+          found = true;
+        }
+      });
+    }
+  }
+
+  return found;
+};
