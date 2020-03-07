@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/courseView.css";
 import { getCourseInfo } from "../Utils/utils";
 import Badge from "react-bootstrap/Badge";
+import ReactTooltip from "react-tooltip";
 import { Container, Row, Col } from "react-bootstrap";
 
 const CourseView = props => {
@@ -31,7 +32,7 @@ const CourseView = props => {
 
     return (
       <Col className="difficultyContainer">
-        <h6>
+        <h6 data-tip="Out of 10. Lower number indicates easier course.">
           Difficulty Level
           <span className="difficultyNumber">
             <Badge pill variant={modifier}>
@@ -54,15 +55,22 @@ const CourseView = props => {
 
     for (let [key, value] of Object.entries(courseInfo.sectionRatings)) {
       sectionRatingsList.push(
-        <p className="sectionName" key={key}>
-          {`${key}:  ${value.rating} (${value.count} reviews)`}
-        </p>
+        <div className="sectionName" key={key}>
+          {`${key}:  ${value.rating} `}
+          <p>{` ${value.count} reviews`}</p>
+        </div>
       );
     }
 
     return (
       <Col className="sectionRatingsContainer">
-        <h5 className="sectionRatingsHeader">Section Ratings</h5>
+        <h5
+          className="sectionRatingsHeader"
+          data-tip="Out of 10. Higher number indicates better instructor."
+        >
+          Section Ratings
+        </h5>
+
         <div className="sectionList">{sectionRatingsList}</div>
       </Col>
     );
@@ -71,6 +79,7 @@ const CourseView = props => {
   return (
     courseInfo.length !== 0 && (
       <Container className="courseViewContainer">
+        <ReactTooltip place="top" effect="solid" />
         <Row>{renderCourseHeader()}</Row>
         <Row>{renderDifficulty()}</Row>
         <Row>{renderSectionRatings()}</Row>

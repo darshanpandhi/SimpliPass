@@ -3,35 +3,78 @@
   padding-top: 3%;
 }
 
-.reviewContainer > h2 {
-  font-weight: 400;
-  font-size: 2.2rem;
+.hint {
   padding-top: 1%;
-  padding-bottom: 2%;
-}
-
-.reviewContainer > h3 {
-  font-weight: 200;
-  margin-top: 2%;
-  margin-bottom: -2%;
-}
-
-.reviewContainer > p {
   color: rgb(150, 150, 150);
   margin-top: -1%;
   font-style: italic;
   font-weight: 400;
+  display: inline-block;
+}
+
+label {
+  display: inline-block;
+  clear: left;
+  width: 250px;
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+.crsCode {
+  width: 150px;
+  text-align: center;
+}
+
+.crsNum {
+  width: 150px;
+  text-align: center;
+}
+
+input {
+  width: 400px;
+  display: inline-block;
+  font-size: 2.4rem;
+  font-weight: 200;
+}
+
+.rowMarginBottom {
+  margin-bottom: 25px;
+}
+
+::placeholder {
+  font-size: 2rem;
+  padding-left: 3%;
+  color: rgb(180, 180, 180);
+}
+
+.pageTitle {
+  font-weight: 400;
+  padding-bottom: 2%;
+}
+
+.secTitle {
+  font-weight: 400;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .difficultySelector {
-  padding-top: 1.5%;
-  padding-bottom: 1%;
-  width: 30%;
+  text-align: center;
+  min-width: 9%;
   height: auto;
-  font-size: 2.4rem;
   font-weight: 200;
   cursor: pointer;
-  margin-top: 1%;
+  font-size: 2.2rem;
+}
+
+.sectionRatingSelector {
+  text-align: center;
+  min-width: 9%;
+  height: auto;
+  font-weight: 200;
+  cursor: pointer;
+  font-size: 2.2rem;
 }
 
 .submitReviewBtn {
@@ -40,11 +83,12 @@
   border: 2px solid rgba(80, 187, 219, 0.849);
   padding: 12px 24px;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   transition-duration: 0.3s;
   cursor: pointer;
   margin-top: 3%;
   outline: none;
+  width: 275px;
 }
 
 .submitReviewBtn:hover {
@@ -57,15 +101,59 @@ button:focus {
   outline: 0;
 }
 
-@media all and (max-width: 810px) {
+@media all and (max-width: 500px) {
+  .hint {
+    width: 250px;
+    font-size: 0.8rem;
+    margin-left: 35%;
+
+    text-align: right;
+  }
+
+  label {
+    margin-left: 25px;
+    width: 250px;
+    font-size: 1rem;
+  }
+
+  .crsCode {
+    width: 150px;
+  }
+
+  .crsNum {
+    width: 150px;
+  }
+
+  input {
+    width: 200px;
+    font-size: 1rem;
+  }
+
+  ::placeholder {
+    font-size: 1rem;
+  }
+
+  .pageTitle {
+    margin-left: 25px;
+    font-size: 1.4rem;
+  }
+
+  .secTitle {
+    margin-left: 25px;
+    font-size: 1.2rem;
+  }
+
   .difficultySelector {
     font-size: 1rem;
   }
-}
 
-@media all and (max-width: 500px) {
-  .difficultySelector {
-    width: 50%;
+  .sectionRatingSelector {
+    font-size: 1rem;
+  }
+
+  .submitReviewBtn {
+    width: 160px;
+    text-align: center;
     font-size: 1rem;
   }
 }

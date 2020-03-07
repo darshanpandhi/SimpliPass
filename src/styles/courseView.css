@@ -19,19 +19,20 @@
 }
 
 .difficultyContainer > h6 {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
+  cursor: pointer;
 }
 
 .difficultyNumber {
   margin-left: 1%;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .difficultyCount {
   color: rgb(150, 150, 150);
-  margin-top: -1%;
   font-style: italic;
   font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .sectionRatingsContainer {
@@ -43,6 +44,9 @@
 .sectionRatingsHeader {
   letter-spacing: 0.1rem;
   text-align: center;
+  font-size: 1.6rem;
+  padding-bottom: 1%;
+  cursor: pointer;
 }
 
 p {
@@ -61,5 +65,15 @@ p {
 }
 
 .sectionName {
+  font-size: 1.2rem;
+  padding-bottom: 1%;
+}
+
+.sectionName > p {
+  color: rgb(150, 150, 150);
+  padding-left: 1%;
+  font-style: italic;
+  font-weight: 400;
   font-size: 1rem;
+  display: inline;
 }
