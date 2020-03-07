@@ -18,7 +18,7 @@ class App extends React.Component {
                 <img alt="SimpliPass Logo" src={logo} />
               </li>
               <li>
-                <Link to="/Home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
 
               <li>
@@ -38,7 +38,7 @@ class App extends React.Component {
             <Route path="/About">
               <About />
             </Route>
-            <Route path="/Home">
+            <Route path="/">
               <Home />
             </Route>
           </Switch>
