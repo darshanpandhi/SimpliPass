@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using SimpliPassMobile.ViewModels;
 using Xamarin.Forms;
 
 namespace SimpliPassMobile.Views
@@ -10,6 +10,7 @@ namespace SimpliPassMobile.Views
         public CourseRecommendationsPage()
         {
             InitializeComponent();
+            BindingContext = new CourseRecommendationsViewModel();
         }
     }
 }

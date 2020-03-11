@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpliPassMobile.Views.CourseReviewPage"
-             Title="Course Review">
+             Title="Review a Course">
 
     <ContentPage.Content>
 

@@ -3,11 +3,70 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SimpliPassMobile.Views.CourseRecommendationsPage"
-    Title="Course Recommendations">
+    Title="Recommended Popular Courses">
 
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="Course Recommendations Page"></Label>
+
+            <ListView ItemsSource="{Binding RecommendationsList}"
+                   HasUnevenRows="true"
+                   >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" RowSpacing="25">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.RowSpan="1"
+                                       Text="{Binding Id}"
+                                       VerticalTextAlignment="Start"
+                                       FontSize="Medium" />
+
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Name}"
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Small" />
+
+                                <Label Grid.RowSpan="3"
+                                       Text="Difficulty: "
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Small" />
+
+                                <Label Grid.RowSpan="4"
+                                       Text="{Binding Difficulty}"
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Small" />
+
+                                <Label Grid.RowSpan="5"
+                                       Text="Based on "
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Micro" />
+
+                                <Label Grid.RowSpan="6"
+                                       Text="{Binding DifficultyCount}"
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Micro" />
+
+                                <Label Grid.RowSpan="7"
+                                       Text="reviews"
+                                       VerticalTextAlignment="End"                                    
+                                       FontSize="Micro" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 
