@@ -21,6 +21,10 @@ namespace SimpliPassMobile
 
             MainPage = new TabbedPage
             {
+
+                BarBackgroundColor = Color.FromHex("#51BBDB"),
+                BarTextColor = Color.White,
+
                 Children = {
                     homePage,
                     courseReviewPage,
