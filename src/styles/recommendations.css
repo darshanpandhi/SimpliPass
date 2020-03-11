@@ -1,0 +1,42 @@
+.recommendationsContainer {
+  margin-top: 1%;
+  margin-bottom: 15%;
+  padding: 2%;
+  float: left;
+  width: 100%;
+}
+
+.recommendationsContainer > h1 {
+  padding-bottom: 2%;
+  padding-left: 1%;
+  font-size: 2.8rem;
+  font-weight: 300;
+}
+
+.recommendationsContainer > div {
+  padding: 1%;
+}
+
+.recommendationsContainer > div:hover {
+  color: rgba(80, 187, 219, 0.849);
+  cursor: pointer;
+}
+
+.recommendationsContainer > div > h3 {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.recommendationsContainer > div > h5 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.recommendationsContainer > div > p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgb(150, 150, 150);
+  font-style: italic;
+  letter-spacing: 0.1rem;
+}

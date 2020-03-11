@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 
 namespace SimpliPassApi.Models
 {
     public class Course
     {
+        private const int MAX_DIFFICULTY = 5;
+
         [DynamoDBHashKey]
         [DynamoDBProperty("id")]
         public string Id { get; set; }
@@ -61,6 +64,28 @@ namespace SimpliPassApi.Models
                         result.Add(course);
                     }
                 }
+            }
+
+            return result;
+        }
+
+        public static List<Course> GetRecommendationsList(List<Course> courseList)
+        {
+            List<Course> result = null;
+
+            if (courseList != null)
+            {
+                result = new List<Course>();
+
+                foreach (var course in courseList)
+                {
+                    if (course.Difficulty < MAX_DIFFICULTY)
+                    {
+                        result.Add(course);
+                    }
+                }
+
+                result = result.OrderBy(o => o.Difficulty).ToList();
             }
 
             return result;
