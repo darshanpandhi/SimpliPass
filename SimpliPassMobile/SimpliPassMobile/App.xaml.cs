@@ -9,7 +9,22 @@ namespace SimpliPassMobile
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new DepartmentPage());
+            var homePage = new NavigationPage(new DepartmentPage());
+            var courseReviewPage = new NavigationPage(new CourseReviewPage());
+            var aboutPage = new NavigationPage(new AboutPage());
+
+            homePage.Title = "Home";
+            courseReviewPage.Title = "Course Review";
+            aboutPage.Title = "About";
+
+            MainPage = new TabbedPage
+            {
+                Children = {
+                    homePage,
+                    courseReviewPage,
+                    aboutPage
+                }
+            };
         }
 
         protected override void OnStart()
