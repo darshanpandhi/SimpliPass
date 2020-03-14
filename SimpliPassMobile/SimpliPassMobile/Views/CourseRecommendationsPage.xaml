@@ -14,7 +14,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" RowSpacing="25">
+                            <Grid Padding="5" RowSpacing="5">
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -26,40 +26,58 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.RowSpan="1"
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
                                        Text="{Binding Id}"
                                        VerticalTextAlignment="Start"
-                                       FontSize="Medium" />
+                                       FontSize="Large"
+                                       FontAttributes="Bold"/>
 
-                                <Label Grid.RowSpan="2"
+                                <Label
+                                    Grid.Column="1"
+                                    Grid.Row="2"
                                        Text="{Binding Name}"
                                        VerticalTextAlignment="End"                                    
-                                       FontSize="Small" />
+                                       FontSize="Medium" />
 
-                                <Label Grid.RowSpan="3"
-                                       Text="Difficulty: "
-                                       VerticalTextAlignment="End"                                    
-                                       FontSize="Small" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="3"
+                                       Text="Difficulty Level: "
+                                      
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Medium" />
 
-                                <Label Grid.RowSpan="4"
-                                       Text="{Binding Difficulty}"
-                                       VerticalTextAlignment="End"                                    
-                                       FontSize="Small" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="3"
+                                       Text="{Binding Difficulty}"    
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="Medium"
+                                       Margin="0,0,120,0"/>
 
-                                <Label Grid.RowSpan="5"
+                                <Label Grid.Column="1"
+                                       Grid.Row="4"
                                        Text="Based on "
-                                       VerticalTextAlignment="End"                                    
-                                       FontSize="Micro" />
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Small"
+                                       FontAttributes="Italic"/>
 
-                                <Label Grid.RowSpan="6"
-                                       Text="{Binding DifficultyCount}"
-                                       VerticalTextAlignment="End"                                    
-                                       FontSize="Micro" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="4"
+                                       Text="{Binding DifficultyCount}"        
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="Small"
+                                       FontAttributes="Italic"
+                                       Margin="0,0,260,0"
+                                       />
 
-                                <Label Grid.RowSpan="7"
+                                <Label Grid.Column="1"
+                                       Grid.Row="4"
                                        Text="reviews"
-                                       VerticalTextAlignment="End"                                    
-                                       FontSize="Micro" />
+                                       HorizontalTextAlignment="End"
+                                       FontSize="Small"
+                                       FontAttributes="Italic"
+                                       Margin="0,0,270,0"
+                                       />
 
                             </Grid>
                         </ViewCell>
