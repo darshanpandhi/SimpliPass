@@ -6,9 +6,109 @@
 
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="Course Review Page"></Label>
-        </StackLayout>
+        <Grid Padding="10"  >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                    Grid.Row="1"
+                    Text="Course ID"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Entry
+                    Margin="-5"
+                    Grid.Row="2"
+                    x:Name="CID"
+                    MaxLength="9"
+                    Placeholder="COMP 1010"
+                    PlaceholderColor="LightGray"/>
+
+            <Label
+                    Grid.Row="3"
+                    Text="Name"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Entry              
+                    Margin="-5"
+                    Grid.Row="4"
+                    x:Name="Name"
+                    Placeholder="Intro to Computer Science 1"
+                    PlaceholderColor="LightGray"/>
+
+            <Label
+                    Grid.Row="5"
+                    Text="Department"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Entry              
+                    Margin="-5"
+                    Grid.Row="6"
+                    x:Name="Dept"
+                    Placeholder="Computer Science"
+                    PlaceholderColor="LightGray"/>
+
+            <Label
+                    Grid.Row="7"
+                    Text="Difficulty Level"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Picker
+                    Grid.Row="8"
+                    Margin="-5"
+                    x:Name="DiffPicker"
+                    SelectedIndexChanged="DiffPicker_SelectedIndexChanged"/>
+
+            <Label                 
+                    Grid.Row="9" 
+                    Text="1 - Very Easy, 10 - Extremely Difficult"
+                    TextColor="LightGray"/>
+
+            <Label
+                    Grid.Row="10"
+                    Text="Instructor"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Entry              
+                    Margin="-5"
+                    Grid.Row="11"
+                    x:Name="Instr"
+                    Placeholder="John Smith"
+                    PlaceholderColor="LightGray"/>
+
+            <Label
+                    Grid.Row="12"
+                    Text="Rating"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+
+            <Picker
+                    Grid.Row="13"
+                    Margin="-5"
+                    x:Name="RatingPicker"
+                    SelectedIndexChanged="RatingPicker_SelectedIndexChanged"/>
+
+            <Label                 
+                    Grid.Row="14" 
+                    Text="1 - Poor, 10 - Excellent"
+                    TextColor="LightGray"/>
+
+            <Button 
+                    Margin="-5"
+                    Grid.Row="15"
+                    Clicked="OnClicked"
+                    Text="Submit Review"
+                    TextColor="White"
+                    BackgroundColor="#51BBDB"/>
+
+        </Grid>
 
     </ContentPage.Content>
 
