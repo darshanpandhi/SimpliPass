@@ -44,64 +44,64 @@
 
                 <Label
                     Grid.Row="2"
-                     Margin="4,0,0,0"
+                    Margin="4,0,0,0"
                     Text="Name"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
                 <Entry              
                     Grid.Row="2"
-                    Margin="0,20,0,0"
+                    Margin="0,30,0,0"
                     x:Name="Name"
                     Placeholder="Intro to Computer Science 1"
                     PlaceholderColor="LightGray"/>
 
                 <Label
                     Grid.Row="3"
-                      Margin="4,0,0,0"
+                    Margin="4,0,0,0"
                     Text="Department"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
                 <Entry              
                     Grid.Row="3"
-                     Margin="0,20,0,0"
+                    Margin="0,30,0,0"
                     x:Name="Dept"
                     Placeholder="Computer Science"
                     PlaceholderColor="LightGray"/>
 
                 <Label
                     Grid.Row="4"
-                      Margin="4,0,0,0"
+                    Margin="4,0,0,0"
                     Text="Difficulty Level"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-                <Picker
+                <Picker   
                     Title="1 - Very Easy, 10 - Extremely Difficult"
                     TitleColor="LightGray"
                     Grid.Row="4"
-                    Margin="0,10,0,0"
+                    Margin="0,30,0,0"
                     x:Name="DiffPicker"
                     SelectedIndexChanged="DiffPicker_SelectedIndexChanged"/>
 
                 <Label
                     Grid.Row="5"
-                      Margin="4,0,0,0"
+                    Margin="4,0,0,0"
                     Text="Instructor"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
                 <Entry              
                     Grid.Row="5"
-                     Margin="0,20,0,0"
+                    Margin="0,30,0,0"
                     x:Name="Instr"
                     Placeholder="John Smith"
                     PlaceholderColor="LightGray"/>
 
                 <Label
                     Grid.Row="6"
-                      Margin="4,0,0,0"
+                    Margin="4,0,0,0"
                     Text="Rating"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
@@ -110,7 +110,7 @@
                     Grid.Row="6"
                     Title="1 - Poor, 10 - Excellent"
                     TitleColor="LightGray"
-                    Margin="0,10,0,0"
+                    Margin="0,30,0,0"
                     x:Name="RatingPicker"
                     SelectedIndexChanged="RatingPicker_SelectedIndexChanged"/>
 
