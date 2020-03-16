@@ -7,5 +7,7 @@
         public const string DEPARTMENTS_LIST = "departments/";
         public const string RECOMMENDATIONS = "recommendations/";
         public const string DEPARTMENT_COURSES = "departmentCourses/";
+        public const string UPDATE = "/updateExistingCourse/";
+        public const string NEW = "new/";
     }
 }

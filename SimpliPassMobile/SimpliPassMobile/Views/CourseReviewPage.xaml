@@ -6,109 +6,124 @@
 
     <ContentPage.Content>
 
-        <Grid Padding="10"  >
+        <ScrollView>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid Padding="15">
 
-            <Label
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
                     Grid.Row="1"
+                    Margin="4,0,0,0"
                     Text="Course ID"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Entry
-                    Margin="-5"
-                    Grid.Row="2"
-                    x:Name="CID"
-                    MaxLength="9"
-                    Placeholder="COMP 1010"
+                <Entry
+                    Grid.Row="1"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"
+                    x:Name="CrsCode"
+                    MaxLength="4"
+                    Placeholder="COMP"
                     PlaceholderColor="LightGray"/>
 
-            <Label
-                    Grid.Row="3"
+                <Entry
+                    Margin="60,0,0,0"
+                    Grid.Row="1"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"
+                    x:Name="CrsNum"
+                    MaxLength="4"
+                    Keyboard="Numeric"
+                    Placeholder="1010"
+                    PlaceholderColor="LightGray"/>
+
+                <Label
+                    Grid.Row="2"
+                     Margin="4,0,0,0"
                     Text="Name"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Entry              
-                    Margin="-5"
-                    Grid.Row="4"
+                <Entry              
+                    Grid.Row="2"
+                    Margin="0,20,0,0"
                     x:Name="Name"
                     Placeholder="Intro to Computer Science 1"
                     PlaceholderColor="LightGray"/>
 
-            <Label
-                    Grid.Row="5"
+                <Label
+                    Grid.Row="3"
+                      Margin="4,0,0,0"
                     Text="Department"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Entry              
-                    Margin="-5"
-                    Grid.Row="6"
+                <Entry              
+                    Grid.Row="3"
+                     Margin="0,20,0,0"
                     x:Name="Dept"
                     Placeholder="Computer Science"
                     PlaceholderColor="LightGray"/>
 
-            <Label
-                    Grid.Row="7"
+                <Label
+                    Grid.Row="4"
+                      Margin="4,0,0,0"
                     Text="Difficulty Level"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Picker
-                    Grid.Row="8"
-                    Margin="-5"
+                <Picker
+                    Title="1 - Very Easy, 10 - Extremely Difficult"
+                    TitleColor="LightGray"
+                    Grid.Row="4"
+                    Margin="0,10,0,0"
                     x:Name="DiffPicker"
                     SelectedIndexChanged="DiffPicker_SelectedIndexChanged"/>
 
-            <Label                 
-                    Grid.Row="9" 
-                    Text="1 - Very Easy, 10 - Extremely Difficult"
-                    TextColor="LightGray"/>
-
-            <Label
-                    Grid.Row="10"
+                <Label
+                    Grid.Row="5"
+                      Margin="4,0,0,0"
                     Text="Instructor"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Entry              
-                    Margin="-5"
-                    Grid.Row="11"
+                <Entry              
+                    Grid.Row="5"
+                     Margin="0,20,0,0"
                     x:Name="Instr"
                     Placeholder="John Smith"
                     PlaceholderColor="LightGray"/>
 
-            <Label
-                    Grid.Row="12"
+                <Label
+                    Grid.Row="6"
+                      Margin="4,0,0,0"
                     Text="Rating"
                     FontSize="Medium"
                     FontAttributes="Bold"/>
 
-            <Picker
-                    Grid.Row="13"
-                    Margin="-5"
+                <Picker
+                    Grid.Row="6"
+                    Title="1 - Poor, 10 - Excellent"
+                    TitleColor="LightGray"
+                    Margin="0,10,0,0"
                     x:Name="RatingPicker"
                     SelectedIndexChanged="RatingPicker_SelectedIndexChanged"/>
 
-            <Label                 
-                    Grid.Row="14" 
-                    Text="1 - Poor, 10 - Excellent"
-                    TextColor="LightGray"/>
-
-            <Button 
-                    Margin="-5"
-                    Grid.Row="15"
+                <Button 
+                    Grid.Row="7"
                     Clicked="OnClicked"
                     Text="Submit Review"
                     TextColor="White"
                     BackgroundColor="#51BBDB"/>
 
-        </Grid>
+            </Grid>
+
+        </ScrollView>
 
     </ContentPage.Content>
 
