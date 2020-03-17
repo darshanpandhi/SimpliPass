@@ -23,36 +23,39 @@ namespace SimpliPassMobile.Views
 
         private void OnClicked(object sender, EventArgs e)
         {
-            PostReview();
-        }
-
-        private void PostReview()
-        {
-            var fullCourseID = CrsCode.Text + " " + CrsNum.Text;
-            Boolean found = false;
-            HttpClient client = new HttpClient();
-            var content = new StringContent("", Encoding.UTF8, "applicaion/json");
-
-            var response = client.GetStringAsync(Constants.API_BASE_URL + Constants.COURSE).Result;
-            List<object> courseList = JsonConvert.DeserializeObject<List<object>>(response);
-
-            foreach (var crs in courseList)
+            if (!string.IsNullOrWhiteSpace(CrsCode.Text) && !string.IsNullOrWhiteSpace(CrsNum.Text) && !string.IsNullOrWhiteSpace(Name.Text) && !string.IsNullOrWhiteSpace(Dept.Text) && !string.IsNullOrWhiteSpace(SelectedDiff) && !string.IsNullOrWhiteSpace(Instr.Text) && !string.IsNullOrWhiteSpace(SelectedRating))
             {
-                var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
+                var fullCourseID = CrsCode.Text + " " + CrsNum.Text;
+                Boolean found = false;
+                HttpClient client = new HttpClient();
+                var content = new StringContent("", Encoding.UTF8, "applicaion/json");
+                var response = client.GetStringAsync(Constants.API_BASE_URL + Constants.COURSE).Result;
+                List<object> courseList = JsonConvert.DeserializeObject<List<object>>(response);
 
-                if (id.ToUpper() == fullCourseID.ToUpper())
+                foreach (var crs in courseList)
                 {
-                    found = true;
-                }
-            }
+                    var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
 
-            if (!found) // New Course
-            {
-                client.PostAsync(Constants.API_BASE_URL + Constants.COURSE + Constants.NEW + fullCourseID + "/" + Name.Text + "/" + Dept.Text + "/" + SelectedDiff + "/" + Instr.Text + "/" + SelectedRating, content);
+                    if (id.ToUpper() == fullCourseID.ToUpper())
+                    {
+                        found = true;
+                    }
+                }
+
+                if (!found) // New Course
+                {
+                    client.PostAsync(Constants.API_BASE_URL + Constants.COURSE + Constants.NEW + fullCourseID + "/" + Name.Text + "/" + Dept.Text + "/" + SelectedDiff + "/" + Instr.Text + "/" + SelectedRating, content);
+                }
+                else // Existing Course
+                {
+                    client.PutAsync(Constants.API_BASE_URL + Constants.COURSE + fullCourseID + Constants.UPDATE + SelectedDiff + "/" + Instr.Text + "/" + SelectedRating, content);
+                }
+
+                DisplayAlert("Success!", "Review submitted.", "Ok");
             }
-            else // Existing Course
+            else
             {
-                client.PutAsync(Constants.API_BASE_URL + Constants.COURSE + fullCourseID + Constants.UPDATE + SelectedDiff + "/" + Instr.Text + "/" + SelectedRating, content);
+                DisplayAlert("Error!", "Some fields are empty. Please fill out all the fields.", "Ok");
             }
         }
 
