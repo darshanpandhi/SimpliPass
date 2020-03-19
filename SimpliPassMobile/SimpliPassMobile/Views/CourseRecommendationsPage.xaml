@@ -52,31 +52,23 @@
                                        Text="{Binding Difficulty}"    
                                        HorizontalTextAlignment="Center"
                                        FontSize="Medium"
-                                       Margin="0,0,120,0"/>
-
-                                <Label Grid.Column="1"
-                                       Grid.Row="4"
-                                       Text="Based on "
-                                       HorizontalTextAlignment="Start"
-                                       FontSize="Small"
-                                       FontAttributes="Italic"/>
+                                       Margin="0,0,75,0"/>
 
                                 <Label Grid.Column="1"
                                        Grid.Row="4"
                                        Text="{Binding DifficultyCount}"        
-                                       HorizontalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
                                        FontSize="Small"
                                        FontAttributes="Italic"
-                                       Margin="0,0,260,0"
                                        />
 
                                 <Label Grid.Column="1"
                                        Grid.Row="4"
                                        Text="reviews"
-                                       HorizontalTextAlignment="End"
+                                       HorizontalTextAlignment="Center"
                                        FontSize="Small"
                                        FontAttributes="Italic"
-                                       Margin="0,0,270,0"
+                                       Margin="0,0,290,0"
                                        />
 
                             </Grid>
