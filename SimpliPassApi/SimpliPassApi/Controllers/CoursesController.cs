@@ -62,6 +62,16 @@ namespace SimpliPassApi.Controllers
             return items;
         }
 
+        [HttpGet("recommendations", Name = "GetRecommendations")]
+        public async Task<List<Course>> GetRecommendations()
+        {
+            _logger.LogInformation("Begin CoursesController GET Recommendations");
+            var items = await _dbClient.GetRecommendations();
+            _logger.LogInformation("Finish CoursesController GET Recommendations");
+
+            return items;
+        }
+
         [HttpPut("{id}/updateExistingCourse/{newDifficulty}/{instructorName}/{newRating}", Name = "UpdateExistingCourse")]
         public async void UpdateExistingCourse(string id, int newDifficulty, string instructorName, int newRating)
         {

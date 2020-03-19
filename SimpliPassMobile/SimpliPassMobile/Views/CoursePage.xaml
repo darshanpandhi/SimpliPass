@@ -39,7 +39,8 @@
                                 <Label Grid.RowSpan="1"
                                        Text="{Binding Id}"
                                        VerticalTextAlignment="Start"
-                                       FontSize="Medium" />
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"/>
 
                                 <Label Grid.RowSpan="2"
                                        Text="{Binding Name}"
