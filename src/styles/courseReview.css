@@ -16,19 +16,18 @@
 label {
   display: inline-block;
   clear: left;
-  width: 250px;
   text-align: left;
   font-size: 2.2rem;
   font-weight: 300;
 }
 
 .crsCode {
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 
 .crsNum {
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 
@@ -39,7 +38,7 @@ input {
   font-weight: 200;
 }
 
-.rowMarginBottom {
+.review-course {
   margin-bottom: 25px;
 }
 
@@ -52,12 +51,14 @@ input {
 .pageTitle {
   font-weight: 400;
   padding-bottom: 2%;
+  margin-left: 15px;
 }
 
 .secTitle {
   font-weight: 400;
   padding-top: 1%;
   padding-bottom: 1%;
+  margin-left: 15px;
 }
 
 .difficultySelector {
@@ -67,6 +68,7 @@ input {
   font-weight: 200;
   cursor: pointer;
   font-size: 2.2rem;
+  width: 470px;
 }
 
 .sectionRatingSelector {
@@ -76,6 +78,7 @@ input {
   font-weight: 200;
   cursor: pointer;
   font-size: 2.2rem;
+  width: 470px;
 }
 
 .submitReviewBtn {
@@ -106,23 +109,19 @@ button:focus {
   .hint {
     width: 250px;
     font-size: 0.8rem;
-    margin-left: 35%;
-
-    text-align: right;
   }
 
   label {
-    margin-left: 25px;
     width: 250px;
     font-size: 1rem;
   }
 
   .crsCode {
-    width: 150px;
+    width: 100px;
   }
 
   .crsNum {
-    width: 150px;
+    width: 100px;
   }
 
   input {
@@ -135,21 +134,23 @@ button:focus {
   }
 
   .pageTitle {
-    margin-left: 25px;
+    margin-left: 15px;
     font-size: 1.4rem;
   }
 
   .secTitle {
-    margin-left: 25px;
+    margin-left: 15px;
     font-size: 1.2rem;
   }
 
   .difficultySelector {
     font-size: 1rem;
+    width: 200px;
   }
 
   .sectionRatingSelector {
     font-size: 1rem;
+    width: 200px;
   }
 
   .submitReviewBtn {
