@@ -13,17 +13,17 @@
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
-            <Label x:Name="CurrID" HorizontalTextAlignment="Center" FontSize="Large" />
+            <Label x:Name="CurrID" HorizontalTextAlignment="Center" FontSize="Large" Padding="0,15,0,0"/>
             <Label x:Name="CurrDept" HorizontalTextAlignment="Center" FontSize="Medium" />
             <Label x:Name="CurrDiff" HorizontalTextAlignment="Center" FontSize="Large" Margin="20,20,20,0" />
-            <Label x:Name="CurrDiffCount" HorizontalTextAlignment="Center" FontSize="Small" />
+            <Label x:Name="CurrDiffCount" HorizontalTextAlignment="Center" FontSize="Small" FontAttributes="Italic"/>
             <Label Text="Section Ratings" HorizontalTextAlignment="Center" FontSize="Medium" Margin="35" />
 
             <ListView ItemsSource="{Binding SectionRatings}" HasUnevenRows="true" Margin="60,0,60,60">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
+                            <Grid Padding="5" RowSpacing="10" ColumnSpacing="0">
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -39,25 +39,34 @@
                                        Text="{Binding Name}"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="Start"
-                                       FontSize="Small" />
+                                       FontSize="Small"
+                                     />
 
-                                <Label Grid.Column="1"
+                                <Label Grid.Column="2"
                                        Text="{Binding Rating}"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="End"
-                                       FontSize="Small" />
+                                       FontSize="Small"
+                                       Margin="0,0,30,0"
+                                      />
 
-                                <Label Grid.Column="2"
+                                <Label Grid.Column="3"
                                        Text="{Binding Count}"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="Center"
-                                       FontSize="Small" />
+                                       FontSize="Small"
+                                       FontAttributes="Italic"
+                                       Margin="0,0,40,0"
+                                       />
 
-                                <Label Grid.Column="2"
+                                <Label Grid.Column="3"
                                        Text="reviews"
                                        VerticalOptions="End"
                                        HorizontalTextAlignment="End"
-                                       FontSize="Small" />
+                                       FontSize="Small"
+                                       FontAttributes="Italic"
+                                       Margin="0,0,10,0"
+                                       />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
