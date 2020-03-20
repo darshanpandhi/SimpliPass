@@ -72,7 +72,7 @@ For detailed output:
 
 - [Arsh Khokhar](https://github.com/arsh-khokhar)
 - [Nahiyan Naim](https://github.com/nahiyannaim)
-- [Sabit Rahman](https://github.com/sabit619)
+- [Sabit Rahman](https://github.com/sabitrahmaan)
 - [Darshan Pandhi](https://github.com/darshanpandhi)
 - [Bohdan Parkhomchuk](https://github.com/bohdan-p)
 - [Owen Leduchowski](https://github.com/owenleduchowski)
