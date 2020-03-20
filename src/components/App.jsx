@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import CourseReview from "./CourseReview";
 import Recommendations from "./Recommendations";
@@ -7,32 +7,28 @@ import About from "./About";
 import Footer from "./Footer";
 import logo from "../images/logo.png";
 import "../styles/app.css";
+import { Nav, Navbar } from "react-bootstrap";
 
 class App extends React.Component {
   render() {
     return (
       <>
-        <Router>
-          <nav>
-            <ul className="nav-list">
-              <li>
-                <img alt="SimpliPass Logo" src={logo} />
-              </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/CourseReview">Review a Course</Link>
-              </li>
-              <li>
-                <Link to="/Recommendations">Course Recommendations</Link>
-              </li>
-              <li>
-                <Link to="/About">About</Link>
-              </li>
-            </ul>
-          </nav>
+        <Navbar sticky="top" collapseOnSelect expand="sm" variant="dark" id="simplipass-navbar">
+          <Navbar.Brand href="/">
+            <img alt="Simplipass Logo" src={logo} />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/CourseReview">Review Couse</Nav.Link>
+              <Nav.Link href="/Recommendations">Couse Recommendations</Nav.Link>
+              <Nav.Link href="/About">About</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
+        <Router>
           <Switch>
             <Route path="/CourseReview">
               <CourseReview />
@@ -48,7 +44,6 @@ class App extends React.Component {
             </Route>
           </Switch>
         </Router>
-
         <Footer />
       </>
     );

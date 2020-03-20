@@ -1,6 +1,7 @@
 .reviewContainer {
   padding: 4%;
   padding-top: 3%;
+  float: left;
 }
 
 .hint {
