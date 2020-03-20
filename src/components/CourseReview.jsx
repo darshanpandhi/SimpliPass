@@ -65,17 +65,17 @@ class CourseReview extends React.Component {
       ) {
         fetch(
           proxyURL +
-            apiRootURL +
-            allCourses +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            updateExistingCourse +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
+          apiRootURL +
+          allCourses +
+          this.state.currCourseCode +
+          " " +
+          this.state.currCourseNum +
+          updateExistingCourse +
+          this.state.currDiff +
+          "/" +
+          this.state.currSec +
+          "/" +
+          this.state.currSecRating,
           {
             method: "PUT"
           }
@@ -95,22 +95,22 @@ class CourseReview extends React.Component {
       } else {
         fetch(
           proxyURL +
-            apiRootURL +
-            allCourses +
-            newCourse +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            "/" +
-            this.state.currName +
-            "/" +
-            this.state.currDept +
-            "/" +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
+          apiRootURL +
+          allCourses +
+          newCourse +
+          this.state.currCourseCode +
+          " " +
+          this.state.currCourseNum +
+          "/" +
+          this.state.currName +
+          "/" +
+          this.state.currDept +
+          "/" +
+          this.state.currDiff +
+          "/" +
+          this.state.currSec +
+          "/" +
+          this.state.currSecRating,
 
           {
             method: "POST"
@@ -172,13 +172,14 @@ class CourseReview extends React.Component {
     return (
       <div className="reviewContainer">
         <Row>
-          <h1 className="pageTitle"> Review a Course </h1>
+          <h1 className="pageTitle"> Review Course </h1>
         </Row>
 
         <Row>
-          <label>Course ID</label>
-
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Course ID</label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <input
               className="crsCode"
               type="text"
@@ -197,12 +198,11 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
-        <div className="rowMarginBottom"></div>
-
         <Row>
-          <label>Name </label>
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Name </label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
               placeholder="Intro to Computer Science 1"
@@ -211,12 +211,11 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
-        <div className="rowMarginBottom"></div>
-
         <Row>
-          <label>Department </label>
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Department </label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
               placeholder="Computer Science"
@@ -225,19 +224,18 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
-        <div className="rowMarginBottom"></div>
-
         <Row>
-          <label>Difficulty Level </label>
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Difficulty Level </label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <Select
               className="difficultySelector"
               onChange={this.handleSelectDifficulty}
               isSearchable={false}
               options={
                 this.state.currCourseCode === "" ||
-                this.state.currCourseNum === ""
+                  this.state.currCourseNum === ""
                   ? []
                   : commonSelectorOptions
               }
@@ -245,10 +243,8 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
         <Row>
-          <label> </label>
-          <Col className="d-flex justify-content-left">
+          <Col className="d-flex justify-content-left review-course">
             <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
           </Col>
         </Row>
@@ -256,10 +252,11 @@ class CourseReview extends React.Component {
         <Row>
           <h2 className="secTitle"> Section</h2>
         </Row>
-
         <Row>
-          <label>Instructor </label>
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Instructor </label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
               placeholder="John Smith"
@@ -268,12 +265,11 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
-        <div className="rowMarginBottom"></div>
-
         <Row>
-          <label> Rating </label>
-          <Col className="d-flex justify-content-left">
+          <Col md={5}>
+            <label>Rating </label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left review-course">
             <Select
               className="sectionRatingSelector"
               onChange={this.handleSelectSectionRating}
@@ -283,14 +279,11 @@ class CourseReview extends React.Component {
             />
           </Col>
         </Row>
-
         <Row>
-          <label> </label>
           <Col className="d-flex justify-content-left">
             <p className="hint"> 1 - Poor, 10 - Excellent</p>
           </Col>
         </Row>
-
         <Row>
           <Col>
             <button
