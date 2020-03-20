@@ -15,7 +15,7 @@ describe("CourseReview", () => {
 
     // Page Title
     expect(component.find("h1")).toHaveLength(1);
-    expect(component.find("h1").text()).toEqual(" Review a Course ");
+    expect(component.find("h1").text()).toEqual(" Review Course ");
 
     // Labels
     expect(component.find("label")).toHaveLength(8);

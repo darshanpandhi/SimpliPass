@@ -90,7 +90,8 @@ input {
   font-size: 1.6rem;
   transition-duration: 0.3s;
   cursor: pointer;
-  margin-top: 3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   outline: none;
   width: 275px;
 }
@@ -105,6 +106,19 @@ button:focus {
   outline: 0;
 }
 
+@media all and (max-width: 768px) {
+
+  .difficultySelector {
+    font-size: 2.4rem;
+    width: 400px;
+  }
+  
+  .sectionRatingSelector {
+    font-size: 2.4rem;
+    width: 400px;
+  }
+}
+
 @media all and (max-width: 500px) {
   .hint {
     width: 250px;
@@ -114,6 +128,14 @@ button:focus {
   label {
     width: 250px;
     font-size: 1rem;
+  }
+
+  .review-course {
+    margin-bottom: 10px;
+  }
+
+  .emptyLabel {
+    display: none;
   }
 
   .crsCode {
@@ -157,5 +179,6 @@ button:focus {
     width: 160px;
     text-align: center;
     font-size: 1rem;
+    margin-bottom: 15%;
   }
 }

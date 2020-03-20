@@ -244,7 +244,10 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col className="d-flex justify-content-left review-course">
+          <Col md={5} className="emptyLabel">
+            <label></label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left">
             <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
           </Col>
         </Row>
@@ -267,7 +270,7 @@ class CourseReview extends React.Component {
         </Row>
         <Row>
           <Col md={5}>
-            <label>Rating </label>
+            <label> Rating </label>
           </Col>
           <Col md={7} className="d-flex justify-content-left review-course">
             <Select
@@ -280,7 +283,10 @@ class CourseReview extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col className="d-flex justify-content-left">
+          <Col md={5} className="emptyLabel">
+            <label></label>
+          </Col>
+          <Col md={7} className="d-flex justify-content-left">
             <p className="hint"> 1 - Poor, 10 - Excellent</p>
           </Col>
         </Row>
