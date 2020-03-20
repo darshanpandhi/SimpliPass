@@ -11,3 +11,7 @@
   background-color: #fff;
   color: #000 !important;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255);
+}
