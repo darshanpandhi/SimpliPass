@@ -23,7 +23,7 @@ class App extends React.Component {
               <Nav className="ml-auto">
                 <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                 <Nav.Link as={NavLink} to="/CourseReview">Review Course</Nav.Link>
-                <Nav.Link as={NavLink} to="/Recommendations">Recommendations</Nav.Link>
+                <Nav.Link as={NavLink} to="/Recommendations">Course Recommendations</Nav.Link>
                 <Nav.Link as={NavLink} to="/About">About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
