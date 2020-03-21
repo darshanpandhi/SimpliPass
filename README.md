@@ -66,8 +66,9 @@ For detailed output:
 
 ## Extras
 
-Code Formatting and Cleaning:
+Static Code Analysis, code formatting and cleaning:
 
+- ESLint
 - Prettier
 - CodeMaid
 - Auto-format on Save in VSCode
