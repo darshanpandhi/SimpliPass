@@ -2,6 +2,7 @@
   padding: 4%;
   padding-top: 3%;
   float: left;
+  color: rgb(90, 90, 90);
 }
 
 .hint {
@@ -50,8 +51,8 @@ input {
 
 .pageTitle {
   font-weight: 400;
-  padding-bottom: 2%;
   margin-left: 15px;
+  padding-bottom: 6%;
 }
 
 .secTitle {
@@ -63,7 +64,7 @@ input {
 
 .difficultySelector {
   text-align: center;
-  min-width: 9%;
+  min-width: 30%;
   height: auto;
   font-weight: 200;
   cursor: pointer;
@@ -73,7 +74,7 @@ input {
 
 .sectionRatingSelector {
   text-align: center;
-  min-width: 9%;
+  min-width: 30%;
   height: auto;
   font-weight: 200;
   cursor: pointer;

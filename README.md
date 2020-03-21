@@ -16,7 +16,7 @@ _Maximize your academic success through optimal course selections and reviews!_
 - Clone Repo and Build from Visual Studio 2019
 - See instructions below for Mobile Setup
 
-### REST API
+### Server (REST API)
 
 - http://simplipass-development.tmyzhjtuxt.us-east-2.elasticbeanstalk.com/
 
@@ -43,7 +43,7 @@ From the root directory, run commands:
 
   > Note: **Android SDK** and **Xcode** must be installed on your machine to build Android and iOS apps.
 
-### REST API
+### Server (REST API)
 
 - Open Visual Studio 2019
 - Select Open Project
@@ -64,17 +64,28 @@ For detailed output:
 - `npm test -- --verbose`
 - Press `a` to run all tests
 
-## Project Proposal
+## Extras
 
-- https://github.com/darshanpandhi/SimpliPass/wiki/Proposal
+Static Code Analysis, code formatting and cleaning:
+
+- ESLint
+- Prettier
+- CodeMaid
+- Auto-format on Save in VSCode
+
+## More Details
+
+- [Project Wiki](https://github.com/darshanpandhi/SimpliPass/wiki)
+- [Project Proposal](https://github.com/darshanpandhi/SimpliPass/wiki/Proposal)
+- [Architecture Details](https://github.com/darshanpandhi/SimpliPass/wiki/Project-Architecture)
 
 ## Authors
 
-- [Arsh Khokhar](https://github.com/arsh-khokhar)
 - [Nahiyan Naim](https://github.com/nahiyannaim)
-- [Sabit Rahman](https://github.com/sabit619)
-- [Darshan Pandhi](https://github.com/darshanpandhi)
+- [Sabit Rahman](https://github.com/sabitrahmaan)
 - [Bohdan Parkhomchuk](https://github.com/bohdan-p)
+- [Arsh Khokhar](https://github.com/arsh-khokhar)
+- [Darshan Pandhi](https://github.com/darshanpandhi)
 - [Owen Leduchowski](https://github.com/owenleduchowski)
 - [Kin Leong](https://github.com/Waiikiin)
 - [Grygoriy Bezshaposhnikov](https://github.com/SSmade)

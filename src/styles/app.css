@@ -1,11 +1,11 @@
-#simplipass-navbar{
+#simplipass-navbar {
   background-color: rgba(80, 187, 219, 0.849);
 }
 
 .navbar-brand > img {
   width: 200px;
-  height: 50px
-} 
+  height: 50px;
+}
 
 .navbar-nav > a:hover {
   background-color: #fff;
@@ -13,5 +13,9 @@
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255,255,255);
+  color: rgba(255, 255, 255);
+  font-size: 1.6rem;
+  font-weight: 300;
+  padding-right: 25px;
+  padding-left: 25px;
 }
