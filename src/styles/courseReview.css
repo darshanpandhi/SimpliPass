@@ -17,19 +17,18 @@
 label {
   display: inline-block;
   clear: left;
-  width: 250px;
   text-align: left;
   font-size: 2.2rem;
   font-weight: 300;
 }
 
 .crsCode {
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 
 .crsNum {
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 
@@ -40,7 +39,7 @@ input {
   font-weight: 200;
 }
 
-.rowMarginBottom {
+.review-course {
   margin-bottom: 25px;
 }
 
@@ -52,6 +51,7 @@ input {
 
 .pageTitle {
   font-weight: 400;
+  margin-left: 15px;
   padding-bottom: 6%;
 }
 
@@ -59,6 +59,7 @@ input {
   font-weight: 400;
   padding-top: 1%;
   padding-bottom: 1%;
+  margin-left: 15px;
 }
 
 .difficultySelector {
@@ -68,6 +69,7 @@ input {
   font-weight: 200;
   cursor: pointer;
   font-size: 2.2rem;
+  width: 470px;
 }
 
 .sectionRatingSelector {
@@ -77,6 +79,7 @@ input {
   font-weight: 200;
   cursor: pointer;
   font-size: 2.2rem;
+  width: 470px;
 }
 
 .submitReviewBtn {
@@ -88,7 +91,8 @@ input {
   font-size: 1.6rem;
   transition-duration: 0.3s;
   cursor: pointer;
-  margin-top: 3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   outline: none;
   width: 275px;
 }
@@ -103,27 +107,44 @@ button:focus {
   outline: 0;
 }
 
+@media all and (max-width: 768px) {
+
+  .difficultySelector {
+    font-size: 2.4rem;
+    width: 400px;
+  }
+  
+  .sectionRatingSelector {
+    font-size: 2.4rem;
+    width: 400px;
+  }
+}
+
 @media all and (max-width: 500px) {
   .hint {
     width: 250px;
     font-size: 0.8rem;
-    margin-left: 35%;
-
-    text-align: right;
   }
 
   label {
-    margin-left: 25px;
     width: 250px;
     font-size: 1rem;
   }
 
+  .review-course {
+    margin-bottom: 10px;
+  }
+
+  .emptyLabel {
+    display: none;
+  }
+
   .crsCode {
-    width: 150px;
+    width: 100px;
   }
 
   .crsNum {
-    width: 150px;
+    width: 100px;
   }
 
   input {
@@ -136,26 +157,29 @@ button:focus {
   }
 
   .pageTitle {
-    margin-left: 25px;
+    margin-left: 15px;
     font-size: 1.4rem;
   }
 
   .secTitle {
-    margin-left: 25px;
+    margin-left: 15px;
     font-size: 1.2rem;
   }
 
   .difficultySelector {
     font-size: 1rem;
+    width: 200px;
   }
 
   .sectionRatingSelector {
     font-size: 1rem;
+    width: 200px;
   }
 
   .submitReviewBtn {
     width: 160px;
     text-align: center;
     font-size: 1rem;
+    margin-bottom: 15%;
   }
 }

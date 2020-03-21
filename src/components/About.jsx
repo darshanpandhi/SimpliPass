@@ -23,8 +23,7 @@ const About = () => {
         problem by curating section reviews and recommending the best available
         instructor for a course.
       </p>
-      <br />
-      <p>
+      <p id="about-second-para">
         Compared to existing competition, SimpliPass offers a unique feature of
         reviewing a combination of course and instructor (section) rather than
         just individual courses or instructors. We believe every instructor has

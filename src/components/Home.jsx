@@ -5,7 +5,7 @@ import CourseSelector from "./CourseSelector";
 import CourseView from "./CourseView";
 import Dialog from "./Dialog";
 import { proxyURL, apiRootURL, allCourses } from "../Utils/constants";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Home extends React.Component {
   constructor() {
@@ -43,31 +43,33 @@ class Home extends React.Component {
   renderBody() {
     return (
       <>
-        <Row>
-          <Col className="d-flex justify-content-center">
-            <DepartmentSelector
-              handleSelectDept={this.handleSelectDept}
-              coursesList={this.state.coursesList}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="d-flex justify-content-center">
-            <CourseSelector
-              coursesList={this.state.coursesList}
-              handleSelectCourse={this.handleSelectCourse}
-              currDept={this.state.currDept}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="d-flex justify-content-center">
-            <CourseView
-              currCourse={this.state.currCourse}
-              coursesList={this.state.coursesList}
-            />
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <DepartmentSelector
+                handleSelectDept={this.handleSelectDept}
+                coursesList={this.state.coursesList}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <CourseSelector
+                coursesList={this.state.coursesList}
+                handleSelectCourse={this.handleSelectCourse}
+                currDept={this.state.currDept}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <CourseView
+                currCourse={this.state.currCourse}
+                coursesList={this.state.coursesList}
+              />
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }
@@ -90,8 +92,8 @@ class Home extends React.Component {
         {this.state.loaded && !this.state.serverError ? (
           this.renderBody()
         ) : (
-          <Loader />
-        )}
+            <Loader />
+          )}
       </>
     );
   }

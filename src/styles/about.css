@@ -1,23 +1,26 @@
 .aboutContainer {
-  padding: 3%;
+  padding: 2%;
   color: rgba(66, 66, 66, 0.9);
   float: left;
 }
 
 .aboutContainer > h1 {
-  text-align: center;
   font-weight: 300;
+  text-align: center;
 }
 
 .aboutContainer > h3 {
-  text-align: center;
-  padding: 5%;
+  padding: 2%;
+  text-align: justify;
 }
 
 .aboutContainer > p {
-  padding-left: 15%;
-  padding-right: 15%;
-  text-align: center;
+  padding: 2%;
   font-size: 1.2rem;
   font-weight: 400;
+  text-align: justify;
+}
+
+#about-second-para {
+  padding-bottom: 10%;
 }
