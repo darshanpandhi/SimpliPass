@@ -76,3 +76,15 @@ Code Formatting and Cleaning:
 
 - [Project Wiki](https://github.com/darshanpandhi/SimpliPass/wiki)
 - [Project Proposal](https://github.com/darshanpandhi/SimpliPass/wiki/Proposal)
+- [Architecture Details](https://github.com/darshanpandhi/SimpliPass/wiki/Project-Architecture-Details)
+
+## Authors
+
+- [Nahiyan Naim](https://github.com/nahiyannaim)
+- [Sabit Rahman](https://github.com/sabitrahmaan)
+- [Bohdan Parkhomchuk](https://github.com/bohdan-p)
+- [Arsh Khokhar](https://github.com/arsh-khokhar)
+- [Darshan Pandhi](https://github.com/darshanpandhi)
+- [Owen Leduchowski](https://github.com/owenleduchowski)
+- [Kin Leong](https://github.com/Waiikiin)
+- [Grygoriy Bezshaposhnikov](https://github.com/SSmade)
