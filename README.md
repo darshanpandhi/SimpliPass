@@ -76,7 +76,7 @@ Code Formatting and Cleaning:
 
 - [Project Wiki](https://github.com/darshanpandhi/SimpliPass/wiki)
 - [Project Proposal](https://github.com/darshanpandhi/SimpliPass/wiki/Proposal)
-- [Architecture Details](https://github.com/darshanpandhi/SimpliPass/wiki/Project-Architecture-Details)
+- [Architecture Details](https://github.com/darshanpandhi/SimpliPass/wiki/Project-Architecture)
 
 ## Authors
 
