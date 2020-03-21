@@ -346,8 +346,8 @@ class CourseReview extends React.Component {
   render() {
     return (
       <>
-        {this.state.loaded ? this.renderBody() : <Loader />}
         {this.renderMessage()}
+        {this.state.loaded ? this.renderBody() : <Loader />}
       </>
     );
   }

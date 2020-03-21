@@ -1,6 +1,7 @@
 .aboutContainer {
   padding: 3%;
   color: rgba(66, 66, 66, 0.9);
+  float: left;
 }
 
 .aboutContainer > h1 {

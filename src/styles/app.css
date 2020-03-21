@@ -1,50 +1,21 @@
-ul.nav-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: white;
+#simplipass-navbar {
   background-color: rgba(80, 187, 219, 0.849);
 }
 
-ul.nav-list li {
+.navbar-brand > img {
+  width: 200px;
+  height: 50px;
+}
+
+.navbar-nav > a:hover {
+  background-color: #fff;
+  color: #000 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255);
   font-size: 1.6rem;
   font-weight: 300;
-  float: left;
-  min-width: 7%;
-}
-
-li > img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  max-width: 250px;
-  max-height: 100px;
-}
-
-ul.nav-list li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-ul.nav-list li:hover {
-  background-color: white;
-}
-
-ul.nav-list li a:hover {
-  color: black;
-}
-
-@media screen and (max-width: 625px) {
-  ul.nav-list li {
-    font-size: 1rem;
-  }
-
-  li > img {
-    max-width: 40%;
-    height: 52px;
-  }
+  padding-right: 25px;
+  padding-left: 25px;
 }
