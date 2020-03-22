@@ -52,31 +52,6 @@ From the root directory, run commands:
 - Build and Run
 - Open `https://localhost:5001/` in your browser to view.
 
-## Testing
-
-### Web
-
-From the root directory, run command:
-
-- `npm test`
-- Press `a` to run all tests
-
-For detailed output:
-
-- `npm test -- --verbose`
-- Press `a` to run all tests
-
-### API
-
-- Open Visual Studio 2019
-- Select Open Project
-- Navigate to `SimpliPassApi` folder inside the project directory
-- Open `SimpliPassApi.sln` file
-- Select `SimpliPassApiTests` from the top
-- Then select `SimpliPassApiTests - Unit Tests` from the top
-- Build and Run
-- Look at Test Results output at the bottom
-
 ## Extras
 
 Static Code Analysis, code formatting and cleaning:
@@ -89,8 +64,6 @@ Static Code Analysis, code formatting and cleaning:
 ## More Details
 
 - [Project Wiki](https://github.com/darshanpandhi/SimpliPass/wiki)
-- [Project Proposal](https://github.com/darshanpandhi/SimpliPass/wiki/Proposal)
-- [Architecture Details](https://github.com/darshanpandhi/SimpliPass/wiki/Project-Architecture)
 
 ## Authors
 
