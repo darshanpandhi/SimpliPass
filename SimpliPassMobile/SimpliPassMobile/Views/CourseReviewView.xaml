@@ -10,14 +10,14 @@
     <ContentPage.BindingContext>
         <viewmodels:CourseReviewViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:PickerLevelsConverter x:Key="PickerLevelsConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-        <ContentPage.Content>
-            <ScrollView>
+    <ContentPage.Content>
+        <ScrollView>
 
             <Grid Padding="15">
 

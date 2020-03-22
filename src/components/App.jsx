@@ -42,7 +42,7 @@ class App extends React.Component {
                   Course Recommendations
                 </Nav.Link>
                 <Nav.Link as={NavLink} to="/About">
-                  About
+                  About Us
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>

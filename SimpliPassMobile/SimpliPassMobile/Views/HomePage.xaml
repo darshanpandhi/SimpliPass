@@ -9,6 +9,8 @@
     xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
     xmlns:views="clr-namespace:SimpliPassMobile.Views"
     x:Name="MainPage"
+    BarBackgroundColor="#51BBDB"
+    BarTextColor="White"
     mc:Ignorable="d">
 
     <TabbedPage.Behaviors>
@@ -28,7 +30,7 @@
                 <views:DepartmentListView />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Review a course" TabIndex="1">
+        <NavigationPage Title="Review Course" TabIndex="1">
             <x:Arguments>
                 <views:CourseReviewView />
             </x:Arguments>
@@ -38,7 +40,7 @@
                 <views:CourseRecommendationsView />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="About us" TabIndex="3">
+        <NavigationPage Title="About Us" TabIndex="3">
             <x:Arguments>
                 <views:AboutView />
             </x:Arguments>

@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
-    Title="About">
+    Title="About Us">
     <ContentPage.BindingContext>
         <viewmodels:AboutViewModel />
     </ContentPage.BindingContext>
@@ -23,20 +23,20 @@
             <Label
                 Padding="10"
                 FontSize="Small"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="Center"
                 Text="{Binding VisionStatement}"
                 VerticalOptions="Start" />
 
             <Label
                 Padding="10"
                 FontSize="Micro"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="Center"
                 Text="{Binding WhyPhrase}"
                 VerticalOptions="Start" />
             <Label
                 Padding="10"
                 FontSize="Micro"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="Center"
                 Text="{Binding CompetitionPhrase}"
                 VerticalOptions="Start" />
         </StackLayout>

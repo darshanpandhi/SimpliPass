@@ -24,7 +24,7 @@
                 Margin="-10,0,0,0"
                 HeightRequest="48"
                 HorizontalOptions="Start"
-                Source="{Binding LogoPath, Converter={StaticResource ImageSourceConverter}}"
+                Source="logo.png"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="72" />
             <Label
