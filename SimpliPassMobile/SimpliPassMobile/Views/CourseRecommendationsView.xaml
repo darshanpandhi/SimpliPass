@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SimpliPassMobile.Views.CourseRecommendationsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
+    Title="Recommended Popular Courses">
+    <ContentPage.BindingContext>
+        <viewmodels:CourseRecommendationsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <ListView HasUnevenRows="true" ItemsSource="{Binding RecommendationsList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5" RowSpacing="5">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="{Binding Id}"
+                                    VerticalTextAlignment="Start" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    Text="{Binding Name}"
+                                    VerticalTextAlignment="End" />
+
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Difficulty Level: " />
+
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0,0,75,0"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Difficulty}" />
+
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    FontAttributes="Italic"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding DifficultyCount}" />
+
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Margin="0,0,290,0"
+                                    FontAttributes="Italic"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Center"
+                                    Text="reviews" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

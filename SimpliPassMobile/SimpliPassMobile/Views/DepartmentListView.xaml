@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SimpliPassMobile.Views.DepartmentListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:SimpliPassMobile.Behaviors"
+    xmlns:converters="clr-namespace:SimpliPassMobile.Converters"
+    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels">
+
+    <ContentPage.BindingContext>
+        <viewmodels:DepartmentListViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <Grid>
+            <Image
+                Grid.Column="0"
+                Margin="-10,0,0,0"
+                HeightRequest="48"
+                HorizontalOptions="Start"
+                Source="{Binding LogoPath, Converter={StaticResource ImageSourceConverter}}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="72" />
+            <Label
+                Grid.Column="1"
+                Margin="-140,0,0,0"
+                FontFamily="sans-serif-light"
+                FontSize="Title"
+                HorizontalTextAlignment="Start"
+                Text="SimpliPass"
+                TextColor="White"
+                VerticalTextAlignment="Center" />
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="Center">
+
+            <Label
+                Padding="20,20,20,20"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectText}" />
+
+            <ListView
+                HasUnevenRows="true"
+                ItemTapped="OnDepartmentSelected"
+                ItemsSource="{Binding DepartmentList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Padding="10"
+                                ColumnSpacing="10"
+                                RowSpacing="10">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -9,5 +9,6 @@
         public const string DEPARTMENT_COURSES = "departmentCourses/";
         public const string UPDATE = "/updateExistingCourse/";
         public const string NEW = "new/";
+        public const string LOGO_PATH = "./Resources/logo.png";
     }
 }

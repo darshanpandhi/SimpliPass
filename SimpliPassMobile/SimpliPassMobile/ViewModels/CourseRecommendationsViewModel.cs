@@ -1,30 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SimpliPassMobile.Models;
 
-
 namespace SimpliPassMobile.ViewModels
 {
-    public class CourseRecommendationsViewModel
+    /// <summary>
+    /// ViewModel for Course recommendations page
+    /// </summary>
+    class CourseRecommendationsViewModel
     {
-
         public ObservableCollection<CourseModel> RecommendationsList { get; set; }
         private List<object> courseList;
 
         public CourseRecommendationsViewModel()
         {
             RecommendationsList = new ObservableCollection<CourseModel>();
-            Setup();
+            GenerateRecommendationsList();
         }
 
-        private void Setup()
+        /// <summary>
+        /// Method that requests the list of all course recommendations
+        /// </summary>
+        private void GenerateRecommendationsList()
         {
-            HttpClient client = new HttpClient();
-            var response = client.GetStringAsync(Constants.API_BASE_URL + Constants.COURSE + Constants.RECOMMENDATIONS).Result;
+            RecommendationsList = new ObservableCollection<CourseModel>();
+
+            var response = SimpliPassHttpConnection.GetResource(Constants.COURSE + Constants.RECOMMENDATIONS);
             courseList = JsonConvert.DeserializeObject<List<object>>(response);
 
             foreach (var crs in courseList)

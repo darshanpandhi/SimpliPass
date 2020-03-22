@@ -1,6 +1,9 @@
 ﻿namespace SimpliPassMobile.Models
 {
-    public class CourseDetailsModel
+    /// <summary>
+    /// Model class for a section
+    /// </summary>
+    public class SectionModel
     {
         public string Name { get; set; }
         public double Rating { get; set; }

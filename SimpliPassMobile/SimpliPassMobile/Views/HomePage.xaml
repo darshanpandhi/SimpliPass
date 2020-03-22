@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="SimpliPassMobile.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:SimpliPassMobile.Behaviors"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
+    xmlns:views="clr-namespace:SimpliPassMobile.Views"
+    x:Name="MainPage"
+    mc:Ignorable="d">
+
+    <TabbedPage.Behaviors>
+        <behaviors:EventToCommandBehavior
+            Command="{Binding PageChangedCommand}"
+            CommandParameter="{Binding Path=CurrentPage.TabIndex, Source={x:Reference MainPage}}"
+            EventName="CurrentPageChanged" />
+    </TabbedPage.Behaviors>
+
+    <TabbedPage.BindingContext>
+        <viewmodels:HomePageViewModel />
+    </TabbedPage.BindingContext>
+
+    <TabbedPage.Children>
+        <NavigationPage Title="Home" TabIndex="0">
+            <x:Arguments>
+                <views:DepartmentListView />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Review a course" TabIndex="1">
+            <x:Arguments>
+                <views:CourseReviewView />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Recommendations" TabIndex="2">
+            <x:Arguments>
+                <views:CourseRecommendationsView />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="About us" TabIndex="3">
+            <x:Arguments>
+                <views:AboutView />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+
+</TabbedPage>
