@@ -53,10 +53,10 @@ namespace SimpliPassApiTests.ClientTests
         {
             var result = await _client.GetCourse("any key");
 
-            validateCourse(result);
+            ValidateCourse(result);
         }
 
-        private void validateCourse(Course course)
+        private void ValidateCourse(Course course)
         {
             Assert.NotNull(course);
             Assert.AreEqual(testCourse.Id, course.Id);
