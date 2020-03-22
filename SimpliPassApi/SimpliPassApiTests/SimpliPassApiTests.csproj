@@ -15,11 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MiddlewareTests\" />
-    <Folder Include="LogicTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SimpliPassApi\SimpliPassApi.csproj" />
   </ItemGroup>
 
