@@ -54,6 +54,8 @@ From the root directory, run commands:
 
 ## Testing
 
+### Web
+
 From the root directory, run command:
 
 - `npm test`
@@ -63,6 +65,17 @@ For detailed output:
 
 - `npm test -- --verbose`
 - Press `a` to run all tests
+
+### API
+
+- Open Visual Studio 2019
+- Select Open Project
+- Navigate to `SimpliPassApi` folder inside the project directory
+- Open `SimpliPassApi.sln` file
+- Select `SimpliPassApiTests` from the top
+- Then select `SimpliPassApiTests - Unit Tests` from the top
+- Build and Run
+- Look at Test Results output at the bottom
 
 ## Extras
 
