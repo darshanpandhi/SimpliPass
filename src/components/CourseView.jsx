@@ -35,9 +35,7 @@ const CourseView = props => {
         <h6 data-tip="Out of 10. Lower number indicates easier course.">
           Difficulty Level
           <span className="difficultyNumber">
-            <Badge pill variant={modifier}>
-              {courseInfo.difficulty}
-            </Badge>
+            <Badge variant={modifier}>{courseInfo.difficulty}</Badge>
           </span>
         </h6>
         <div className="difficultyCount">

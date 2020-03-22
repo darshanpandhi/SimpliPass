@@ -1,6 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 import Dialog from "./Dialog";
+import Badge from "react-bootstrap/Badge";
 import "../styles/recommendations.css";
 import {
   proxyURL,
@@ -43,7 +44,10 @@ class Recommendations extends React.Component {
           <h3>
             {`${crs.id}`} - {`${crs.name}`}
           </h3>
-          <h5>{`Difficulty: ${crs.difficulty}`}</h5>
+          <h5>
+            {`Difficulty: `}
+            <Badge variant="success">{crs.difficulty}</Badge>
+          </h5>
           <p>{`${crs.difficultyCount} reviews`}</p>
         </div>
       );
