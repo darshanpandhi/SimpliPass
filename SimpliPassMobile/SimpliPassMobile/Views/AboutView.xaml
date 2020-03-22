@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SimpliPassMobile.Views.AboutView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
+    Title="About">
+    <ContentPage.BindingContext>
+        <viewmodels:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout
+            Padding="25"
+            HorizontalOptions="Center"
+            VerticalOptions="Start">
+            <Label
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="{Binding WhyTitle}"
+                VerticalOptions="Start" />
+
+            <Label
+                Padding="10"
+                FontSize="Small"
+                HorizontalTextAlignment="Start"
+                Text="{Binding VisionStatement}"
+                VerticalOptions="Start" />
+
+            <Label
+                Padding="10"
+                FontSize="Micro"
+                HorizontalTextAlignment="Start"
+                Text="{Binding WhyPhrase}"
+                VerticalOptions="Start" />
+            <Label
+                Padding="10"
+                FontSize="Micro"
+                HorizontalTextAlignment="Start"
+                Text="{Binding CompetitionPhrase}"
+                VerticalOptions="Start" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

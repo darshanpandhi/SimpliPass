@@ -1,24 +1,40 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using SimpliPassMobile.Models;
 
 namespace SimpliPassMobile.ViewModels
 {
-    public class CourseDetailsViewModel
+    /// <summary>
+    /// ViewModel for Course Details page
+    /// </summary>
+    class CourseDetailsViewModel
     {
-        public ObservableCollection<CourseDetailsModel> SectionRatings { get; set; }
+        private CourseModel AttachedCourse { get; set; }
 
-        public CourseDetailsViewModel(Dictionary<string, Dictionary<string, double>> secRatings)
+        public ObservableCollection<SectionModel> SectionRatings { get; set; }
+
+        public string NameAndId => $"{AttachedCourse.Id} - {AttachedCourse.Name}";
+
+        public string DepartmentName => $"Department of {AttachedCourse.Department}";
+
+        public string DifficultyLevel => $"Difficulty Level {AttachedCourse.Difficulty}";
+
+        public string DifficultyCount => $"Based on {AttachedCourse.DifficultyCount} reviews";
+
+        public CourseDetailsViewModel(CourseModel arg_course)
         {
-            SectionRatings = new ObservableCollection<CourseDetailsModel>();
-            Setup(secRatings);
+            AttachedCourse = arg_course;
+            SectionRatings = new ObservableCollection<SectionModel>();
+            ExtractSectionRatings();
         }
 
-        private void Setup(Dictionary<string, Dictionary<string, double>> secRatings)
+        /// <summary>
+        /// Method that extracts Section ratings from CourseModels
+        /// </summary>
+        public void ExtractSectionRatings()
         {
-            foreach (var rating in secRatings)
+            foreach (var secRating in AttachedCourse.SectionRatings)
             {
-                SectionRatings.Add(new CourseDetailsModel { Name = rating.Key, Rating = rating.Value["rating"], Count = rating.Value["count"] });
+                SectionRatings.Add(new SectionModel { Name = secRating.Key, Rating = secRating.Value["rating"], Count = secRating.Value["count"] });
             }
         }
     }

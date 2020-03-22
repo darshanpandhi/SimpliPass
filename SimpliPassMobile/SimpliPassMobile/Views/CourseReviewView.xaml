@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SimpliPassMobile.Views.CourseReviewView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SimpliPassMobile.Converters"
+    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
+    Title="Review a Course">
+
+    <ContentPage.BindingContext>
+        <viewmodels:CourseReviewViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PickerLevelsConverter x:Key="PickerLevelsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+        <ContentPage.Content>
+            <ScrollView>
+
+            <Grid Padding="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="1"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Course ID" />
+
+                <Entry
+                    Grid.Row="1"
+                    HorizontalOptions="Start"
+                    MaxLength="4"
+                    Placeholder="COMP"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding CourseDeptCode, Mode=TwoWay}"
+                    VerticalOptions="End" />
+
+                <Entry
+                    Grid.Row="1"
+                    Margin="60,0,0,0"
+                    HorizontalOptions="Start"
+                    Keyboard="Numeric"
+                    MaxLength="4"
+                    Placeholder="1010"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding CourseNum, Mode=TwoWay}"
+                    VerticalOptions="End" />
+
+                <Label
+                    Grid.Row="2"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Name" />
+
+                <Entry
+                    Grid.Row="2"
+                    Margin="0,30,0,0"
+                    Placeholder="Intro to Computer Science 1"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding CourseName, Mode=TwoWay}" />
+
+                <Label
+                    Grid.Row="3"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Department" />
+
+                <Entry
+                    Grid.Row="3"
+                    Margin="0,30,0,0"
+                    Placeholder="Computer Science"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Department, Mode=TwoWay}" />
+
+                <Label
+                    Grid.Row="4"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Difficulty Level" />
+
+                <Picker
+                    Title="1 - Very Easy, 10 - Extremely Difficult"
+                    Grid.Row="4"
+                    Margin="0,30,0,0"
+                    ItemsSource="{Binding PickerLevels, Mode=OneTime}"
+                    SelectedIndex="{Binding DifficultyLevel, Mode=TwoWay, Converter={StaticResource PickerLevelsConverter}}"
+                    TitleColor="LightGray" />
+
+                <Label
+                    Grid.Row="5"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Instructor" />
+
+                <Entry
+                    Grid.Row="5"
+                    Margin="0,30,0,0"
+                    Placeholder="John Smith"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Instructor, Mode=TwoWay}" />
+
+                <Label
+                    Grid.Row="6"
+                    Margin="4,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Rating" />
+
+                <Picker
+                    Title="1 - Poor, 10 - Excellent"
+                    Grid.Row="6"
+                    Margin="0,30,0,0"
+                    ItemsSource="{Binding PickerLevels, Mode=OneTime}"
+                    SelectedIndex="{Binding InstructorRating, Mode=TwoWay, Converter={StaticResource PickerLevelsConverter}}"
+                    TitleColor="LightGray" />
+
+                <Button
+                    Grid.Row="7"
+                    BackgroundColor="#51BBDB"
+                    Command="{Binding SubmitReviewCommand}"
+                    Text="Submit Review"
+                    TextColor="White" />
+
+            </Grid>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</ContentPage>

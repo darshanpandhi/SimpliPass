@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SimpliPassMobile.Views.CourseDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="sans-serif-light"
+            FontSize="Title"
+            HorizontalTextAlignment="Start"
+            Text="SimpliPass"
+            TextColor="White" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center">
+            <Label
+                Padding="0,15,0,0"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="{Binding NameAndId}" />
+            <Label
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="{Binding DepartmentName}" />
+            <Label
+                Margin="20,20,20,0"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="{Binding DifficultyLevel}" />
+            <Label
+                FontAttributes="Italic"
+                FontSize="Small"
+                HorizontalTextAlignment="Center"
+                Text="{Binding DifficultyCount}" />
+            <Label
+                Margin="35"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="Section Ratings" />
+
+            <ListView
+                Margin="60,0,60,60"
+                HasUnevenRows="true"
+                ItemsSource="{Binding SectionRatings}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Padding="5"
+                                ColumnSpacing="0"
+                                RowSpacing="10">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Column="2"
+                                    Margin="0,0,30,0"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="End"
+                                    Text="{Binding Rating}"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Column="3"
+                                    Margin="0,0,40,0"
+                                    FontAttributes="Italic"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Count}"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Column="3"
+                                    Margin="0,0,10,0"
+                                    FontAttributes="Italic"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="End"
+                                    Text="reviews"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

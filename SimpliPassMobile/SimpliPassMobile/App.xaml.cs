@@ -8,42 +8,31 @@ namespace SimpliPassMobile
         public App()
         {
             InitializeComponent();
-
-            var homePage = new NavigationPage(new DepartmentPage());
-            var courseReviewPage = new NavigationPage(new CourseReviewPage());
-            var courseRecommendationsPage = new NavigationPage(new CourseRecommendationsPage());
-            var aboutPage = new NavigationPage(new AboutPage());
-
-            homePage.Title = "Home";
-            courseReviewPage.Title = "Course Review";
-            courseRecommendationsPage.Title = "Recommendations";
-            aboutPage.Title = "About";
-
-            MainPage = new TabbedPage
-            {
-
-                BarBackgroundColor = Color.FromHex("#51BBDB"),
-                BarTextColor = Color.White,
-
-                Children = {
-                    homePage,
-                    courseReviewPage,
-                    courseRecommendationsPage,
-                    aboutPage
-                }
-            };
         }
 
         protected override void OnStart()
         {
+            if (!SimpliPassHttpConnection.Connect())
+            {
+                MainPage = new NoInternetPage();    // Http Connection was unsuccessful
+                return;
+            }
+            MainPage = new HomePage();  // Http Connection successful, proceed to homepage
         }
 
         protected override void OnSleep()
         {
+            SimpliPassHttpConnection.Disconnect();
         }
 
         protected override void OnResume()
         {
+            if (!SimpliPassHttpConnection.Connect())
+            {
+                MainPage = new NoInternetPage();    // Http Connection was unsuccessful
+                return;
+            }
+            MainPage = new HomePage();  // Http Connection successful, proceed to homepage
         }
     }
 }
