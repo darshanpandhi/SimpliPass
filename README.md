@@ -8,8 +8,8 @@ _Maximize your academic success through optimal course selections and reviews!_
 
 ### Web
 
-- **Production:** [Here](https://master.dh9t5gt5arcji.amplifyapp.com/)
-- **Develop:** [Here](https://develop.dh9t5gt5arcji.amplifyapp.com/)
+- [Production](https://master.dh9t5gt5arcji.amplifyapp.com/)
+- [Develop](https://develop.dh9t5gt5arcji.amplifyapp.com/)
 
 ### Mobile
 
