@@ -4,7 +4,7 @@ import {
   getCourseInfo,
   courseExists
 } from "../Utils/utils";
-import { sampleCoursesList } from "./testData";
+import { sampleCoursesList } from "./Stub";
 
 ////////////////////////////////////
 //   Test - getAllDepartments()
