@@ -3,8 +3,8 @@ import {
   getAllCoursesForDept,
   getCourseInfo,
   courseExists
-} from "../Utils/utils";
-import { sampleCoursesList } from "./Stub";
+} from "../../Utils/utils";
+import { sampleCoursesList } from "../Stub";
 
 ////////////////////////////////////
 //   Test - getAllDepartments()
