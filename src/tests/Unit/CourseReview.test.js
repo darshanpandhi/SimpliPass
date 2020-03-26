@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import CourseReview from "../components/CourseReview";
+import CourseReview from "../../components/CourseReview";
 
 Enzyme.configure({ adapter: new Adapter() });
 

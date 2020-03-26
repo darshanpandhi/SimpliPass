@@ -65,17 +65,17 @@ class CourseReview extends React.Component {
       ) {
         fetch(
           proxyURL +
-          apiRootURL +
-          allCourses +
-          this.state.currCourseCode +
-          " " +
-          this.state.currCourseNum +
-          updateExistingCourse +
-          this.state.currDiff +
-          "/" +
-          this.state.currSec +
-          "/" +
-          this.state.currSecRating,
+            apiRootURL +
+            allCourses +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
+            updateExistingCourse +
+            this.state.currDiff +
+            "/" +
+            this.state.currSec +
+            "/" +
+            this.state.currSecRating,
           {
             method: "PUT"
           }
@@ -95,22 +95,22 @@ class CourseReview extends React.Component {
       } else {
         fetch(
           proxyURL +
-          apiRootURL +
-          allCourses +
-          newCourse +
-          this.state.currCourseCode +
-          " " +
-          this.state.currCourseNum +
-          "/" +
-          this.state.currName +
-          "/" +
-          this.state.currDept +
-          "/" +
-          this.state.currDiff +
-          "/" +
-          this.state.currSec +
-          "/" +
-          this.state.currSecRating,
+            apiRootURL +
+            allCourses +
+            newCourse +
+            this.state.currCourseCode +
+            " " +
+            this.state.currCourseNum +
+            "/" +
+            this.state.currName +
+            "/" +
+            this.state.currDept +
+            "/" +
+            this.state.currDiff +
+            "/" +
+            this.state.currSec +
+            "/" +
+            this.state.currSecRating,
 
           {
             method: "POST"
@@ -232,10 +232,9 @@ class CourseReview extends React.Component {
             <Select
               className="difficultySelector"
               onChange={this.handleSelectDifficulty}
-              isSearchable={false}
               options={
                 this.state.currCourseCode === "" ||
-                  this.state.currCourseNum === ""
+                this.state.currCourseNum === ""
                   ? []
                   : commonSelectorOptions
               }
@@ -276,7 +275,6 @@ class CourseReview extends React.Component {
             <Select
               className="sectionRatingSelector"
               onChange={this.handleSelectSectionRating}
-              isSearchable={false}
               options={this.state.currSec === "" ? [] : commonSelectorOptions}
               placeholder=""
             />
