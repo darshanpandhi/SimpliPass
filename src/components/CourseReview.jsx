@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 import Dialog from "./Dialog";
-import { courseExists } from "../Utils/utils";
+import { courseExists } from "../utils/utils";
 import {
   proxyURL,
   apiRootURL,
@@ -10,7 +10,7 @@ import {
   newCourse,
   successCode,
   commonSelectorOptions
-} from "../Utils/constants";
+} from "../utils/constants";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
 import "../styles/courseReview.css";

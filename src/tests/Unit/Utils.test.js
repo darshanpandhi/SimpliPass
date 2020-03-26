@@ -3,7 +3,7 @@ import {
   getAllCoursesForDept,
   getCourseInfo,
   courseExists
-} from "../../Utils/utils";
+} from "../../utils/utils";
 import { sampleCoursesList } from "./Stub";
 
 ////////////////////////////////////

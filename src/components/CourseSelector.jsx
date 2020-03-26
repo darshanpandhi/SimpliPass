@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import "../styles/courseSelector.css";
-import { getAllCoursesForDept } from "../Utils/utils";
+import { getAllCoursesForDept } from "../utils/utils";
 
 const CourseSelector = props => {
   const courseList = getAllCoursesForDept(props.currDept, props.coursesList);

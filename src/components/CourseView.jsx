@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/courseView.css";
-import { getCourseInfo } from "../Utils/utils";
+import { getCourseInfo } from "../utils/utils";
 import Badge from "react-bootstrap/Badge";
 import ReactTooltip from "react-tooltip";
 import { Container, Row, Col } from "react-bootstrap";

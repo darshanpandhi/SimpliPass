@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import "../styles/departmentSelector.css";
-import { getAllDepartments } from "../Utils/utils";
+import { getAllDepartments } from "../utils/utils";
 
 const DepartmentSelector = props => {
   const deparmentList = getAllDepartments(props.coursesList);

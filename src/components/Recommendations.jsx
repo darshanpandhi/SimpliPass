@@ -8,7 +8,7 @@ import {
   apiRootURL,
   allCourses,
   recommendations
-} from "../Utils/constants";
+} from "../utils/constants";
 
 class Recommendations extends React.Component {
   constructor() {

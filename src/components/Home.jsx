@@ -4,7 +4,7 @@ import DepartmentSelector from "./DepartmentSelector";
 import CourseSelector from "./CourseSelector";
 import CourseView from "./CourseView";
 import Dialog from "./Dialog";
-import { proxyURL, apiRootURL, allCourses } from "../Utils/constants";
+import { proxyURL, apiRootURL, allCourses } from "../utils/constants";
 import { Container, Row, Col } from "react-bootstrap";
 
 class Home extends React.Component {
@@ -92,8 +92,8 @@ class Home extends React.Component {
         {this.state.loaded && !this.state.serverError ? (
           this.renderBody()
         ) : (
-            <Loader />
-          )}
+          <Loader />
+        )}
       </>
     );
   }
