@@ -4,6 +4,7 @@ import { getCourseInfo } from "../utils/utils";
 import Badge from "react-bootstrap/Badge";
 import ReactTooltip from "react-tooltip";
 import { Container, Row, Col } from "react-bootstrap";
+import { upperLimit, middleLimit, lowerLimit } from "../utils/constants";
 
 const CourseView = props => {
   const courseInfo = getCourseInfo(props.currCourse, props.coursesList);
@@ -22,11 +23,17 @@ const CourseView = props => {
   const renderDifficulty = () => {
     let modifier;
 
-    if (courseInfo.difficulty >= 8) {
+    if (courseInfo.difficulty >= upperLimit) {
       modifier = "danger";
-    } else if (courseInfo.difficulty >= 5 && courseInfo.difficulty < 8) {
+    } else if (
+      courseInfo.difficulty >= middleLimit &&
+      courseInfo.difficulty < upperLimit
+    ) {
       modifier = "warning";
-    } else if (courseInfo.difficulty >= 0 && courseInfo.difficulty < 5) {
+    } else if (
+      courseInfo.difficulty >= lowerLimit &&
+      courseInfo.difficulty < middleLimit
+    ) {
       modifier = "success";
     }
 

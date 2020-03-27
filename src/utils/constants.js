@@ -6,6 +6,9 @@ const recommendations = "recommendations/";
 const updateExistingCourse = "/updateExistingCourse/";
 const newCourse = "new/";
 const successCode = 200;
+const upperLimit = 8;
+const middleLimit = 5;
+const lowerLimit = 0;
 const commonSelectorOptions = [
   { value: "1", label: "1" },
   { value: "2", label: "2" },
@@ -27,5 +30,8 @@ export {
   updateExistingCourse,
   newCourse,
   successCode,
-  commonSelectorOptions
+  commonSelectorOptions,
+  upperLimit,
+  middleLimit,
+  lowerLimit
 };
