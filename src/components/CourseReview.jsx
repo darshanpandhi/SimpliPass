@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 import Dialog from "./Dialog";
-import { courseExists } from "../utils/utils";
+import { getCourseInfo } from "../utils/utils";
 import {
   proxyURL,
   apiRootURL,
@@ -47,87 +47,86 @@ class CourseReview extends React.Component {
       });
   }
 
+  existingCourseReview = () => {
+    fetch(
+      proxyURL +
+        apiRootURL +
+        allCourses +
+        this.state.currCourseCode +
+        " " +
+        this.state.currCourseNum +
+        updateExistingCourse +
+        this.state.currDiff +
+        "/" +
+        this.state.currSec +
+        "/" +
+        this.state.currSecRating,
+      {
+        method: "PUT"
+      }
+    )
+      .then(response => {
+        if (response.status === successCode) {
+          this.setState({ currMessage: "Review has been submitted." });
+        } else {
+          this.setState({
+            currMessage: "Submitting failed. Please try again."
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
+  newCourseReview = () => {
+    fetch(
+      proxyURL +
+        apiRootURL +
+        allCourses +
+        newCourse +
+        this.state.currCourseCode +
+        " " +
+        this.state.currCourseNum +
+        "/" +
+        this.state.currName +
+        "/" +
+        this.state.currDept +
+        "/" +
+        this.state.currDiff +
+        "/" +
+        this.state.currSec +
+        "/" +
+        this.state.currSecRating,
+      {
+        method: "POST"
+      }
+    )
+      .then(response => {
+        if (response.status === successCode) {
+          this.setState({ currMessage: "Review has been submitted." });
+        } else {
+          this.setState({
+            currMessage: "Submitting failed. Please try again."
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
   handleSubmitReview = () => {
-    if (
-      this.state.currCourseCode !== "" &&
-      this.state.currCourseNum !== "" &&
-      this.state.currName !== "" &&
-      this.state.currDept !== "" &&
-      this.state.currDiff !== "" &&
-      this.state.currSec !== "" &&
-      this.state.currSecRating !== ""
-    ) {
+    if (this.isValidCurr()) {
       if (
-        courseExists(
+        getCourseInfo(
           this.state.currCourseCode + " " + this.state.currCourseNum,
           this.state.coursesList
-        )
+        ).length === 0
       ) {
-        fetch(
-          proxyURL +
-            apiRootURL +
-            allCourses +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            updateExistingCourse +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
-          {
-            method: "PUT"
-          }
-        )
-          .then(response => {
-            if (response.status === successCode) {
-              this.setState({ currMessage: "Review has been submitted." });
-            } else {
-              this.setState({
-                currMessage: "Submitting failed. Please try again."
-              });
-            }
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
+        this.newCourseReview();
       } else {
-        fetch(
-          proxyURL +
-            apiRootURL +
-            allCourses +
-            newCourse +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            "/" +
-            this.state.currName +
-            "/" +
-            this.state.currDept +
-            "/" +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
-
-          {
-            method: "POST"
-          }
-        )
-          .then(response => {
-            if (response.status === successCode) {
-              this.setState({ currMessage: "Review has been submitted." });
-            } else {
-              this.setState({
-                currMessage: "Submitting failed. Please try again."
-              });
-            }
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
+        this.existingCourseReview();
       }
     } else {
       this.setState({
@@ -135,6 +134,18 @@ class CourseReview extends React.Component {
           "Some fields empty. Please enter course id, name, department, difficulty level and a section with its rating."
       });
     }
+  };
+
+  isValidCurr = () => {
+    return (
+      this.state.currCourseCode !== "" &&
+      this.state.currCourseNum !== "" &&
+      this.state.currName !== "" &&
+      this.state.currDept !== "" &&
+      this.state.currDiff !== "" &&
+      this.state.currSec !== "" &&
+      this.state.currSecRating !== ""
+    );
   };
 
   onChangeValueCourseCode = event => {
@@ -174,7 +185,6 @@ class CourseReview extends React.Component {
         <Row>
           <h1 className="pageTitle"> Review Course </h1>
         </Row>
-
         <Row>
           <Col md={5}>
             <label>Course ID</label>
@@ -250,7 +260,6 @@ class CourseReview extends React.Component {
             <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
           </Col>
         </Row>
-
         <Row>
           <h2 className="secTitle"> Section</h2>
         </Row>
@@ -294,9 +303,10 @@ class CourseReview extends React.Component {
               className="submitReviewBtn"
               onClick={this.handleSubmitReview}
               disabled={
-                this.state.currDept === "" &&
                 this.state.currCourseCode === "" &&
                 this.state.currCourseNum === "" &&
+                this.state.currName === "" &&
+                this.state.currDept === "" &&
                 this.state.currDiff === "" &&
                 this.state.currSec === "" &&
                 this.state.currSecRating === ""
