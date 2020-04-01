@@ -67,11 +67,17 @@ export const getCourseInfo = (currCourse, coursesList) => {
 };
 
 export const capitalizeFirstChar = text => {
-  return text
-    .toLowerCase()
-    .split(" ")
-    .map(temp => temp.charAt(0).toUpperCase() + temp.slice(1))
-    .join(" ");
+  let result = "";
+
+  if (isValid(text)) {
+    result = text
+      .toLowerCase()
+      .split(" ")
+      .map(temp => temp.charAt(0).toUpperCase() + temp.slice(1))
+      .join(" ");
+  }
+
+  return result;
 };
 
 const isValid = item => {
