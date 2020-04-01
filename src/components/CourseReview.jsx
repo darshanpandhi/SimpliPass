@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 import Dialog from "./Dialog";
-import { getCourseInfo } from "../utils/utils";
+import { getCourseInfo, capitalizeFirstChar } from "../utils/utils";
 import {
   proxyURL,
   apiRootURL,
@@ -150,7 +150,9 @@ class CourseReview extends React.Component {
 
   onChangeValueCourseCode = event => {
     this.setState({
-      currCourseCode: event.target.value.toString().toUpperCase(),
+      currCourseCode: event.target.validity.valid
+        ? event.target.value.toString().toUpperCase()
+        : this.state.currCourseCode,
       currMessage: ""
     });
   };
@@ -165,15 +167,30 @@ class CourseReview extends React.Component {
   };
 
   onChangeValueCourseName = event => {
-    this.setState({ currName: event.target.value, currMessage: "" });
+    this.setState({
+      currName: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currName,
+      currMessage: ""
+    });
   };
 
   onChangeValueDept = event => {
-    this.setState({ currDept: event.target.value, currMessage: "" });
+    this.setState({
+      currDept: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currDept,
+      currMessage: ""
+    });
   };
 
   onChangeValueSection = event => {
-    this.setState({ currSec: event.target.value, currMessage: "" });
+    this.setState({
+      currSec: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currSec,
+      currMessage: ""
+    });
   };
 
   handleSelectDifficulty = diff => {
@@ -198,6 +215,7 @@ class CourseReview extends React.Component {
             <input
               className="crsCode"
               type="text"
+              pattern="[a-zA-Z]*"
               maxLength="4"
               placeholder="COMP"
               value={this.state.currCourseCode}
@@ -221,6 +239,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="Intro to Computer Science 1"
               value={this.state.currName}
               onChange={this.onChangeValueCourseName}
@@ -234,6 +253,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="Computer Science"
               value={this.state.currDept}
               onChange={this.onChangeValueDept}
@@ -276,6 +296,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="John Smith"
               value={this.state.currSec}
               onChange={this.onChangeValueSection}

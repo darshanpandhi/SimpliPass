@@ -66,6 +66,14 @@ export const getCourseInfo = (currCourse, coursesList) => {
   return courseInfo;
 };
 
+export const capitalizeFirstChar = text => {
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map(temp => temp.charAt(0).toUpperCase() + temp.slice(1))
+    .join(" ");
+};
+
 const isValid = item => {
   return item !== undefined && item !== null && item.length !== 0;
 };
