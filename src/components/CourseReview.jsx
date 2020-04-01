@@ -156,7 +156,12 @@ class CourseReview extends React.Component {
   };
 
   onChangeValueCourseNum = event => {
-    this.setState({ currCourseNum: event.target.value, currMessage: "" });
+    this.setState({
+      currCourseNum: event.target.validity.valid
+        ? event.target.value
+        : this.state.currCourseNum,
+      currMessage: ""
+    });
   };
 
   onChangeValueCourseName = event => {
@@ -201,6 +206,7 @@ class CourseReview extends React.Component {
             <input
               className="crsNum"
               type="text"
+              pattern="[0-9]*"
               maxLength="4"
               placeholder="1010"
               value={this.state.currCourseNum}
