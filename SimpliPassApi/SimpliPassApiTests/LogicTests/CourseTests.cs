@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SimpliPassApi.Logic;
 using SimpliPassApi.Models;
 using System;
 using System.Collections.Generic;
@@ -59,14 +60,14 @@ namespace SimpliPassApiTests.LogicTests
         [Test]
         public void TestGetAllDepartmentsNull()
         {
-            List<string> result = Course.GetAllDepartments(null);
+            List<string> result = CourseLogic.GetAllDepartments(null);
             Assert.IsNull(result);
         }
 
         [Test]
         public void TestGetAllDepartments()
         {
-            List<string> result = Course.GetAllDepartments(testCourseList);
+            List<string> result = CourseLogic.GetAllDepartments(testCourseList);
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Contains("Test Department 1"));
             Assert.IsTrue(result.Contains("Test Department 2"));
@@ -75,17 +76,17 @@ namespace SimpliPassApiTests.LogicTests
         [Test]
         public void TestGetCoursesForDeptNull()
         {
-            List<Course> result = Course.GetCoursesForDept(null, "Test Department 1");
+            List<Course> result = CourseLogic.GetCoursesForDept(null, "Test Department 1");
             Assert.IsNull(result);
         }
 
         [Test]
         public void TestGetCoursesForDept()
         {
-            List<Course> result1 = Course.GetCoursesForDept(testCourseList, "Test Department 1");
+            List<Course> result1 = CourseLogic.GetCoursesForDept(testCourseList, "Test Department 1");
             Assert.IsNotNull(result1);
             Assert.IsTrue(result1.Contains(testCourse1));
-            List<Course> result2 = Course.GetCoursesForDept(testCourseList, "Test Department 2");
+            List<Course> result2 = CourseLogic.GetCoursesForDept(testCourseList, "Test Department 2");
             Assert.IsNotNull(result2);
             Assert.IsTrue(result2.Contains(testCourse2));
 
@@ -94,14 +95,14 @@ namespace SimpliPassApiTests.LogicTests
         [Test]
         public void TestGetRecommendationsListNull()
         {
-            List<Course> result = Course.GetRecommendationsList(null);
+            List<Course> result = CourseLogic.GetRecommendationsList(null);
             Assert.IsNull(result);
         }
 
         [Test]
         public void TestGetRecommendationsList()
         {
-            List<Course> result = Course.GetRecommendationsList(testCourseList);
+            List<Course> result = CourseLogic.GetRecommendationsList(testCourseList);
             Assert.IsNotNull(result);
             Assert.IsTrue(!result.Contains(testCourse1));
             Assert.IsTrue(result.Contains(testCourse2));

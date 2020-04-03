@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using SimpliPassApi.Exceptions;
+using SimpliPassApi.Logic;
 using SimpliPassApi.Models;
 
 namespace SimpliPassApi.Clients
@@ -53,7 +54,7 @@ namespace SimpliPassApi.Clients
 
             if (courses != null)
             {
-                departmentList = Course.GetAllDepartments(courses);
+                departmentList = CourseLogic.GetAllDepartments(courses);
             }
             else
             {
@@ -71,7 +72,7 @@ namespace SimpliPassApi.Clients
 
             if (courses != null)
             {
-                list = Course.GetCoursesForDept(courses, key);
+                list = CourseLogic.GetCoursesForDept(courses, key);
             }
             else
             {
@@ -90,7 +91,7 @@ namespace SimpliPassApi.Clients
 
             if (courses != null)
             {
-                list = Course.GetRecommendationsList(courses);
+                list = CourseLogic.GetRecommendationsList(courses);
             }
             else
             {
