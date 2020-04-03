@@ -11,23 +11,24 @@ namespace SimpliPassMobile.ViewModels
     /// </summary>
     class CourseRecommendationsViewModel
     {
+        private readonly ISimpliPassHttpConnection CurrHttpConnection;
         public ObservableCollection<CourseModel> RecommendationsList { get; set; }
         private List<object> courseList;
 
-        public CourseRecommendationsViewModel()
+        public CourseRecommendationsViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             RecommendationsList = new ObservableCollection<CourseModel>();
-            GenerateRecommendationsList();
+            CurrHttpConnection = argHttpConnection;
         }
 
         /// <summary>
         /// Method that requests the list of all course recommendations
         /// </summary>
-        private void GenerateRecommendationsList()
+        public void GenerateRecommendationsList()
         {
             RecommendationsList = new ObservableCollection<CourseModel>();
 
-            var response = SimpliPassHttpConnection.GetResource(Constants.COURSE + Constants.RECOMMENDATIONS);
+            var response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.RECOMMENDATIONS);
             courseList = JsonConvert.DeserializeObject<List<object>>(response);
 
             foreach (var crs in courseList)

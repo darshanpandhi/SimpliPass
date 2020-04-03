@@ -13,6 +13,8 @@ namespace SimpliPassMobile.ViewModels
     /// </summary>
     class DepartmentViewModel : INotifyPropertyChanged
     {
+        private readonly ISimpliPassHttpConnection CurrHttpConnection;
+
         public ObservableCollection<CourseModel> CourseList { get; set; }
         private List<object> courseList;
 
@@ -39,22 +41,22 @@ namespace SimpliPassMobile.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(name)));
         }
 
-        public DepartmentViewModel(string arg_departmentName)
+        public DepartmentViewModel(string argDepartmentName, ISimpliPassHttpConnection argHttpConnection)
         {
             CourseList = new ObservableCollection<CourseModel>();
             SelectText = "Select a Course";
-            DepartmentName = arg_departmentName;
+            DepartmentName = argDepartmentName;
             OnPropertyChanged(DepartmentDisplayName);
-            GenerateCourseList();
+            CurrHttpConnection = argHttpConnection;
         }
 
         /// <summary>
         /// Method which requests list of courses for the selected department
         /// </summary>
-        void GenerateCourseList()
+        public void GenerateCourseList()
         {
             CourseList = new ObservableCollection<CourseModel>();
-            var json_response = SimpliPassHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENT_COURSES + DepartmentName);
+            var json_response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENT_COURSES + DepartmentName);
             courseList = JsonConvert.DeserializeObject<List<object>>(json_response);
 
             foreach (var crs in courseList)
@@ -80,7 +82,9 @@ namespace SimpliPassMobile.ViewModels
             {
                 return null;
             }
-            return new CourseDetailsViewModel((CourseModel)e);
+            CourseDetailsViewModel contextedCourseVM = new CourseDetailsViewModel((CourseModel)e);
+            contextedCourseVM.ExtractSectionRatings();
+            return contextedCourseVM;
         }
     }
 }

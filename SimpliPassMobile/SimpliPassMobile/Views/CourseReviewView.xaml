@@ -7,9 +7,9 @@
     xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
     Title="Review a Course">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodels:CourseReviewViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <ContentPage.Resources>
         <ResourceDictionary>

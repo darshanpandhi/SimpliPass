@@ -14,6 +14,8 @@ namespace SimpliPassMobile.ViewModels
     /// </summary>
     class CourseReviewViewModel
     {
+        private readonly ISimpliPassHttpConnection CurrHttpConnection;
+
         public List<int> PickerLevels => Enumerable.Range(1, 10).ToList(); // Picker levels - from 1 to 10
         
         public string CourseDeptCode { get; set; }
@@ -32,10 +34,11 @@ namespace SimpliPassMobile.ViewModels
 
         public ICommand SubmitReviewCommand => new Command(HandleReviewSubmission);
 
-        public CourseReviewViewModel()
+        public CourseReviewViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             DifficultyLevel = -2;   // setting the intial picker values negative to display the placeholder
             InstructorRating = -2;
+            CurrHttpConnection = argHttpConnection;
         }
 
         /// <summary>
@@ -49,7 +52,7 @@ namespace SimpliPassMobile.ViewModels
                 var fullCourseID = CourseDeptCode + " " + CourseNum;
                 bool found = false;
                 var content = new StringContent("", Encoding.UTF8, "application/json");
-                var response = SimpliPassHttpConnection.GetResource(Constants.COURSE);
+                var response =  CurrHttpConnection.GetResource(Constants.COURSE);
                 List<object> courseList = JsonConvert.DeserializeObject<List<object>>(response);
                 foreach (var crs in courseList)
                 {
@@ -63,11 +66,11 @@ namespace SimpliPassMobile.ViewModels
 
                 if (!found) // New Course
                 {
-                    wasSuccess = SimpliPassHttpConnection.PostResource(Constants.COURSE + Constants.NEW + fullCourseID + "/" + CourseName + "/" + Department + "/" + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
+                    wasSuccess =  CurrHttpConnection.PostResource(Constants.COURSE + Constants.NEW + fullCourseID + "/" + CourseName + "/" + Department + "/" + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
                 }
                 else // Existing Course
                 {
-                    wasSuccess = SimpliPassHttpConnection.PutResource(Constants.COURSE + fullCourseID + Constants.UPDATE + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
+                    wasSuccess =  CurrHttpConnection.PutResource(Constants.COURSE + fullCourseID + Constants.UPDATE + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
                 }
             }
 

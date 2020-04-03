@@ -16,31 +16,32 @@
     <TabbedPage.Behaviors>
         <behaviors:EventToCommandBehavior
             Command="{Binding PageChangedCommand}"
-            CommandParameter="{Binding Path=CurrentPage.TabIndex, Source={x:Reference MainPage}}"
+            CommandParameter="{Binding Path=CurrentPage, Source={x:Reference MainPage}}"
+            EventName="BindingContextChanged" />
+
+        <behaviors:EventToCommandBehavior
+            Command="{Binding PageChangedCommand}"
+            CommandParameter="{Binding Path=CurrentPage, Source={x:Reference MainPage}}"
             EventName="CurrentPageChanged" />
     </TabbedPage.Behaviors>
 
-    <TabbedPage.BindingContext>
-        <viewmodels:HomePageViewModel />
-    </TabbedPage.BindingContext>
-
     <TabbedPage.Children>
-        <NavigationPage Title="Home" TabIndex="0">
+        <NavigationPage Title="{Binding HomePageTitle}" TabIndex="0">
             <x:Arguments>
                 <views:DepartmentListView />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Review Course" TabIndex="1">
+        <NavigationPage Title="{Binding ReviewPageTitle}" TabIndex="1">
             <x:Arguments>
                 <views:CourseReviewView />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Recommendations" TabIndex="2">
+        <NavigationPage Title="{Binding RecommendationsPageTitle}" TabIndex="2">
             <x:Arguments>
                 <views:CourseRecommendationsView />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="About Us" TabIndex="3">
+        <NavigationPage Title="{Binding AboutPageTitle}" TabIndex="3">
             <x:Arguments>
                 <views:AboutView />
             </x:Arguments>

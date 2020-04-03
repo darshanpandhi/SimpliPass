@@ -7,9 +7,9 @@
     xmlns:converters="clr-namespace:SimpliPassMobile.Converters"
     xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodels:DepartmentListViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -4,18 +4,18 @@ using System.Net.Http;
 namespace SimpliPassMobile
 {
     /// <summary>
-    /// Singleton for HttpConnection
+    /// HttpConnection class
     /// </summary>
-    public static class SimpliPassHttpConnection
+    public class SimpliPassHttpConnection : ISimpliPassHttpConnection
     {
-        private static HttpClient s_http_client;
-        private static bool IsConnected = false;
+        public static HttpClient s_http_client;
+        public static bool IsConnected = false;
         
         /// <summary>
         /// Attempts an http connection
         /// </summary>
         /// <returns> true if connection was successful, false otherwise </returns>
-        public static bool Connect()
+        public bool Connect()
         {
             System.Diagnostics.Debug.WriteLine("Attempting http connection...");
             try
@@ -40,7 +40,7 @@ namespace SimpliPassMobile
             return IsConnected;
         }
 
-        public static void Disconnect()
+        public void Disconnect()
         {
             s_http_client.Dispose();
             IsConnected = false;
@@ -50,7 +50,7 @@ namespace SimpliPassMobile
         /// </summary>
         /// <param name="path"> REST Path of required resource </param>
         /// <returns> response from the server </returns>
-        public static string GetResource(string path)
+        public string GetResource(string path)
         {
             var response = "";
             if (!IsConnected)
@@ -77,7 +77,7 @@ namespace SimpliPassMobile
         /// <param name="path"> REST path for POST</param>
         /// <param name="content"> content to POST </param>
         /// <returns> true if POST was successful, false otherwise </returns>
-        public static bool PostResource(string path, StringContent content)
+        public bool PostResource(string path, StringContent content)
         {
             bool success = false;
             if (!IsConnected)
@@ -105,7 +105,7 @@ namespace SimpliPassMobile
         /// <param name="path"> REST path for PUT</param>
         /// <param name="content"> content to PUT </param>
         /// <returns> true if PUT was successful, false otherwise </returns>
-        public static bool PutResource(string path, StringContent content)
+        public bool PutResource(string path, StringContent content)
         {
             bool success = false;
             if (!IsConnected)

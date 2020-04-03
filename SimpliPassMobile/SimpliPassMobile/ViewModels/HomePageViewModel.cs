@@ -10,11 +10,31 @@ namespace SimpliPassMobile.ViewModels
     /// </summary>
     class HomePageViewModel : INotifyPropertyChanged
     {
+        public ISimpliPassHttpConnection CurrHttpConnection;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public HomePageViewModel()
+        public DepartmentListViewModel AttachedDepartmentListVM { get; set; }
+
+        public CourseReviewViewModel AttachedCourseReviewVM { get; set; }
+        public CourseRecommendationsViewModel AttachedRecommendationVM { get; set; }
+
+
+        public string HomePageTitle => "Home";
+        
+        public string ReviewPageTitle => "Review a course";
+
+        public string RecommendationsPageTitle => "Course Recommendations";
+
+        public string AboutPageTitle => "About Us";
+
+        public HomePageViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             PageChangedCommand = new Command(HandlePageChanged);
+            CurrHttpConnection = argHttpConnection;
+            AttachedDepartmentListVM = new DepartmentListViewModel(CurrHttpConnection);
+            AttachedRecommendationVM = new CourseRecommendationsViewModel(CurrHttpConnection);
+            AttachedCourseReviewVM = new CourseReviewViewModel(CurrHttpConnection);
         }
         
         public ICommand PageChangedCommand { get; private set; }
@@ -25,24 +45,30 @@ namespace SimpliPassMobile.ViewModels
         /// <param name="e"> Index of the tab selected </param>
         void HandlePageChanged(object e)
         {
-            if (e.GetType() != typeof(int))
+            if (e.GetType() != typeof(NavigationPage))
             {
-                return; // e is not int, no need to handle
+                return; // e is not a ContentPage, no need to handle
             }
 
-            int tabIndex = (int)e;  // get the index of tab selected
+            NavigationPage selectedPage = (NavigationPage)e;
 
-            switch(tabIndex)
+            if(selectedPage.Title.Equals(HomePageTitle))
             {
-                case 0:
-                    new DepartmentListViewModel();
-                    break;
-                case 1:
-                    new CourseReviewViewModel();
-                    break;
-                case 2:
-                    new CourseRecommendationsViewModel();
-                    break;
+                AttachedDepartmentListVM.GenerateDepartmentList();
+                selectedPage.BindingContext = AttachedDepartmentListVM;
+                selectedPage.Title = HomePageTitle; // Binding context changed, need to reset the title
+
+            }
+            else if(selectedPage.Title.Equals(ReviewPageTitle))
+            {
+                selectedPage.BindingContext = AttachedCourseReviewVM;
+                selectedPage.Title = ReviewPageTitle; //Binding context changed, need to reset the title
+            }
+            else if (selectedPage.Title.Equals(RecommendationsPageTitle))
+            {
+                AttachedRecommendationVM.GenerateRecommendationsList();
+                selectedPage.BindingContext = AttachedRecommendationVM;
+                selectedPage.Title = RecommendationsPageTitle; //Binding context changed, need to reset the title
             }
         }
     }
