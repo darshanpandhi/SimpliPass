@@ -1,5 +1,6 @@
 #simplipass-navbar {
   background-color: rgba(80, 187, 219, 0.849);
+  position: relative;
 }
 
 .navbar-brand > img {
