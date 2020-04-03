@@ -12,21 +12,9 @@ namespace SimpliPassMobile.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        DepartmentListViewModel m_departmentsVM;
-        CourseReviewViewModel m_reviewVM;
-        CourseRecommendationsViewModel m_recommendationsVM;
-
         public HomePageViewModel()
         {
             PageChangedCommand = new Command(HandlePageChanged);
-        }
-
-        void OnPropertyChanged([CallerMemberName] string name=null)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(name)));
-            }
         }
         
         public ICommand PageChangedCommand { get; private set; }
@@ -47,14 +35,13 @@ namespace SimpliPassMobile.ViewModels
             switch(tabIndex)
             {
                 case 0:
-                    m_departmentsVM = new DepartmentListViewModel();
+                    new DepartmentListViewModel();
                     break;
                 case 1:
-                    m_reviewVM = new CourseReviewViewModel();
+                    new CourseReviewViewModel();
                     break;
-
                 case 2:
-                    m_recommendationsVM = new CourseRecommendationsViewModel();
+                    new CourseRecommendationsViewModel();
                     break;
             }
         }
