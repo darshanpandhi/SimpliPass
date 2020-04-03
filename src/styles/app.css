@@ -8,12 +8,22 @@
 }
 
 .navbar-nav > a:hover {
-  background-color: #fff;
-  color: #000 !important;
+  color: white !important;
+}
+
+.navbar-nav > a:after {
+  display: block;
+  content: "";
+  border-bottom: 2px solid white;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
+.navbar-nav > a:hover:after {
+  transform: scaleX(1);
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255);
+  color: white;
   font-size: 1.6rem;
   font-weight: 300;
   padding-right: 25px;
