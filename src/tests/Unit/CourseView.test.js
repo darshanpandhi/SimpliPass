@@ -37,19 +37,19 @@ describe("CourseView", () => {
         .find("div")
         .at(2)
         .text()
-    ).toEqual("Brad Pitt:  8  2 reviews");
+    ).toEqual("Brad Pitt82 reviews");
     expect(
       component
         .find("div")
         .at(3)
         .text()
-    ).toEqual("Tom Hanks:  6  3 reviews");
+    ).toEqual("Tom Hanks63 reviews");
 
     expect(
       component
         .find("div")
         .at(4)
         .text()
-    ).toEqual("Robert Downey, Jr.:  9  5 reviews");
+    ).toEqual("Robert Downey, Jr.95 reviews");
   });
 });
