@@ -227,3 +227,46 @@ describe("User Story 4: Get recommendations for popular elective courses", funct
 
   after(() => driver && driver.quit());
 });
+
+describe("Get error message when trying to submit review with empty fields", function() {
+  let driver;
+
+  before(async function() {
+    driver = await new Builder().forBrowser("chrome").build();
+  });
+
+  it("Open browser and navigate to SimpliPass website", async function() {
+    await driver.get(targetURL);
+
+    const result = await driver.getTitle();
+    const expected = "SimpliPass";
+
+    assert.equal(result, expected);
+  });
+
+  it("Navigate to Review Course and wait for elements to load", async function() {
+    await driver.findElement(By.xpath(reviewCourseNavItem)).click();
+    await driver.wait(
+      until.elementLocated(By.xpath(reviewCourseHeader)),
+      10000
+    );
+  });
+
+  it("Only fill Course ID and leave other fields blank", async function() {
+    await driver.findElement(By.xpath(crsCode)).sendKeys("COMP", Key.ENTER);
+    await driver.findElement(By.xpath(crsNum)).sendKeys("2140", Key.ENTER);
+  });
+
+  it("Try to submit review and wait for error message", async function() {
+    await driver.findElement(By.xpath(submitButton)).click();
+    await driver.wait(until.elementLocated(By.xpath(dialogHeader)), 10000);
+
+    let result = await driver.findElement(By.xpath(dialogContainer)).getText();
+    result = result.includes("Error!");
+    const expected = true;
+
+    assert.equal(result, expected);
+  });
+
+  after(() => driver && driver.quit());
+});

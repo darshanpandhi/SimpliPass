@@ -32,10 +32,10 @@ class App extends React.Component {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ml-auto">
-                <Nav.Link as={NavLink} to="/">
+                <Nav.Link as={NavLink} to="/Home">
                   Home
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/CourseReview">
+                <Nav.Link as={NavLink} to="/ReviewCourse">
                   Review Course
                 </Nav.Link>
                 <Nav.Link as={NavLink} to="/Recommendations">
@@ -49,7 +49,8 @@ class App extends React.Component {
           </Navbar>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/CourseReview" exact component={CourseReview} />
+            <Route path="/Home" exact component={Home} />
+            <Route path="/ReviewCourse" exact component={CourseReview} />
             <Route path="/Recommendations" exact component={Recommendations} />
             <Route path="/About" exact component={About} />
           </Switch>

@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 import Dialog from "./Dialog";
-import { courseExists } from "../utils/utils";
+import { getCourseInfo, capitalizeFirstChar } from "../utils/utils";
 import {
   proxyURL,
   apiRootURL,
@@ -47,87 +47,86 @@ class CourseReview extends React.Component {
       });
   }
 
+  existingCourseReview = () => {
+    fetch(
+      proxyURL +
+        apiRootURL +
+        allCourses +
+        this.state.currCourseCode +
+        " " +
+        this.state.currCourseNum +
+        updateExistingCourse +
+        this.state.currDiff +
+        "/" +
+        this.state.currSec +
+        "/" +
+        this.state.currSecRating,
+      {
+        method: "PUT"
+      }
+    )
+      .then(response => {
+        if (response.status === successCode) {
+          this.setState({ currMessage: "Review has been submitted." });
+        } else {
+          this.setState({
+            currMessage: "Submitting failed. Please try again."
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
+  newCourseReview = () => {
+    fetch(
+      proxyURL +
+        apiRootURL +
+        allCourses +
+        newCourse +
+        this.state.currCourseCode +
+        " " +
+        this.state.currCourseNum +
+        "/" +
+        this.state.currName +
+        "/" +
+        this.state.currDept +
+        "/" +
+        this.state.currDiff +
+        "/" +
+        this.state.currSec +
+        "/" +
+        this.state.currSecRating,
+      {
+        method: "POST"
+      }
+    )
+      .then(response => {
+        if (response.status === successCode) {
+          this.setState({ currMessage: "Review has been submitted." });
+        } else {
+          this.setState({
+            currMessage: "Submitting failed. Please try again."
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
   handleSubmitReview = () => {
-    if (
-      this.state.currCourseCode !== "" &&
-      this.state.currCourseNum !== "" &&
-      this.state.currName !== "" &&
-      this.state.currDept !== "" &&
-      this.state.currDiff !== "" &&
-      this.state.currSec !== "" &&
-      this.state.currSecRating !== ""
-    ) {
+    if (this.isValidCurr()) {
       if (
-        courseExists(
+        getCourseInfo(
           this.state.currCourseCode + " " + this.state.currCourseNum,
           this.state.coursesList
-        )
+        ).length === 0
       ) {
-        fetch(
-          proxyURL +
-            apiRootURL +
-            allCourses +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            updateExistingCourse +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
-          {
-            method: "PUT"
-          }
-        )
-          .then(response => {
-            if (response.status === successCode) {
-              this.setState({ currMessage: "Review has been submitted." });
-            } else {
-              this.setState({
-                currMessage: "Submitting failed. Please try again."
-              });
-            }
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
+        this.newCourseReview();
       } else {
-        fetch(
-          proxyURL +
-            apiRootURL +
-            allCourses +
-            newCourse +
-            this.state.currCourseCode +
-            " " +
-            this.state.currCourseNum +
-            "/" +
-            this.state.currName +
-            "/" +
-            this.state.currDept +
-            "/" +
-            this.state.currDiff +
-            "/" +
-            this.state.currSec +
-            "/" +
-            this.state.currSecRating,
-
-          {
-            method: "POST"
-          }
-        )
-          .then(response => {
-            if (response.status === successCode) {
-              this.setState({ currMessage: "Review has been submitted." });
-            } else {
-              this.setState({
-                currMessage: "Submitting failed. Please try again."
-              });
-            }
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
+        this.existingCourseReview();
       }
     } else {
       this.setState({
@@ -137,27 +136,61 @@ class CourseReview extends React.Component {
     }
   };
 
+  isValidCurr = () => {
+    return (
+      this.state.currCourseCode !== "" &&
+      this.state.currCourseNum !== "" &&
+      this.state.currName !== "" &&
+      this.state.currDept !== "" &&
+      this.state.currDiff !== "" &&
+      this.state.currSec !== "" &&
+      this.state.currSecRating !== ""
+    );
+  };
+
   onChangeValueCourseCode = event => {
     this.setState({
-      currCourseCode: event.target.value.toString().toUpperCase(),
+      currCourseCode: event.target.validity.valid
+        ? event.target.value.toString().toUpperCase()
+        : this.state.currCourseCode,
       currMessage: ""
     });
   };
 
   onChangeValueCourseNum = event => {
-    this.setState({ currCourseNum: event.target.value, currMessage: "" });
+    this.setState({
+      currCourseNum: event.target.validity.valid
+        ? event.target.value
+        : this.state.currCourseNum,
+      currMessage: ""
+    });
   };
 
   onChangeValueCourseName = event => {
-    this.setState({ currName: event.target.value, currMessage: "" });
+    this.setState({
+      currName: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currName,
+      currMessage: ""
+    });
   };
 
   onChangeValueDept = event => {
-    this.setState({ currDept: event.target.value, currMessage: "" });
+    this.setState({
+      currDept: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currDept,
+      currMessage: ""
+    });
   };
 
   onChangeValueSection = event => {
-    this.setState({ currSec: event.target.value, currMessage: "" });
+    this.setState({
+      currSec: event.target.validity.valid
+        ? capitalizeFirstChar(event.target.value)
+        : this.state.currSec,
+      currMessage: ""
+    });
   };
 
   handleSelectDifficulty = diff => {
@@ -174,7 +207,6 @@ class CourseReview extends React.Component {
         <Row>
           <h1 className="pageTitle"> Review Course </h1>
         </Row>
-
         <Row>
           <Col md={5}>
             <label>Course ID</label>
@@ -183,6 +215,7 @@ class CourseReview extends React.Component {
             <input
               className="crsCode"
               type="text"
+              pattern="[a-zA-Z]*"
               maxLength="4"
               placeholder="COMP"
               value={this.state.currCourseCode}
@@ -191,6 +224,7 @@ class CourseReview extends React.Component {
             <input
               className="crsNum"
               type="text"
+              pattern="[0-9]*"
               maxLength="4"
               placeholder="1010"
               value={this.state.currCourseNum}
@@ -205,6 +239,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="Intro to Computer Science 1"
               value={this.state.currName}
               onChange={this.onChangeValueCourseName}
@@ -218,6 +253,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="Computer Science"
               value={this.state.currDept}
               onChange={this.onChangeValueDept}
@@ -250,7 +286,6 @@ class CourseReview extends React.Component {
             <p className="hint"> 1 - Very Easy, 10 - Extremely Difficult</p>
           </Col>
         </Row>
-
         <Row>
           <h2 className="secTitle"> Section</h2>
         </Row>
@@ -261,6 +296,7 @@ class CourseReview extends React.Component {
           <Col md={7} className="d-flex justify-content-left review-course">
             <input
               type="text"
+              pattern="[a-zA-Z0-9 ]*"
               placeholder="John Smith"
               value={this.state.currSec}
               onChange={this.onChangeValueSection}
@@ -294,9 +330,10 @@ class CourseReview extends React.Component {
               className="submitReviewBtn"
               onClick={this.handleSubmitReview}
               disabled={
-                this.state.currDept === "" &&
                 this.state.currCourseCode === "" &&
                 this.state.currCourseNum === "" &&
+                this.state.currName === "" &&
+                this.state.currDept === "" &&
                 this.state.currDiff === "" &&
                 this.state.currSec === "" &&
                 this.state.currSecRating === ""
