@@ -44,7 +44,7 @@ namespace SimpliPassMobile.ViewModels
         /// <param name="e"> Index of the tab selected </param>
         void HandlePageChanged(object e)
         {
-            if (e.GetType() != typeof(NavigationPage))
+          if (e.GetType() != typeof(NavigationPage))
             {
                 return; // e is not a NavigationPage, no need to handle
             }
@@ -53,6 +53,7 @@ namespace SimpliPassMobile.ViewModels
 
             if(selectedPage.Title.Equals(HomePageTitle))
             {
+                AttachedDepartmentListVM = new DepartmentListViewModel(CurrHttpConnection);
                 AttachedDepartmentListVM.GenerateDepartmentList();
                 selectedPage.BindingContext = AttachedDepartmentListVM;
                 selectedPage.Title = HomePageTitle; // Binding context changed, need to reset the title
@@ -60,11 +61,13 @@ namespace SimpliPassMobile.ViewModels
             }
             else if(selectedPage.Title.Equals(ReviewPageTitle))
             {
+                AttachedCourseReviewVM = new CourseReviewViewModel(CurrHttpConnection);
                 selectedPage.BindingContext = AttachedCourseReviewVM;
                 selectedPage.Title = ReviewPageTitle; //Binding context changed, need to reset the title
             }
             else if (selectedPage.Title.Equals(RecommendationsPageTitle))
             {
+                AttachedRecommendationVM = new CourseRecommendationsViewModel(CurrHttpConnection);
                 AttachedRecommendationVM.GenerateRecommendationsList();
                 selectedPage.BindingContext = AttachedRecommendationVM;
                 selectedPage.Title = RecommendationsPageTitle; //Binding context changed, need to reset the title

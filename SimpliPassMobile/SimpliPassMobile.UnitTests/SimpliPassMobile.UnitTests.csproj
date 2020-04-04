@@ -64,10 +64,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpliPass.UITests\SimpliPassMobile.UITests.csproj">
-      <Project>{10126f57-d017-48de-97dd-6d6f0eae4c79}</Project>
-      <Name>SimpliPassMobile.UITests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SimpliPassMobile.Android\SimpliPassMobile.Android.csproj">
       <Project>{1aacb9fa-fdc4-4473-94dd-d3d549c0eb25}</Project>
       <Name>SimpliPassMobile.Android</Name>
