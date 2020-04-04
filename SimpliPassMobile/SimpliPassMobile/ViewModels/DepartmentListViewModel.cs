@@ -10,7 +10,7 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Department List page
     /// </summary>
-    class DepartmentListViewModel : INotifyPropertyChanged
+    public class DepartmentListViewModel : INotifyPropertyChanged
     {
         private readonly ISimpliPassHttpConnection CurrHttpConnection;
 
@@ -48,6 +48,10 @@ namespace SimpliPassMobile.ViewModels
         {
             DepartmentList = new ObservableCollection<DepartmentModel>();
             var json_response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENTS_LIST);
+            if (json_response == null)
+            {
+                return;
+            }
             deptList = JsonConvert.DeserializeObject<List<string>>(json_response);
 
             foreach (string dept in deptList)
@@ -56,7 +60,7 @@ namespace SimpliPassMobile.ViewModels
             }
         }
 
-        void OnPropertyChanged([CallerMemberName] string name = null)
+        public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(name)));
         }

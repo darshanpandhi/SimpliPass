@@ -24,7 +24,7 @@ namespace SimpliPassMobile
                 {
                     Timeout = TimeSpan.FromMilliseconds(10000)
                 };
-                var response = s_http_client.GetAsync(Constants.API_BASE_URL).Result; // dummy request to ensure a respose
+                var response = s_http_client.GetAsync(Constants.API_BASE_URL).Result; // dummy request to ensure a response
                 response.EnsureSuccessStatusCode();
                 System.Diagnostics.Debug.WriteLine("Connection success");
                 IsConnected = true;

@@ -31,9 +31,16 @@ namespace SimpliPassMobile.ViewModels
         /// </summary>
         public void ExtractSectionRatings()
         {
+            if(AttachedCourse == null || AttachedCourse.SectionRatings == null)
+            {
+                return;
+            }
             foreach (var secRating in AttachedCourse.SectionRatings)
             {
-                SectionRatings.Add(new SectionModel { Name = secRating.Key, Rating = secRating.Value["rating"], Count = (int)secRating.Value["count"] });
+                if(secRating.Value.ContainsKey("rating") && secRating.Value.ContainsKey("count"))
+                {
+                    SectionRatings.Add(new SectionModel { Name = secRating.Key, Rating = secRating.Value["rating"], Count = (int)secRating.Value["count"] });
+                }
             }
         }
     }

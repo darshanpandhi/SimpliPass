@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -8,7 +7,7 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel of Home Page
     /// </summary>
-    class HomePageViewModel : INotifyPropertyChanged
+    public class HomePageViewModel : INotifyPropertyChanged
     {
         public ISimpliPassHttpConnection CurrHttpConnection;
 
@@ -17,8 +16,8 @@ namespace SimpliPassMobile.ViewModels
         public DepartmentListViewModel AttachedDepartmentListVM { get; set; }
 
         public CourseReviewViewModel AttachedCourseReviewVM { get; set; }
+        
         public CourseRecommendationsViewModel AttachedRecommendationVM { get; set; }
-
 
         public string HomePageTitle => "Home";
         
@@ -47,7 +46,7 @@ namespace SimpliPassMobile.ViewModels
         {
             if (e.GetType() != typeof(NavigationPage))
             {
-                return; // e is not a ContentPage, no need to handle
+                return; // e is not a NavigationPage, no need to handle
             }
 
             NavigationPage selectedPage = (NavigationPage)e;

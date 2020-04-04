@@ -11,7 +11,7 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Department page
     /// </summary>
-    class DepartmentViewModel : INotifyPropertyChanged
+    public class DepartmentViewModel : INotifyPropertyChanged
     {
         private readonly ISimpliPassHttpConnection CurrHttpConnection;
 
@@ -36,7 +36,7 @@ namespace SimpliPassMobile.ViewModels
             }
         }
 
-        void OnPropertyChanged([CallerMemberName] string name = null)
+        public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(name)));
         }
@@ -57,17 +57,25 @@ namespace SimpliPassMobile.ViewModels
         {
             CourseList = new ObservableCollection<CourseModel>();
             var json_response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENT_COURSES + DepartmentName);
+            if (json_response == null)
+            {
+                return;
+            }
+
             courseList = JsonConvert.DeserializeObject<List<object>>(json_response);
 
             foreach (var crs in courseList)
             {
-                var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
-                var name = JObject.Parse(crs.ToString())["name"].ToObject<string>();
-                var dept = JObject.Parse(crs.ToString())["department"].ToObject<string>();
-                var diff = JObject.Parse(crs.ToString())["difficulty"].ToObject<double>();
-                var diffCount = JObject.Parse(crs.ToString())["difficultyCount"].ToObject<int>();
-                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"].ToObject<Dictionary<string, Dictionary<string, double>>>();
-                CourseList.Add(new CourseModel { Id = id, Name = name, Department = dept, Difficulty = diff, DifficultyCount = diffCount, SectionRatings = secRatings });
+                var id = JObject.Parse(crs.ToString())["id"]?.ToObject<string>();
+                var name = JObject.Parse(crs.ToString())["name"]?.ToObject<string>();
+                var dept = JObject.Parse(crs.ToString())["department"]?.ToObject<string>();
+                var diff = JObject.Parse(crs.ToString())["difficulty"]?.ToObject<double>();
+                var diffCount = JObject.Parse(crs.ToString())["difficultyCount"]?.ToObject<int>();
+                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"]?.ToObject<Dictionary<string, Dictionary<string, double>>>();
+
+                if (id == null || name == null || dept == null || diff == null || diffCount == null || secRatings == null)
+                    continue;
+                CourseList.Add(new CourseModel { Id = id, Name = name, Department = dept, Difficulty = (double)diff, DifficultyCount = (int)diffCount, SectionRatings = secRatings });
             }
         }
 

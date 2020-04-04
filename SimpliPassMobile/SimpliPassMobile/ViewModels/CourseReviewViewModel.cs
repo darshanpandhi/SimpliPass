@@ -12,7 +12,7 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Course review page
     /// </summary>
-    class CourseReviewViewModel
+    public class CourseReviewViewModel
     {
         private readonly ISimpliPassHttpConnection CurrHttpConnection;
 
@@ -46,35 +46,46 @@ namespace SimpliPassMobile.ViewModels
         /// </summary>
         public void HandleReviewSubmission()
         {
-            bool wasSuccess = false;
             if (!string.IsNullOrWhiteSpace(CourseDeptCode) && !string.IsNullOrWhiteSpace(CourseNum) && !string.IsNullOrWhiteSpace(CourseName) && !string.IsNullOrWhiteSpace(Department) && !string.IsNullOrWhiteSpace(Instructor) && DifficultyLevel <= 10 && DifficultyLevel > 0 && InstructorRating <= 10 && InstructorRating > 0)
             {
                 var fullCourseID = CourseDeptCode + " " + CourseNum;
                 bool found = false;
                 var content = new StringContent("", Encoding.UTF8, "application/json");
-                var response =  CurrHttpConnection.GetResource(Constants.COURSE);
+                var response = CurrHttpConnection.GetResource(Constants.COURSE);
+                if(response == null)
+                {
+                    return;
+                }
                 List<object> courseList = JsonConvert.DeserializeObject<List<object>>(response);
                 foreach (var crs in courseList)
                 {
-                    var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
+                    var id = JObject.Parse(crs.ToString())["id"]?.ToObject<string>();
 
+                    if (id == null)
+                        continue;
                     if (id.ToUpper() == fullCourseID.ToUpper())
                     {
                         found = true;
                     }
                 }
 
+                bool wasSuccess;
                 if (!found) // New Course
                 {
-                    wasSuccess =  CurrHttpConnection.PostResource(Constants.COURSE + Constants.NEW + fullCourseID + "/" + CourseName + "/" + Department + "/" + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
+                    wasSuccess = CurrHttpConnection.PostResource(Constants.COURSE + Constants.NEW + fullCourseID + "/" + CourseName + "/" + Department + "/" + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
                 }
                 else // Existing Course
                 {
-                    wasSuccess =  CurrHttpConnection.PutResource(Constants.COURSE + fullCourseID + Constants.UPDATE + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
+                    wasSuccess = CurrHttpConnection.PutResource(Constants.COURSE + fullCourseID + Constants.UPDATE + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
                 }
-            }
 
-            if(wasSuccess)
+                NotifySubscribers(wasSuccess);
+            }
+        }
+
+        public void NotifySubscribers(bool wasSuccess)
+        {
+            if (wasSuccess)
             {
                 MessagingCenter.Send(this, "SUCCESS");  // Messaging the Subscriber UI that review was added successfully
             }

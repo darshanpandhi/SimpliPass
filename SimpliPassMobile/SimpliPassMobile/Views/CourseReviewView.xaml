@@ -4,12 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SimpliPassMobile.Converters"
-    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
     Title="Review a Course">
-
-    <!--<ContentPage.BindingContext>
-        <viewmodels:CourseReviewViewModel />
-    </ContentPage.BindingContext>-->
 
     <ContentPage.Resources>
         <ResourceDictionary>

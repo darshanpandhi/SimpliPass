@@ -3,11 +3,8 @@
     x:Class="SimpliPassMobile.Views.CourseRecommendationsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
     Title="Recommended Popular Courses">
-    <!--<ContentPage.BindingContext>
-        <viewmodels:CourseRecommendationsViewModel />
-    </ContentPage.BindingContext>-->
+
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <ListView
