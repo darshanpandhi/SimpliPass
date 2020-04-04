@@ -87,6 +87,5 @@ namespace SimpliPassApi.Controllers
             _dbClient.AddNewCourse(id.ToUpper(), name, department, difficulty, instructorName, rating);
             _logger.LogInformation("Finish CoursesController POST Add New Course");
         }
-
     }
 }

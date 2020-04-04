@@ -45,8 +45,10 @@ namespace SimpliPassApi.Middleware
             }
 
             var result = JsonConvert.SerializeObject(new { error = ex.Message });
+
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
+
             return context.Response.WriteAsync(result);
         }
     }

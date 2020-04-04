@@ -3,7 +3,6 @@ using SimpliPassApi.Logic;
 using SimpliPassApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SimpliPassApiTests.LogicTests
 {
@@ -16,7 +15,6 @@ namespace SimpliPassApiTests.LogicTests
         [SetUp]
         public void Setup()
         {
-
             testCourseList = new List<Course>();
 
             var ratings1 = new Dictionary<string, Dictionary<string, double>>();
@@ -61,6 +59,7 @@ namespace SimpliPassApiTests.LogicTests
         public void TestGetAllDepartmentsNull()
         {
             List<string> result = CourseLogic.GetAllDepartments(null);
+
             Assert.IsNull(result);
         }
 
@@ -68,6 +67,7 @@ namespace SimpliPassApiTests.LogicTests
         public void TestGetAllDepartments()
         {
             List<string> result = CourseLogic.GetAllDepartments(testCourseList);
+
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Contains("Test Department 1"));
             Assert.IsTrue(result.Contains("Test Department 2"));
@@ -77,6 +77,7 @@ namespace SimpliPassApiTests.LogicTests
         public void TestGetCoursesForDeptNull()
         {
             List<Course> result = CourseLogic.GetCoursesForDept(null, "Test Department 1");
+
             Assert.IsNull(result);
         }
 
@@ -84,18 +85,21 @@ namespace SimpliPassApiTests.LogicTests
         public void TestGetCoursesForDept()
         {
             List<Course> result1 = CourseLogic.GetCoursesForDept(testCourseList, "Test Department 1");
+
             Assert.IsNotNull(result1);
             Assert.IsTrue(result1.Contains(testCourse1));
+
             List<Course> result2 = CourseLogic.GetCoursesForDept(testCourseList, "Test Department 2");
+
             Assert.IsNotNull(result2);
             Assert.IsTrue(result2.Contains(testCourse2));
-
         }
 
         [Test]
         public void TestGetRecommendationsListNull()
         {
             List<Course> result = CourseLogic.GetRecommendationsList(null);
+
             Assert.IsNull(result);
         }
 
@@ -103,6 +107,7 @@ namespace SimpliPassApiTests.LogicTests
         public void TestGetRecommendationsList()
         {
             List<Course> result = CourseLogic.GetRecommendationsList(testCourseList);
+
             Assert.IsNotNull(result);
             Assert.IsTrue(!result.Contains(testCourse1));
             Assert.IsTrue(result.Contains(testCourse2));
@@ -116,7 +121,9 @@ namespace SimpliPassApiTests.LogicTests
             int initDiffCount = testCourse1.DifficultyCount;
             double expectedDiff = ((initDiff * initDiffCount) + updateDiff) / (initDiffCount + 1);
             expectedDiff = Math.Round(expectedDiff, 1);
-            testCourse1.UpdateDifficulty(updateDiff);
+
+            CourseLogic.UpdateDifficulty(updateDiff, testCourse1);
+
             Assert.AreEqual(testCourse1.DifficultyCount, initDiffCount + 1);
             Assert.AreEqual(testCourse1.Difficulty, expectedDiff);
         }
@@ -129,7 +136,9 @@ namespace SimpliPassApiTests.LogicTests
             double initCount = testCourse1.SectionRatings["Instructor 1"]["count"];
             double expectedRating = ((initRating * initCount) + updateRating) / (initCount + 1);
             expectedRating = Math.Round(expectedRating, 1);
-            testCourse1.UpdateSectionRating("Instructor 1", updateRating);
+
+            CourseLogic.UpdateSectionRating("Instructor 1", updateRating, testCourse1);
+
             Assert.AreEqual(testCourse1.SectionRatings["Instructor 1"]["count"], initCount + 1);
             Assert.AreEqual(testCourse1.SectionRatings["Instructor 1"]["rating"], expectedRating);
         }
@@ -139,10 +148,12 @@ namespace SimpliPassApiTests.LogicTests
         {
             int updateRating = 3;
             string newInstructor = "Test Instructor 42";
-            testCourse1.UpdateSectionRating(newInstructor, updateRating);
+
+            CourseLogic.UpdateSectionRating(newInstructor, updateRating, testCourse1);
+
             Assert.IsTrue(testCourse1.SectionRatings.ContainsKey("Test Instructor 42"));
             Assert.AreEqual(testCourse1.SectionRatings["Test Instructor 42"]["count"], 1);
             Assert.AreEqual(testCourse1.SectionRatings["Test Instructor 42"]["rating"], updateRating);
         }
     }
-}  
+}
