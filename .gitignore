@@ -158,6 +158,7 @@ docs/*.xml
 */PerfLogs/*
 *.sap
 /packages
+**/[Pp]ackages/*
 !.xamarin-component/**
 *.xam
 SimpliPassMobile/Components/
