@@ -6,7 +6,7 @@ import ReactTooltip from "react-tooltip";
 import { Container, Row, Col } from "react-bootstrap";
 import { upperLimit, middleLimit, lowerLimit } from "../utils/constants";
 
-const CourseView = props => {
+const CourseView = (props) => {
   const courseInfo = getCourseInfo(props.currCourse, props.coursesList);
 
   const renderCourseHeader = () => {

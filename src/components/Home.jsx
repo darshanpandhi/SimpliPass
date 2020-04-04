@@ -16,27 +16,27 @@ class Home extends React.Component {
       currCourse: "",
       coursesList: [],
       loaded: false,
-      serverError: false
+      serverError: false,
     };
   }
 
   componentDidMount() {
     fetch(proxyURL + apiRootURL + allCourses)
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.setState({ coursesList: result, loaded: true });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ serverError: true });
         console.error("Error:", error);
       });
   }
 
-  handleSelectDept = dept => {
+  handleSelectDept = (dept) => {
     this.setState({ currDept: dept, currCourse: "" });
   };
 
-  handleSelectCourse = crs => {
+  handleSelectCourse = (crs) => {
     this.setState({ currCourse: crs });
   };
 

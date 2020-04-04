@@ -3,10 +3,10 @@ import Select from "react-select";
 import "../styles/courseSelector.css";
 import { getAllCoursesForDept } from "../utils/utils";
 
-const CourseSelector = props => {
+const CourseSelector = (props) => {
   const courseList = getAllCoursesForDept(props.currDept, props.coursesList);
 
-  const selectCourse = selectedOption => {
+  const selectCourse = (selectedOption) => {
     props.handleSelectCourse(selectedOption.label);
   };
 

@@ -9,7 +9,7 @@ import {
   updateExistingCourse,
   newCourse,
   successCode,
-  commonSelectorOptions
+  commonSelectorOptions,
 } from "../utils/constants";
 import { Row, Col } from "react-bootstrap";
 import Select from "react-select";
@@ -29,19 +29,19 @@ class CourseReview extends React.Component {
       currDiff: "",
       currSec: "",
       currSecRating: "",
-      loaded: false
+      loaded: false,
     };
   }
 
   componentDidMount() {
     fetch(proxyURL + apiRootURL + allCourses)
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.setState({ coursesList: result, loaded: true });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
-          currMessage: "Please try refreshing."
+          currMessage: "Please try refreshing.",
         });
         console.error("Error:", error);
       });
@@ -62,19 +62,19 @@ class CourseReview extends React.Component {
         "/" +
         this.state.currSecRating,
       {
-        method: "PUT"
+        method: "PUT",
       }
     )
-      .then(response => {
+      .then((response) => {
         if (response.status === successCode) {
           this.setState({ currMessage: "Review has been submitted." });
         } else {
           this.setState({
-            currMessage: "Submitting failed. Please try again."
+            currMessage: "Submitting failed. Please try again.",
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
       });
   };
@@ -99,19 +99,19 @@ class CourseReview extends React.Component {
         "/" +
         this.state.currSecRating,
       {
-        method: "POST"
+        method: "POST",
       }
     )
-      .then(response => {
+      .then((response) => {
         if (response.status === successCode) {
           this.setState({ currMessage: "Review has been submitted." });
         } else {
           this.setState({
-            currMessage: "Submitting failed. Please try again."
+            currMessage: "Submitting failed. Please try again.",
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
       });
   };
@@ -125,13 +125,14 @@ class CourseReview extends React.Component {
         ).length === 0
       ) {
         this.newCourseReview();
+        this.componentDidMount();
       } else {
         this.existingCourseReview();
       }
     } else {
       this.setState({
         currMessage:
-          "Some fields empty. Please enter course id, name, department, difficulty level and a section with its rating."
+          "Some fields empty. Please enter course id, name, department, difficulty level and a section with its rating.",
       });
     }
   };
@@ -148,56 +149,56 @@ class CourseReview extends React.Component {
     );
   };
 
-  onChangeValueCourseCode = event => {
+  onChangeValueCourseCode = (event) => {
     this.setState({
       currCourseCode: event.target.validity.valid
         ? event.target.value.toString().toUpperCase()
         : this.state.currCourseCode,
-      currMessage: ""
+      currMessage: "",
     });
   };
 
-  onChangeValueCourseNum = event => {
+  onChangeValueCourseNum = (event) => {
     this.setState({
       currCourseNum: event.target.validity.valid
         ? event.target.value
         : this.state.currCourseNum,
-      currMessage: ""
+      currMessage: "",
     });
   };
 
-  onChangeValueCourseName = event => {
+  onChangeValueCourseName = (event) => {
     this.setState({
       currName: event.target.validity.valid
         ? capitalizeFirstChar(event.target.value)
         : this.state.currName,
-      currMessage: ""
+      currMessage: "",
     });
   };
 
-  onChangeValueDept = event => {
+  onChangeValueDept = (event) => {
     this.setState({
       currDept: event.target.validity.valid
         ? capitalizeFirstChar(event.target.value)
         : this.state.currDept,
-      currMessage: ""
+      currMessage: "",
     });
   };
 
-  onChangeValueSection = event => {
+  onChangeValueSection = (event) => {
     this.setState({
       currSec: event.target.validity.valid
         ? capitalizeFirstChar(event.target.value)
         : this.state.currSec,
-      currMessage: ""
+      currMessage: "",
     });
   };
 
-  handleSelectDifficulty = diff => {
+  handleSelectDifficulty = (diff) => {
     this.setState({ currDiff: diff.value, currMessage: "" });
   };
 
-  handleSelectSectionRating = secRating => {
+  handleSelectSectionRating = (secRating) => {
     this.setState({ currSecRating: secRating.value, currMessage: "" });
   };
 

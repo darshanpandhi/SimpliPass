@@ -2,7 +2,7 @@ import {
   getAllDepartments,
   getAllCoursesForDept,
   getCourseInfo,
-  capitalizeFirstChar
+  capitalizeFirstChar,
 } from "../../utils/utils";
 import { sampleCoursesList } from "./Stub";
 
@@ -15,12 +15,12 @@ describe("Utils - getAllDepartments", () => {
     const expected = [
       {
         label: "Computer Science",
-        value: "Computer Science"
+        value: "Computer Science",
       },
       {
         label: "Mathematics",
-        value: "Mathematics"
-      }
+        value: "Mathematics",
+      },
     ];
     const result = getAllDepartments(sampleCoursesList);
 
@@ -58,12 +58,12 @@ describe("Utils - getAllCoursesForDept", () => {
     const expected = [
       {
         label: "COMP 2140",
-        value: "COMP 2140"
+        value: "COMP 2140",
       },
       {
         label: "COMP 1010",
-        value: "COMP 1010"
-      }
+        value: "COMP 1010",
+      },
     ];
     const result = getAllCoursesForDept("Computer Science", sampleCoursesList);
 
@@ -105,12 +105,12 @@ describe("Utils - getAllCoursesForDept", () => {
     const expected = [
       {
         label: "COMP 2140",
-        value: "COMP 2140"
+        value: "COMP 2140",
       },
       {
         label: "COMP 1010",
-        value: "COMP 1010"
-      }
+        value: "COMP 1010",
+      },
     ];
     const result = getAllCoursesForDept("cOmPuTer ScIeNcE", sampleCoursesList);
 
@@ -121,12 +121,12 @@ describe("Utils - getAllCoursesForDept", () => {
     const expected = [
       {
         label: "COMP 2140",
-        value: "COMP 2140"
+        value: "COMP 2140",
       },
       {
         label: "COMP 1010",
-        value: "COMP 1010"
-      }
+        value: "COMP 1010",
+      },
     ];
     const result = getAllCoursesForDept(
       "          Computer Science    ",
@@ -152,13 +152,13 @@ describe("Utils - getCourseInfo", () => {
       sectionRatings: {
         Adele: {
           count: 2,
-          rating: 5
+          rating: 5,
         },
         "Justin Timberlake": {
           count: 2,
-          rating: 7
-        }
-      }
+          rating: 7,
+        },
+      },
     };
     const result = getCourseInfo("MATH 1700", sampleCoursesList);
 
@@ -203,13 +203,13 @@ describe("Utils - getCourseInfo", () => {
       sectionRatings: {
         Adele: {
           count: 2,
-          rating: 5
+          rating: 5,
         },
         "Justin Timberlake": {
           count: 2,
-          rating: 7
-        }
-      }
+          rating: 7,
+        },
+      },
     };
     const result = getCourseInfo("mAtH 1700", sampleCoursesList);
 
@@ -226,13 +226,13 @@ describe("Utils - getCourseInfo", () => {
       sectionRatings: {
         Adele: {
           count: 2,
-          rating: 5
+          rating: 5,
         },
         "Justin Timberlake": {
           count: 2,
-          rating: 7
-        }
-      }
+          rating: 7,
+        },
+      },
     };
     const result = getCourseInfo("     MATH 1700    ", sampleCoursesList);
 

@@ -18,7 +18,7 @@ describe("CourseSelector", () => {
     expect(component.prop("placeholder")).toEqual("Select a Course");
     expect(component.prop("options")).toEqual([
       { value: "COMP 2140", label: "COMP 2140" },
-      { value: "COMP 1010", label: "COMP 1010" }
+      { value: "COMP 1010", label: "COMP 1010" },
     ]);
   });
 });

@@ -14,7 +14,7 @@ describe("Recommendations", () => {
     expect(component.state().loaded).toEqual(false);
     component.setState({
       loaded: true,
-      recommendationsList: sampleCoursesList
+      recommendationsList: sampleCoursesList,
     });
 
     // Header
@@ -27,63 +27,22 @@ describe("Recommendations", () => {
     expect(component.find("p")).toHaveLength(3);
 
     // COMP 2140
-    expect(
-      component
-        .find("h3")
-        .at(0)
-        .text()
-    ).toEqual("COMP 2140 - Data Structures and Algorithms");
-    expect(
-      component
-        .find("h5")
-        .at(0)
-        .text()
-    ).toEqual("Difficulty: 5");
-    expect(
-      component
-        .find("p")
-        .at(0)
-        .text()
-    ).toEqual("5 reviews");
+    expect(component.find("h3").at(0).text()).toEqual(
+      "COMP 2140 - Data Structures and Algorithms"
+    );
+    expect(component.find("h5").at(0).text()).toEqual("Difficulty: 5");
+    expect(component.find("p").at(0).text()).toEqual("5 reviews");
 
     // COMP 1010
-    expect(
-      component
-        .find("h3")
-        .at(1)
-        .text()
-    ).toEqual("COMP 1010 - Introductory Computer Science 1");
-    expect(
-      component
-        .find("h5")
-        .at(1)
-        .text()
-    ).toEqual("Difficulty: 3.2");
-    expect(
-      component
-        .find("p")
-        .at(1)
-        .text()
-    ).toEqual("11 reviews");
+    expect(component.find("h3").at(1).text()).toEqual(
+      "COMP 1010 - Introductory Computer Science 1"
+    );
+    expect(component.find("h5").at(1).text()).toEqual("Difficulty: 3.2");
+    expect(component.find("p").at(1).text()).toEqual("11 reviews");
 
     // MATH 1700
-    expect(
-      component
-        .find("h3")
-        .at(2)
-        .text()
-    ).toEqual("MATH 1700 - Calculus 2");
-    expect(
-      component
-        .find("h5")
-        .at(2)
-        .text()
-    ).toEqual("Difficulty: 6.7");
-    expect(
-      component
-        .find("p")
-        .at(2)
-        .text()
-    ).toEqual("8 reviews");
+    expect(component.find("h3").at(2).text()).toEqual("MATH 1700 - Calculus 2");
+    expect(component.find("h5").at(2).text()).toEqual("Difficulty: 6.7");
+    expect(component.find("p").at(2).text()).toEqual("8 reviews");
   });
 });

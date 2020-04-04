@@ -20,5 +20,5 @@ module.exports = {
     "/html/body/div/div/div[9]/div[2]/div/div/div[1]/div[2]/div/input",
   submitButton: "//*[@id='root']/div/div[11]/div/button",
   dialogHeader: "//*[@id='root']/div[1]/h1",
-  dialogContainer: "/html/body/div/div[1]"
+  dialogContainer: "/html/body/div/div[1]",
 };

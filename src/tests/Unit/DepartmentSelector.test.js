@@ -15,7 +15,7 @@ describe("DepartmentSelector", () => {
     expect(component.prop("placeholder")).toEqual("Select a Department");
     expect(component.prop("options")).toEqual([
       { value: "Computer Science", label: "Computer Science" },
-      { value: "Mathematics", label: "Mathematics" }
+      { value: "Mathematics", label: "Mathematics" },
     ]);
   });
 });

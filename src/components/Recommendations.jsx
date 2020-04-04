@@ -7,7 +7,7 @@ import {
   proxyURL,
   apiRootURL,
   allCourses,
-  recommendations
+  recommendations,
 } from "../utils/constants";
 
 class Recommendations extends React.Component {
@@ -17,19 +17,19 @@ class Recommendations extends React.Component {
     this.state = {
       recommendationsList: [],
       currMessage: "",
-      loaded: false
+      loaded: false,
     };
   }
 
   componentDidMount() {
     fetch(proxyURL + apiRootURL + allCourses + recommendations)
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.setState({ recommendationsList: result, loaded: true });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
-          currMessage: "Please try refreshing."
+          currMessage: "Please try refreshing.",
         });
         console.error("Error:", error);
       });
@@ -38,14 +38,14 @@ class Recommendations extends React.Component {
   renderRecommendations = () => {
     let list = [];
 
-    Object.values(this.state.recommendationsList).forEach(crs => {
+    Object.values(this.state.recommendationsList).forEach((crs) => {
       list.push(
         <div key={crs.id}>
           <h3>
             {`${crs.id}`} - {`${crs.name}`}
           </h3>
           <h5>
-            {`Difficulty: `}
+            {"Difficulty: "}
             <Badge variant="success">{crs.difficulty}</Badge>
           </h5>
           <p>{`${crs.difficultyCount} reviews`}</p>

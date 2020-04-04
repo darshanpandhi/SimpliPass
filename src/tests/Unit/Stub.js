@@ -8,17 +8,17 @@ export const sampleCoursesList = [
     sectionRatings: {
       "Brad Pitt": {
         count: 2,
-        rating: 8
+        rating: 8,
       },
       "Tom Hanks": {
         count: 3,
-        rating: 6
+        rating: 6,
       },
       "Robert Downey, Jr.": {
         count: 5,
-        rating: 9
-      }
-    }
+        rating: 9,
+      },
+    },
   },
   {
     department: "Computer Science",
@@ -29,25 +29,25 @@ export const sampleCoursesList = [
     sectionRatings: {
       "Bruno Mars": {
         count: 1,
-        rating: 5.2
+        rating: 5.2,
       },
       "Chris Martin": {
         count: 1,
-        rating: 9.1
+        rating: 9.1,
       },
       "Harry Styles": {
         count: 1,
-        rating: 4.5
+        rating: 4.5,
       },
       "Selena Gomez": {
         count: 1,
-        rating: 3.6
+        rating: 3.6,
       },
       "Shawn Mendes": {
         count: 1,
-        rating: 2
-      }
-    }
+        rating: 2,
+      },
+    },
   },
   {
     department: "Mathematics",
@@ -58,12 +58,12 @@ export const sampleCoursesList = [
     sectionRatings: {
       Adele: {
         count: 2,
-        rating: 5
+        rating: 5,
       },
       "Justin Timberlake": {
         count: 2,
-        rating: 7
-      }
-    }
-  }
+        rating: 7,
+      },
+    },
+  },
 ];
