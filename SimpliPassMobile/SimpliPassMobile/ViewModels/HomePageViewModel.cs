@@ -7,11 +7,9 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel of Home Page
     /// </summary>
-    public class HomePageViewModel : INotifyPropertyChanged
+    public class HomePageViewModel
     {
         public ISimpliPassHttpConnection CurrHttpConnection;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public DepartmentListViewModel AttachedDepartmentListVM { get; set; }
 
