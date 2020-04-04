@@ -107,8 +107,8 @@ namespace SimpliPassApi.Clients
 
             if (item != null)
             {
-                item.UpdateDifficulty(newDifficulty);
-                item.UpdateSectionRating(instructorName, newRating);
+                CourseLogic.UpdateDifficulty(newDifficulty, item);
+                CourseLogic.UpdateSectionRating(instructorName, newRating, item);
 
                 await _context.SaveAsync(item);
             }
