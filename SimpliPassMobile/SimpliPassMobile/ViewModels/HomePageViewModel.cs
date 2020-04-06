@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -8,25 +7,31 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel of Home Page
     /// </summary>
-    class HomePageViewModel : INotifyPropertyChanged
+    public class HomePageViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ISimpliPassHttpConnection CurrHttpConnection;
 
-        DepartmentListViewModel m_departmentsVM;
-        CourseReviewViewModel m_reviewVM;
-        CourseRecommendationsViewModel m_recommendationsVM;
+        public DepartmentListViewModel AttachedDepartmentListVM { get; set; }
 
-        public HomePageViewModel()
+        public CourseReviewViewModel AttachedCourseReviewVM { get; set; }
+        
+        public CourseRecommendationsViewModel AttachedRecommendationVM { get; set; }
+
+        public string HomePageTitle => "Home";
+        
+        public string ReviewPageTitle => "Review a course";
+
+        public string RecommendationsPageTitle => "Course Recommendations";
+
+        public string AboutPageTitle => "About Us";
+
+        public HomePageViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             PageChangedCommand = new Command(HandlePageChanged);
-        }
-
-        void OnPropertyChanged([CallerMemberName] string name=null)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(name)));
-            }
+            CurrHttpConnection = argHttpConnection;
+            AttachedDepartmentListVM = new DepartmentListViewModel(CurrHttpConnection);
+            AttachedRecommendationVM = new CourseRecommendationsViewModel(CurrHttpConnection);
+            AttachedCourseReviewVM = new CourseReviewViewModel(CurrHttpConnection);
         }
         
         public ICommand PageChangedCommand { get; private set; }
@@ -37,25 +42,33 @@ namespace SimpliPassMobile.ViewModels
         /// <param name="e"> Index of the tab selected </param>
         void HandlePageChanged(object e)
         {
-            if (e.GetType() != typeof(int))
+          if (e.GetType() != typeof(NavigationPage))
             {
-                return; // e is not int, no need to handle
+                return; // e is not a NavigationPage, no need to handle
             }
 
-            int tabIndex = (int)e;  // get the index of tab selected
+            NavigationPage selectedPage = (NavigationPage)e;
 
-            switch(tabIndex)
+            if(selectedPage.Title.Equals(HomePageTitle))
             {
-                case 0:
-                    m_departmentsVM = new DepartmentListViewModel();
-                    break;
-                case 1:
-                    m_reviewVM = new CourseReviewViewModel();
-                    break;
+                AttachedDepartmentListVM = new DepartmentListViewModel(CurrHttpConnection);
+                AttachedDepartmentListVM.GenerateDepartmentList();
+                selectedPage.BindingContext = AttachedDepartmentListVM;
+                selectedPage.Title = HomePageTitle; // Binding context changed, need to reset the title
 
-                case 2:
-                    m_recommendationsVM = new CourseRecommendationsViewModel();
-                    break;
+            }
+            else if(selectedPage.Title.Equals(ReviewPageTitle))
+            {
+                AttachedCourseReviewVM = new CourseReviewViewModel(CurrHttpConnection);
+                selectedPage.BindingContext = AttachedCourseReviewVM;
+                selectedPage.Title = ReviewPageTitle; //Binding context changed, need to reset the title
+            }
+            else if (selectedPage.Title.Equals(RecommendationsPageTitle))
+            {
+                AttachedRecommendationVM = new CourseRecommendationsViewModel(CurrHttpConnection);
+                AttachedRecommendationVM.GenerateRecommendationsList();
+                selectedPage.BindingContext = AttachedRecommendationVM;
+                selectedPage.Title = RecommendationsPageTitle; //Binding context changed, need to reset the title
             }
         }
     }

@@ -11,8 +11,10 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Department page
     /// </summary>
-    class DepartmentViewModel : INotifyPropertyChanged
+    public class DepartmentViewModel : INotifyPropertyChanged
     {
+        private readonly ISimpliPassHttpConnection CurrHttpConnection;
+
         public ObservableCollection<CourseModel> CourseList { get; set; }
         private List<object> courseList;
 
@@ -34,38 +36,46 @@ namespace SimpliPassMobile.ViewModels
             }
         }
 
-        void OnPropertyChanged([CallerMemberName] string name = null)
+        public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(name)));
         }
 
-        public DepartmentViewModel(string arg_departmentName)
+        public DepartmentViewModel(string argDepartmentName, ISimpliPassHttpConnection argHttpConnection)
         {
             CourseList = new ObservableCollection<CourseModel>();
             SelectText = "Select a Course";
-            DepartmentName = arg_departmentName;
+            DepartmentName = argDepartmentName;
             OnPropertyChanged(DepartmentDisplayName);
-            GenerateCourseList();
+            CurrHttpConnection = argHttpConnection;
         }
 
         /// <summary>
         /// Method which requests list of courses for the selected department
         /// </summary>
-        void GenerateCourseList()
+        public void GenerateCourseList()
         {
             CourseList = new ObservableCollection<CourseModel>();
-            var json_response = SimpliPassHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENT_COURSES + DepartmentName);
+            var json_response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENT_COURSES + DepartmentName);
+            if (json_response == null)
+            {
+                return;
+            }
+
             courseList = JsonConvert.DeserializeObject<List<object>>(json_response);
 
             foreach (var crs in courseList)
             {
-                var id = JObject.Parse(crs.ToString())["id"].ToObject<string>();
-                var name = JObject.Parse(crs.ToString())["name"].ToObject<string>();
-                var dept = JObject.Parse(crs.ToString())["department"].ToObject<string>();
-                var diff = JObject.Parse(crs.ToString())["difficulty"].ToObject<double>();
-                var diffCount = JObject.Parse(crs.ToString())["difficultyCount"].ToObject<int>();
-                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"].ToObject<Dictionary<string, Dictionary<string, double>>>();
-                CourseList.Add(new CourseModel { Id = id, Name = name, Department = dept, Difficulty = diff, DifficultyCount = diffCount, SectionRatings = secRatings });
+                var id = JObject.Parse(crs.ToString())["id"]?.ToObject<string>();
+                var name = JObject.Parse(crs.ToString())["name"]?.ToObject<string>();
+                var dept = JObject.Parse(crs.ToString())["department"]?.ToObject<string>();
+                var diff = JObject.Parse(crs.ToString())["difficulty"]?.ToObject<double>();
+                var diffCount = JObject.Parse(crs.ToString())["difficultyCount"]?.ToObject<int>();
+                var secRatings = JObject.Parse(crs.ToString())["sectionRatings"]?.ToObject<Dictionary<string, Dictionary<string, double>>>();
+
+                if (id == null || name == null || dept == null || diff == null || diffCount == null || secRatings == null)
+                    continue;
+                CourseList.Add(new CourseModel { Id = id, Name = name, Department = dept, Difficulty = (double)diff, DifficultyCount = (int)diffCount, SectionRatings = secRatings });
             }
         }
 
@@ -80,7 +90,9 @@ namespace SimpliPassMobile.ViewModels
             {
                 return null;
             }
-            return new CourseDetailsViewModel((CourseModel)e);
+            CourseDetailsViewModel contextedCourseVM = new CourseDetailsViewModel((CourseModel)e);
+            contextedCourseVM.ExtractSectionRatings();
+            return contextedCourseVM;
         }
     }
 }

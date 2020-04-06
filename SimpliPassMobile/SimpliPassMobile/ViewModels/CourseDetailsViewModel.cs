@@ -6,7 +6,7 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Course Details page
     /// </summary>
-    class CourseDetailsViewModel
+    public class CourseDetailsViewModel
     {
         private CourseModel AttachedCourse { get; set; }
 
@@ -20,11 +20,10 @@ namespace SimpliPassMobile.ViewModels
 
         public string DifficultyCount => $"Based on {AttachedCourse.DifficultyCount} reviews";
 
-        public CourseDetailsViewModel(CourseModel arg_course)
+        public CourseDetailsViewModel(CourseModel argCourse)
         {
-            AttachedCourse = arg_course;
+            AttachedCourse = argCourse;
             SectionRatings = new ObservableCollection<SectionModel>();
-            ExtractSectionRatings();
         }
 
         /// <summary>
@@ -32,9 +31,16 @@ namespace SimpliPassMobile.ViewModels
         /// </summary>
         public void ExtractSectionRatings()
         {
+            if(AttachedCourse == null || AttachedCourse.SectionRatings == null)
+            {
+                return;
+            }
             foreach (var secRating in AttachedCourse.SectionRatings)
             {
-                SectionRatings.Add(new SectionModel { Name = secRating.Key, Rating = secRating.Value["rating"], Count = secRating.Value["count"] });
+                if(secRating.Value.ContainsKey("rating") && secRating.Value.ContainsKey("count"))
+                {
+                    SectionRatings.Add(new SectionModel { Name = secRating.Key, Rating = secRating.Value["rating"], Count = (int)secRating.Value["count"] });
+                }
             }
         }
     }

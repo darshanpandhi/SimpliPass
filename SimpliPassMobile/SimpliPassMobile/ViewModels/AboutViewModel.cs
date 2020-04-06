@@ -3,7 +3,7 @@
     /// <summary>
     /// ViewModel for About Page
     /// </summary>
-    class AboutViewModel
+    public class AboutViewModel
     {
         public string WhyTitle => "Why SimpliPass?";
 

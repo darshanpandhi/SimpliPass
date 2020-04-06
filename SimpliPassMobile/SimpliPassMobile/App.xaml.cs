@@ -1,10 +1,13 @@
-﻿using SimpliPassMobile.Views;
+﻿using SimpliPassMobile.ViewModels;
+using SimpliPassMobile.Views;
 using Xamarin.Forms;
 
 namespace SimpliPassMobile
 {
     public partial class App : Application
     {
+        ISimpliPassHttpConnection httpConnection;
+
         public App()
         {
             InitializeComponent();
@@ -12,22 +15,26 @@ namespace SimpliPassMobile
 
         protected override void OnStart()
         {
-            if (!SimpliPassHttpConnection.Connect())
+            httpConnection = new SimpliPassHttpConnection();
+            if (!httpConnection.Connect())
             {
                 MainPage = new NoInternetPage();    // Http Connection was unsuccessful
                 return;
             }
-            MainPage = new HomePage();  // Http Connection successful, proceed to homepage
+            MainPage = new HomePage
+            {
+                BindingContext = new HomePageViewModel(httpConnection)
+            };  // Http Connection successful, proceed to homepage
         }
 
         protected override void OnSleep()
         {
-            SimpliPassHttpConnection.Disconnect();
+            httpConnection.Disconnect();
         }
 
         protected override void OnResume()
         {
-            if (!SimpliPassHttpConnection.Connect())
+            if (!httpConnection.Connect())
             {
                 MainPage = new NoInternetPage();    // Http Connection was unsuccessful
                 return;

@@ -10,8 +10,10 @@ namespace SimpliPassMobile.ViewModels
     /// <summary>
     /// ViewModel for Department List page
     /// </summary>
-    class DepartmentListViewModel : INotifyPropertyChanged
+    public class DepartmentListViewModel : INotifyPropertyChanged
     {
+        private readonly ISimpliPassHttpConnection CurrHttpConnection;
+
         public ObservableCollection<DepartmentModel> DepartmentList { get; set;}
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,11 +34,11 @@ namespace SimpliPassMobile.ViewModels
 
         public string LogoPath { get { return Constants.LOGO_PATH; } }
 
-        public DepartmentListViewModel()
+        public DepartmentListViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             DepartmentList = new ObservableCollection<DepartmentModel>();
             SelectText = "Select a Department";
-            GenerateDepartmentList();
+            CurrHttpConnection = argHttpConnection;
         }
 
         /// <summary>
@@ -45,7 +47,11 @@ namespace SimpliPassMobile.ViewModels
         public void GenerateDepartmentList()
         {
             DepartmentList = new ObservableCollection<DepartmentModel>();
-            var json_response = SimpliPassHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENTS_LIST);
+            var json_response = CurrHttpConnection.GetResource(Constants.COURSE + Constants.DEPARTMENTS_LIST);
+            if (json_response == null)
+            {
+                return;
+            }
             deptList = JsonConvert.DeserializeObject<List<string>>(json_response);
 
             foreach (string dept in deptList)
@@ -54,7 +60,7 @@ namespace SimpliPassMobile.ViewModels
             }
         }
 
-        void OnPropertyChanged([CallerMemberName] string name = null)
+        public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(name)));
         }
@@ -71,7 +77,10 @@ namespace SimpliPassMobile.ViewModels
                 return null;
             }
             string dept_name = (e as DepartmentModel)?.Name;
-            return new DepartmentViewModel(dept_name);
+
+            var contextedDepartmentVM = new DepartmentViewModel(dept_name, CurrHttpConnection);
+            contextedDepartmentVM.GenerateCourseList();
+            return contextedDepartmentVM;
         }
     }
 }

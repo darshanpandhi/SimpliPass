@@ -43,7 +43,8 @@
             <ListView
                 Margin="60,0,60,60"
                 HasUnevenRows="true"
-                ItemsSource="{Binding SectionRatings}">
+                ItemsSource="{Binding SectionRatings}"
+                SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
