@@ -13,7 +13,7 @@ namespace SimpliPass.AcceptanceTests
                 return ConfigureApp.Android.InstalledApp("com.companyname.simplipassmobile").StartApp();
             }
 
-            return ConfigureApp.iOS.StartApp();
+            return ConfigureApp.iOS.InstalledApp("com.companyname.simplipassmobile").StartApp();
         }
     }
 }

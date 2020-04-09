@@ -87,6 +87,7 @@
                     Title="1 - Very Easy, 10 - Extremely Difficult"
                     Grid.Row="4"
                     Margin="0,30,0,0"
+                    AutomationId="Difficulty Picker"
                     ItemsSource="{Binding PickerLevels, Mode=OneTime}"
                     SelectedIndex="{Binding DifficultyLevel, Mode=TwoWay, Converter={StaticResource PickerLevelsConverter}}"
                     TitleColor="LightGray" />
@@ -116,6 +117,7 @@
                     Title="1 - Poor, 10 - Excellent"
                     Grid.Row="6"
                     Margin="0,30,0,0"
+                    AutomationId="Rating Picker"
                     ItemsSource="{Binding PickerLevels, Mode=OneTime}"
                     SelectedIndex="{Binding InstructorRating, Mode=TwoWay, Converter={StaticResource PickerLevelsConverter}}"
                     TitleColor="LightGray" />

@@ -42,7 +42,6 @@
 
             <ListView
                 Margin="60,0,60,60"
-                HasUnevenRows="true"
                 ItemsSource="{Binding SectionRatings}"
                 SelectionMode="None">
                 <ListView.ItemTemplate>
@@ -93,7 +92,7 @@
                                     FontAttributes="Italic"
                                     FontSize="Small"
                                     HorizontalTextAlignment="End"
-                                    Text="reviews"
+                                    Text=" reviews"
                                     VerticalOptions="End" />
                             </Grid>
                         </ViewCell>
