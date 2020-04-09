@@ -61,7 +61,8 @@
                 Text="Section Ratings" />
 
             <ListView
-                Margin="60,0,60,60"
+                Margin="50,0,40,0"
+                HorizontalOptions="Center"
                 ItemsSource="{Binding SectionRatings}"
                 SelectionMode="None"
                 SeparatorVisibility="None">
@@ -85,8 +86,7 @@
 
                                 <Label
                                     Grid.Column="1"
-                                    Grid.ColumnSpan="3"
-                                    Margin="20,0,10,0"
+                                    Grid.ColumnSpan="2"
                                     Padding="10,0,0,0"
                                     BackgroundColor="WhiteSmoke"
                                     FontSize="Subtitle"
@@ -97,10 +97,9 @@
                                 <Label
                                     Grid.Column="3"
                                     Margin="0,0,10,0"
-                                    Padding="10,0,10,0"
                                     BackgroundColor="#51BBDB"
                                     FontSize="Subtitle"
-                                    HorizontalOptions="End"
+                                    HorizontalOptions="Fill"
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding Rating}"
                                     TextColor="White"
@@ -108,20 +107,10 @@
 
                                 <Label
                                     Grid.Column="4"
-                                    Margin="0,0,55,0"
-                                    FontAttributes="Italic"
-                                    FontSize="Small"
-                                    HorizontalOptions="End"
-                                    Text="{Binding Count}" />
-                                <Label
-                                    Grid.Column="4"
-                                    Margin="20,0,0,0"
                                     FontAttributes="Italic"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    HorizontalTextAlignment="Start"
-                                    Text="reviews" />
-
+                                    Text="{Binding Count, StringFormat='{0} reviews'}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
