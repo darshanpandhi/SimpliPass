@@ -46,7 +46,12 @@ namespace SimpliPassMobile.ViewModels
         /// </summary>
         public void HandleReviewSubmission()
         {
-            if (!string.IsNullOrWhiteSpace(CourseDeptCode) && !string.IsNullOrWhiteSpace(CourseNum) && !string.IsNullOrWhiteSpace(CourseName) && !string.IsNullOrWhiteSpace(Department) && !string.IsNullOrWhiteSpace(Instructor) && DifficultyLevel <= 10 && DifficultyLevel > 0 && InstructorRating <= 10 && InstructorRating > 0)
+            if (string.IsNullOrWhiteSpace(CourseDeptCode) || string.IsNullOrWhiteSpace(CourseNum) || string.IsNullOrWhiteSpace(CourseName) || string.IsNullOrWhiteSpace(Department) || string.IsNullOrWhiteSpace(Instructor) || DifficultyLevel <= 10 || DifficultyLevel > 0 || InstructorRating <= 10 || InstructorRating > 0)
+            {
+                NotifySubscribers(false);
+                return;
+            }
+            else 
             {
                 var fullCourseID = CourseDeptCode + " " + CourseNum;
                 bool found = false;
@@ -78,7 +83,6 @@ namespace SimpliPassMobile.ViewModels
                 {
                     wasSuccess = CurrHttpConnection.PutResource(Constants.COURSE + fullCourseID + Constants.UPDATE + DifficultyLevel + "/" + Instructor + "/" + InstructorRating, content);
                 }
-
                 NotifySubscribers(wasSuccess);
             }
         }
