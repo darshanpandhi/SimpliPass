@@ -27,6 +27,7 @@ namespace SimpliPass.AcceptanceTests
         [Test]
         public void Test_ViewingCourseDifficulty()
         {
+            app.WaitForElement(e => e.Text("Home"));
             var homeTab = app.Query(e => e.Text("Home"));
             Assert.IsTrue(homeTab.Length > 0, "Home page was not found!");
             app.Tap(homeTab.First().Text);
@@ -35,6 +36,7 @@ namespace SimpliPass.AcceptanceTests
             var content = app.Query(e => e.Text("Select a Department"));
             Assert.IsTrue(content.Length > 0, "Home page has incorrect content");
 
+            app.WaitForElement(e => e.Text("Statistics"));
             var testDeptElem = app.Query(e => e.Text("Statistics"));
             Assert.IsTrue(testDeptElem.Length > 0, "Department element was not found");
             app.Tap(testDeptElem.First().Text);
@@ -44,6 +46,7 @@ namespace SimpliPass.AcceptanceTests
             Assert.IsTrue(testCourseElem.Length > 0, "Course element was not found");
             app.Tap(testCourseElem.First().Text);
 
+            app.WaitForElement(e => e.Text("Difficulty Level"));
             var difficultyElem = app.Query(e => e.Property("Text").Contains("Difficulty Level"));
             Assert.IsTrue(difficultyElem.Length > 0, "Difficulty element was not found for selected course");
         }
@@ -52,13 +55,16 @@ namespace SimpliPass.AcceptanceTests
         [Test]
         public void Test_ViewingInstructorRatings()
         {
+            app.WaitForElement(e => e.Text("Home"));
             var homeTab = app.Query(e => e.Text("Home"));
             Assert.IsTrue(homeTab.Length > 0, "Home page was not found!");
             app.Tap(homeTab.First().Text);
-            
+
+            app.WaitForElement(e => e.Text("Select a Department"));
             var content = app.Query(e => e.Text("Select a Department"));
             Assert.IsTrue(content.Length > 0, "Home page has incorrect content");
 
+            app.WaitForElement(e => e.Text("Computer Science"));
             var testDeptElem = app.Query(e => e.Text("Computer Science"));
             Assert.IsTrue(testDeptElem.Length > 0, "Department element was not found");
             app.Tap(testDeptElem.First().Text);
@@ -68,6 +74,7 @@ namespace SimpliPass.AcceptanceTests
             Assert.IsTrue(testCourseElem.Length > 0, "Course element was not found");
             app.Tap(testCourseElem.First().Text);
 
+            app.WaitForElement(e => e.Text("Section Ratings"));
             var sectionRatingsElem = app.Query(e => e.Text("Section Ratings"));
             Assert.IsTrue(sectionRatingsElem.Length > 0, "Section ratings element was not found!");
         }
@@ -76,6 +83,7 @@ namespace SimpliPass.AcceptanceTests
         [Test]
         public void Test_ReviewingACourse()
         {
+            app.WaitForElement(e => e.Text("Review a course"));
             var reviewTab = app.Query(e => e.Text("Review a course"));
             Assert.IsTrue(reviewTab.Length > 0, "Review page was not found!");
             app.Tap(reviewTab.First().Text);
@@ -117,6 +125,7 @@ namespace SimpliPass.AcceptanceTests
 
             app.Tap("OK");
 
+            app.WaitForElement(e => e.Text("Home"));
             var homeTab = app.Query(e => e.Text("Home"));
             Assert.IsTrue(homeTab.Length > 0, "Home page was not found!");
             app.Tap(homeTab.First().Text);
@@ -125,6 +134,7 @@ namespace SimpliPass.AcceptanceTests
             var content = app.Query(e => e.Text("Select a Department"));
             Assert.IsTrue(content.Length > 0, "Home page has incorrect content");
 
+            app.WaitForElement(e => e.Text("Chemistry"));
             var testDeptElem = app.Query(e => e.Text("Chemistry"));
             Assert.IsTrue(testDeptElem.Length > 0, "Department element was not found");
             app.Tap(testDeptElem.First().Text);
@@ -134,6 +144,7 @@ namespace SimpliPass.AcceptanceTests
             Assert.IsTrue(testCourseElem.Length > 0, "Course element was not found");
             app.Tap(testCourseElem.First().Text);
 
+            app.WaitForElement(e => e.Text("Michael Scott"));
             var sectionRatingsElem = app.Query(e => e.Text("Michael Scott"));
             Assert.IsTrue(sectionRatingsElem.Length > 0, "Recently added review was not found!");
         }
@@ -142,6 +153,7 @@ namespace SimpliPass.AcceptanceTests
         [Test]
         public void Test_CourseRecommendations()
         {
+            app.WaitForElement(e => e.Text("Course Recommendations"));
             var recommendTab = app.Query(e => e.Text("Course Recommendations"));
             Assert.IsTrue(recommendTab.Length > 0, "Recommendations Page was not found!");
             app.Tap(recommendTab.First().Text);
