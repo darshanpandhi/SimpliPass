@@ -3,7 +3,15 @@
     x:Class="SimpliPassMobile.Views.CourseRecommendationsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SimpliPassMobile.Converters"
     Title="Recommended Popular Courses">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DoubleToScaleColorConverter x:Key="DoubleToScaleColorConverter" />
+            <converters:DoubleToFontColorConverter x:Key="DoubleToFontColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -40,39 +48,42 @@
                                     FontSize="Medium"
                                     Text="{Binding Name}"
                                     VerticalTextAlignment="End" />
-
-                                <Label
+                                <StackLayout
                                     Grid.Row="3"
                                     Grid.Column="1"
-                                    FontSize="Medium"
-                                    HorizontalTextAlignment="Start"
-                                    Text="Difficulty Level: " />
+                                    Orientation="Horizontal">
+                                    <Label
+                                        FontSize="Medium"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Difficulty Level: "
+                                        VerticalTextAlignment="Center" />
 
-                                <Label
-                                    Grid.Row="3"
-                                    Grid.Column="1"
-                                    Margin="0,0,75,0"
-                                    FontSize="Medium"
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding Difficulty}" />
-
+                                    <Label
+                                        Padding="10,0,10,0"
+                                        BackgroundColor="{Binding Difficulty, Converter={StaticResource DoubleToScaleColorConverter}}"
+                                        FontSize="Medium"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Difficulty}"
+                                        TextColor="{Binding Difficulty, Converter={StaticResource DoubleToFontColorConverter}}"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
                                 <Label
                                     Grid.Row="4"
                                     Grid.Column="1"
                                     FontAttributes="Italic"
                                     FontSize="Small"
-                                    HorizontalTextAlignment="Start"
+                                    HorizontalOptions="Start"
+                                    HorizontalTextAlignment="End"
                                     Text="{Binding DifficultyCount}" />
 
                                 <Label
                                     Grid.Row="4"
                                     Grid.Column="1"
-                                    Margin="0,0,290,0"
+                                    Margin="20,0,0,0"
                                     FontAttributes="Italic"
                                     FontSize="Small"
-                                    HorizontalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
                                     Text="reviews" />
-
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
