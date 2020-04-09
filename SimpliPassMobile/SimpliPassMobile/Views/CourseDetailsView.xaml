@@ -62,6 +62,7 @@
 
             <ListView
                 Margin="70,0,40,0"
+                HasUnevenRows="True"
                 HorizontalOptions="Center"
                 ItemsSource="{Binding SectionRatings}"
                 SelectionMode="None"
@@ -87,12 +88,13 @@
                                 <Label
                                     Grid.Column="1"
                                     Grid.ColumnSpan="3"
-                                    Padding="10,0,0,0"
+                                    Padding="10,0,10,0"
                                     BackgroundColor="WhiteSmoke"
                                     FontSize="Subtitle"
                                     HorizontalOptions="Fill"
                                     HorizontalTextAlignment="Start"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}"
+                                    VerticalTextAlignment="Center" />
 
                                 <Label
                                     Grid.Column="4"
@@ -102,7 +104,8 @@
                                     HorizontalOptions="Fill"
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding Rating}"
-                                    TextColor="White" />
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
 
                                 <Label
                                     Grid.Column="5"
@@ -110,7 +113,8 @@
                                     FontAttributes="Italic"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{Binding Count, StringFormat='{0, 2} reviews'}" />
+                                    Text="{Binding Count, StringFormat='{0, 2} reviews'}"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
