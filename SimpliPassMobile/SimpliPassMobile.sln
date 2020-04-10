@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpliPassMobile.TestDouble
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpliPassMobile.IntegrationTests", "SimpliPassMobile.IntegrationTests\SimpliPassMobile.IntegrationTests.csproj", "{8E34A514-D9C4-498B-9BB9-56172ADAB9D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpliPass.AcceptanceTests", "SimpliPass.AcceptanceTests\SimpliPass.AcceptanceTests.csproj", "{7AED61B4-710B-4882-8DA3-7417A0325CD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpliPassMobile.AcceptanceTests", "SimpliPassMobile.AcceptanceTests\SimpliPassMobile.AcceptanceTests.csproj", "{7AED61B4-710B-4882-8DA3-7417A0325CD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

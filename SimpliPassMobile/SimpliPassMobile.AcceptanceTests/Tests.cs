@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 
-namespace SimpliPass.AcceptanceTests
+namespace SimpliPassMobile.AcceptanceTests
 {
     [TestFixture(Platform.Android)]
     [TestFixture(Platform.iOS)]
