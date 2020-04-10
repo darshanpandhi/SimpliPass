@@ -6,7 +6,6 @@
     xmlns:behaviors="clr-namespace:SimpliPassMobile.Behaviors"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="clr-namespace:SimpliPassMobile.ViewModels"
     xmlns:views="clr-namespace:SimpliPassMobile.Views"
     x:Name="MainPage"
     BarBackgroundColor="#51BBDB"
@@ -22,6 +21,11 @@
         <behaviors:EventToCommandBehavior
             Command="{Binding PageChangedCommand}"
             CommandParameter="{Binding Path=CurrentPage, Source={x:Reference MainPage}}"
+            EventName="CurrentPageChanged" />
+
+        <behaviors:EventToCommandBehavior
+            Command="{Binding TabbedPageChangedCommand}"
+            CommandParameter="{Binding Source={x:Reference MainPage}}"
             EventName="CurrentPageChanged" />
     </TabbedPage.Behaviors>
 

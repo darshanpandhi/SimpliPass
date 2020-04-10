@@ -12,25 +12,22 @@
     </ContentPage.Resources>
 
     <NavigationPage.TitleView>
-        <Grid>
+        <StackLayout Orientation="Horizontal">
             <Image
-                Grid.Column="0"
-                Margin="-10,0,0,0"
+                Margin="10,0,0,0"
                 HeightRequest="48"
                 HorizontalOptions="Start"
                 Source="logo.png"
                 VerticalOptions="CenterAndExpand"
-                WidthRequest="72" />
+                WidthRequest="48" />
             <Label
-                Grid.Column="1"
-                Margin="-140,0,0,0"
                 FontFamily="sans-serif-light"
                 FontSize="Title"
                 HorizontalTextAlignment="Start"
                 Text="SimpliPass"
                 TextColor="White"
                 VerticalTextAlignment="Center" />
-        </Grid>
+        </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
@@ -44,7 +41,7 @@
                 Text="{Binding SelectText}" />
 
             <ListView
-                HasUnevenRows="true"
+                HasUnevenRows="True"
                 ItemTapped="OnDepartmentSelected"
                 ItemsSource="{Binding DepartmentList}">
                 <ListView.ItemTemplate>

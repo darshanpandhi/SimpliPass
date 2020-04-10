@@ -2,7 +2,15 @@
 <ContentPage
     x:Class="SimpliPassMobile.Views.CourseDetailsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SimpliPassMobile.Converters">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DoubleToScaleColorConverter x:Key="DoubleToScaleColorConverter" />
+            <converters:DoubleToFontColorConverter x:Key="DoubleToFontColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <NavigationPage.TitleView>
         <Label
@@ -24,11 +32,23 @@
                 FontSize="Medium"
                 HorizontalTextAlignment="Center"
                 Text="{Binding DepartmentName}" />
-            <Label
+            <StackLayout
                 Margin="20,20,20,0"
-                FontSize="Large"
-                HorizontalTextAlignment="Center"
-                Text="{Binding DifficultyLevel}" />
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding DifficultyLevelText}" />
+                <Label
+                    Margin="10,0,0,0"
+                    Padding="10,0,10,0"
+                    BackgroundColor="{Binding DifficultyLevel, Converter={StaticResource DoubleToScaleColorConverter}}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding DifficultyLevel}"
+                    TextColor="{Binding DifficultyLevel, Converter={StaticResource DoubleToFontColorConverter}}" />
+            </StackLayout>
             <Label
                 FontAttributes="Italic"
                 FontSize="Small"
@@ -41,10 +61,12 @@
                 Text="Section Ratings" />
 
             <ListView
-                Margin="60,0,60,60"
-                HasUnevenRows="true"
+                Margin="70,0,40,0"
+                HasUnevenRows="True"
+                HorizontalOptions="Center"
                 ItemsSource="{Binding SectionRatings}"
-                SelectionMode="None">
+                SelectionMode="None"
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -65,36 +87,34 @@
 
                                 <Label
                                     Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Padding="10,0,10,0"
+                                    BackgroundColor="WhiteSmoke"
                                     FontSize="Small"
+                                    HorizontalOptions="Fill"
                                     HorizontalTextAlignment="Start"
                                     Text="{Binding Name}"
-                                    VerticalOptions="End" />
+                                    VerticalTextAlignment="Center" />
 
                                 <Label
-                                    Grid.Column="2"
-                                    Margin="0,0,30,0"
-                                    FontSize="Small"
-                                    HorizontalTextAlignment="End"
-                                    Text="{Binding Rating}"
-                                    VerticalOptions="End" />
-
-                                <Label
-                                    Grid.Column="3"
-                                    Margin="0,0,40,0"
-                                    FontAttributes="Italic"
-                                    FontSize="Small"
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding Count}"
-                                    VerticalOptions="End" />
-
-                                <Label
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     Margin="0,0,10,0"
+                                    BackgroundColor="#51BBDB"
+                                    FontSize="Small"
+                                    HorizontalOptions="Fill"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Rating}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
+
+                                <Label
+                                    Grid.Column="5"
+                                    Grid.ColumnSpan="2"
                                     FontAttributes="Italic"
                                     FontSize="Small"
-                                    HorizontalTextAlignment="End"
-                                    Text="reviews"
-                                    VerticalOptions="End" />
+                                    HorizontalOptions="Start"
+                                    Text="{Binding Count, StringFormat='{0, 2} reviews'}"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

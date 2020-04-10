@@ -38,7 +38,7 @@ namespace SimpliPassMobile.IntegrationTests
             // Assert
 
             Assert.IsTrue(courseVmToTest.DepartmentName.Equals("Department of "+dummy_courseToAttach.Department), "Returned contexted course had different department");
-            Assert.IsTrue(courseVmToTest.DifficultyLevel.Equals("Difficulty Level "+dummy_courseToAttach.Difficulty), "Returned contexted course had difficulty level");
+            Assert.IsTrue(courseVmToTest.DifficultyLevel.Equals(dummy_courseToAttach.Difficulty), "Returned contexted course had difficulty level");
             Assert.IsTrue(courseVmToTest.DifficultyCount.Equals("Based on "+dummy_courseToAttach.DifficultyCount+" reviews"), "Returned contexted course had difficulty count");
             Assert.IsTrue(courseVmToTest.NameAndId.Equals(dummy_courseToAttach.Id +" - "+dummy_courseToAttach.Name), "Returned contexted course had different course name and id");
         }

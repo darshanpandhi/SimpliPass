@@ -16,9 +16,11 @@ namespace SimpliPassMobile.ViewModels
 
         public string DepartmentName => $"Department of {AttachedCourse.Department}";
 
-        public string DifficultyLevel => $"Difficulty Level {AttachedCourse.Difficulty}";
+        public string DifficultyLevelText => "Difficulty Level";
 
-        public string DifficultyCount => $"Based on {AttachedCourse.DifficultyCount} reviews";
+        public double DifficultyLevel => AttachedCourse.Difficulty;
+
+    public string DifficultyCount => $"Based on {AttachedCourse.DifficultyCount} reviews";
 
         public CourseDetailsViewModel(CourseModel argCourse)
         {
