@@ -28,6 +28,7 @@ namespace SimpliPassMobile.ViewModels
         public HomePageViewModel(ISimpliPassHttpConnection argHttpConnection)
         {
             PageChangedCommand = new Command(HandlePageChanged);
+            TabbedPageChangedCommand = new Command(ResetTabbedPageProperties);
             CurrHttpConnection = argHttpConnection;
             AttachedDepartmentListVM = new DepartmentListViewModel(CurrHttpConnection);
             AttachedRecommendationVM = new CourseRecommendationsViewModel(CurrHttpConnection);
@@ -36,13 +37,15 @@ namespace SimpliPassMobile.ViewModels
         
         public ICommand PageChangedCommand { get; private set; }
 
+        public ICommand TabbedPageChangedCommand { get; private set; }
+
         /// <summary>
-        /// Hanles the changing of tabs in the tabbedPage
+        /// Handles the changing of tabs in the tabbedPage
         /// </summary>
         /// <param name="e"> Index of the tab selected </param>
         void HandlePageChanged(object e)
         {
-          if (e.GetType() != typeof(NavigationPage))
+            if (e.GetType() != typeof(NavigationPage))
             {
                 return; // e is not a NavigationPage, no need to handle
             }
@@ -70,6 +73,21 @@ namespace SimpliPassMobile.ViewModels
                 selectedPage.BindingContext = AttachedRecommendationVM;
                 selectedPage.Title = RecommendationsPageTitle; //Binding context changed, need to reset the title
             }
+        }
+
+        /// <summary>
+        /// Resets the TabbedPage default properties when pages change
+        /// </summary>
+        /// <param name="e"> Tabbed page to reset properties for </param>
+        void ResetTabbedPageProperties(object e)
+        {
+            if ((e as TabbedPage) == null)
+            {
+                return; // e is not a TabbedPage, no need to handle
+            }
+
+            ((TabbedPage)e).BarBackgroundColor = Color.FromHex("#51BBDB");
+            ((TabbedPage)e).BarTextColor = Color.White;
         }
     }
 }

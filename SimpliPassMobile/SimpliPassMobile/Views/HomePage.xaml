@@ -19,6 +19,11 @@
             EventName="BindingContextChanged" />
 
         <behaviors:EventToCommandBehavior
+            Command="{Binding TabbedPageChangedCommand}"
+            CommandParameter="{Binding Source={x:Reference MainPage}}"
+            EventName="CurrentPageChanged" />
+
+        <behaviors:EventToCommandBehavior
             Command="{Binding PageChangedCommand}"
             CommandParameter="{Binding Path=CurrentPage, Source={x:Reference MainPage}}"
             EventName="CurrentPageChanged" />
