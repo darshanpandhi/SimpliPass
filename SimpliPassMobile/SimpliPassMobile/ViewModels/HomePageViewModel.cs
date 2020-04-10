@@ -88,6 +88,8 @@ namespace SimpliPassMobile.ViewModels
 
             ((TabbedPage)e).BarBackgroundColor = Color.FromHex("#51BBDB");
             ((TabbedPage)e).BarTextColor = Color.White;
+            ((TabbedPage)e).SelectedTabColor = Color.White;
+            ((TabbedPage)e).UnselectedTabColor = Color.White;
         }
     }
 }
