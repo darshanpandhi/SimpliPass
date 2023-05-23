@@ -2,7 +2,6 @@
 
 _Maximize your academic success through optimal course selections and reviews!_
 
-[![HitCount](http://hits.dwyl.io/nahiyannaim/https://githubcom/darshanpandhi/SimpliPass.svg)](http://hits.dwyl.io/nahiyannaim/https://githubcom/darshanpandhi/SimpliPass)
 
 ## Details
 
